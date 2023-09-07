@@ -1,0 +1,56 @@
+
+
+.Nav_Header{
+    .container{
+        >.d-flex{
+
+            >a{
+                img{
+                    width: 130px;
+                    height: 40px;
+                }
+            }
+            >form{
+                input{
+                    padding: .6rem;
+                    box-shadow: none;
+                    border: rgba(0, 0, 0, 0.475) 1px solid;
+                    border-radius: 3px;
+                    background:url('./Media/search.png');
+                    background-size: 45px;
+                    
+                    background-repeat: no-repeat;
+                }
+            }
+            >nav{
+                a{
+                    font-size: 1.1rem;
+                }
+            }
+            >.profile_cart{
+                a{
+                    font-size: 1.1rem;
+                }
+                a:hover{
+                    color: red!important;
+                    border-bottom: 2px solid red;
+                }
+            }
+
+
+
+
+
+        }
+    }
+    .container-fluid{
+        .categories{
+            nav{
+
+                a{
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+}
