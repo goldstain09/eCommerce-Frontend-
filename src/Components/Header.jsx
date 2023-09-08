@@ -7,7 +7,7 @@ import CategoriesHeader from "./CategoriesHeader";
 export default function Header() {
   return (
     <>
-      <header className="p-3 mb-3 Nav_Header fixed-top">
+      <header className="p-3 mb-3 Nav_Header fixed-top bg-light">
         <div className="container">
           <div className="d-flex gap-5 border-bottom pb-2  flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a

@@ -1,8 +1,9 @@
-.HomeMiddle2 {
+
+.HomeMiddle3 {
     margin-top: 3rem;
     .row {
       height: 30rem;
-      background: url('./Media/homeMiddle2bg.jpg');
+      background: linear-gradient(to top, rgba(255, 166, 0, 0.462), rgba(165, 42, 42, 0.486), rgba(255, 0, 0, 0.422));
       background-size: 100% 100%;
       
       .col-lg-4{
@@ -12,7 +13,7 @@
           top:8rem;
           font-family: "Inter", sans-serif;
           font-weight: 800;
-          color: aliceblue;
+          color: #5c0431;
         }
         >.btn{margin-top: 10rem;
           font-weight: 600;
@@ -25,28 +26,31 @@
       .col-lg-2 {
           margin-top: 4rem !important;
           a {
-            position: relative;
-            top: 105%;
-            font-family: "Inter", sans-serif;
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.705);
-            border-radius: 0;
-          }
+              position: relative;
+              top: 105%;
+              font-family: "Inter", sans-serif;
+              font-size: 1.3rem;
+              color: rgba(0, 0, 0, 0.705);
+              border-radius: 0;
+            }
+            a:hover {
+                color: white;
+            }
       }
       .col-lg-2:nth-child(2) {
         height: 20rem;
-        background: url("./Media/homeMiddle2a.jpg");
+        background: url("./Media/homeMiddle3a.jpg");
         background-size: 100% 100%;
       }
       .col-lg-2:nth-child(3) {
         height: 20rem;
-        background: url("./Media/homeMiddle2b.jpg");
+        background: url("./Media/homeMiddle3b.jpg");
         background-size: 100% 100%;
         background-repeat: no-repeat;
       }
       .col-lg-2:nth-child(4) {
         height: 20rem;
-        background: url("./Media/homeMiddle2c.jpg");
+        background: url("./Media/homeMiddle3c.jpg");
         background-size: 100% 100%;
         background-repeat: no-repeat;
       }

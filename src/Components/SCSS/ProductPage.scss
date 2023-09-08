@@ -1,0 +1,165 @@
+.ProductPage {
+  margin-top: 10rem;
+  >.row {
+    font-family: "Inter", sans-serif;
+
+    .imgDiv {
+      img {
+        width: 98%;
+        margin-left: 1%;
+        height: auto;
+        border: 1px solid rgba(0, 0, 0, 0.123);
+        border-radius: 5px;
+      }
+      > div {
+        margin-top: 2rem;
+        > .btn-outline-danger {
+          color: #5c0431 !important;
+          background: none;
+          border: #5c0431 1px solid;
+          border-radius: 0;
+          font-size: 2rem;
+          padding: 0.5rem 1rem;
+          width: 55%;
+        }
+        > .btn-outline-danger:hover {
+          border: #5c0431 1px solid;
+          color: white !important;
+          background: #5c0431 !important;
+        }
+        > .btn-danger {
+          margin-left: 5%;
+          width: 40%;
+          font-size: 2rem;
+          border-radius: 0;
+          background: #5c0431;
+          color: white;
+          border: #5c0431 1px solid;
+        }
+      }
+    }
+    .textDiv {
+      .titleDiv {
+        border: 1px solid rgba(0, 0, 0, 0.123);
+        border-radius: 5px;
+        padding: 1rem;
+        .title {
+          font-size: 1.3rem;
+          font-weight: 800;
+          color: rgba(0, 0, 0, 0.463);
+        }
+        .price {
+          font-size: 2.1rem;
+          color: black;
+        }
+        > .btn-success {
+            border-radius: 50px;
+        }
+      }
+      .descDiv {
+        margin-top: 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.123);
+        border-radius: 5px;
+        padding: 1rem;
+        p {
+          font-size: 0.9rem;
+          color: rgb(116, 116, 116);
+        }
+      }
+      .sellerDiv {
+        margin-top: 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.123);
+        border-radius: 5px;
+        padding: 1rem;
+
+        > .row {
+          > .shopicon {
+            border-radius: 50px;
+            background: #c92c2c27;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            i {
+              font-size: 2rem;
+              color: #5c0431;
+            }
+          }
+          > .col-7 {
+            > h1 {
+              padding-top: 0.5rem;
+              color: rgba(0, 0, 0, 0.707);
+            }
+          }
+
+          > .col-3 {
+            padding-top: 1rem;
+            > .btn-danger {
+              margin-left: 5%;
+              width: 100%;
+              font-size: 1rem;
+              border-radius: 0;
+              background: #5c0431;
+              color: white;
+              border: #5c0431 1px solid;
+            }
+          }
+        }
+        >h4{
+            margin-left: 2rem;
+            display: inline-block;
+            padding-top: 2rem;
+        }
+      }
+      .advantagesDiv{
+        margin-top: 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.123);
+        border-radius: 5px;
+        background: #0c32913e;
+        padding: 1rem;
+
+        >.row{
+
+            .col-4{
+
+                .icon{
+                    img{
+                        width: 3rem;
+                        border-radius: 50px;
+                    }
+                }
+                .text{
+                    padding-top: .2rem;
+                    padding-left: 1rem;
+                    p{
+                        font-size: .9rem;
+                        color: black;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+      }
+      .Trust{
+        margin-top: 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.123);
+        border-radius: 5px;
+        padding: 1rem;
+
+        >.row{
+
+            .col-2{
+                img{
+                    width: 65%;
+                }
+            }
+            .col-10{
+                h4{
+                    color: rgba(0, 0, 0, 0.495);
+                    font-weight: 600;
+                }
+            }
+        }
+      }
+    }
+  }
+}

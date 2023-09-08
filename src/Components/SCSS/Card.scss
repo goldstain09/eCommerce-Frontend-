@@ -1,0 +1,43 @@
+
+.productCard{
+    border: none;
+    
+    >.card-body{
+        border: 1px solid rgba(0, 0, 0, 0.41);
+        border-radius: 5px;
+        >.card-title{
+            font-family: "Inter", sans-serif;
+            font-size: 1.4rem;
+            color: rgba(0, 0, 0, 0.413);
+            font-weight: 800;
+        }
+        >.card-price{
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: black;
+            span{
+                font-size: .8rem;
+                color: rgba(0, 0, 0, 0.253);
+            }
+        }
+        >.btn-light{
+            font-family: "Inter", sans-serif;
+            font-size: .9rem;
+            font-weight: 700;
+            color: grey;
+            display: block;
+        }
+        >.btn-success{
+            display: inline;
+            border-radius: 50px;
+            font-family: "Inter", sans-serif;
+            margin: .9rem .5rem;
+            
+            +p{
+                font-family: "Inter", sans-serif;
+                display: inline;
+                font-size: .8rem;
+            }
+        }
+    }
+}

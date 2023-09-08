@@ -7,20 +7,25 @@ export default function HomeMiddle2() {
     <>
       <div className="container HomeMiddle2">
         <div className="row d-flex gap-3">
+          <div className="col-12 col-lg-4 col-sm-12">
           <h1>Essentials</h1>
-          <div className="col-12 col-lg-5 col-sm-12">
-            <Link to={""} className="text-decoration-none">
-              <h2>Women's Store</h2>
+            <Link to={""} className="btn btn-outline-dark ">
+              View All
             </Link>
           </div>
-          <div className="col-12 col-lg-3 col-sm-12">
-            <Link className="text-decoration-none">
-              <h2>Men's Store</h2>
+          <div className="col-12 col-lg-2 col-sm-12 text-center">
+            <Link to={""} className="btn btn-outline-dark">
+              Home Decor
             </Link>
           </div>
-          <div className="col-12 col-lg-3 col-sm-12">
-            <Link className="text-decoration-none">
-              <h2>Kid's Store</h2>
+          <div className="col-12 col-lg-2 col-sm-12 text-center">
+            <Link className="btn btn-outline-dark">
+              Kitchen Appliances
+            </Link>
+          </div>
+          <div className="col-12 col-lg-2 col-sm-12 text-center">
+            <Link className="btn btn-outline-dark">
+              Heath Care
             </Link>
           </div>
         </div>

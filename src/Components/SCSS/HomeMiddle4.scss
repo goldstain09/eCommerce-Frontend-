@@ -1,0 +1,27 @@
+
+
+.HomeMiddle4{
+    margin-top: 8rem;
+    .row{
+        height: 25rem;
+        background: url('./Media/homeMiddle4bg.jpg');
+        background-size: 100% 100%;
+
+        >a{
+            position: relative;
+            top: 80%;left: 2.5rem;
+            width: auto!important;
+            height:3rem;
+            font-size: 1.4rem;
+            color: white;
+            text-decoration: none;
+            border: black 1px solid;
+
+        }
+        >a:hover{
+            color: black;
+            background: white;
+            border: white 1px solid;
+        }
+    }
+}
