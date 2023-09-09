@@ -1,7 +1,7 @@
 import React from "react";
 import "./SCSS/Header.scss";
 import logo from "../Media/logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import CategoriesHeader from "./CategoriesHeader";
 
 export default function Header() {
@@ -30,29 +30,31 @@ export default function Header() {
               className="mb-3 col-auto mb-lg-0 me-3 px-3 py-2"
               style={{ borderRight: "2px grey solid" }}
             >
-              {/* <Link to={'/'}>Become a Supplier</Link> */}
-             <Link to={'/'} className="text-dark text-decoration-none">
+              
+              <NavLink to={"/sellersignup"} className="text-dark text-decoration-none">
                 Become a Supplier
-              </Link>
+              </NavLink>
             </nav>
 
             <div className="d-flex gap-4 col-2 profile_cart">
-              <a
+              <NavLink
+              to={'/usersignup'}
                 title="Hello, to access your account SignUp"
                 className="text-dark text-decoration-none"
               >
                 &nbsp;&nbsp;&nbsp;<i className="bi bi-person"></i>
                 <br />
                 Profile
-              </a>
-              <a
+              </NavLink>
+              <NavLink
+                to={"/cart"}
                 title="Hello, to see your cart Login/SignUp"
                 className="text-dark text-decoration-none"
               >
                 &nbsp;<i className="bi bi-cart3"></i>
                 <br />
                 Cart
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>
