@@ -31,9 +31,9 @@ export default function Header() {
               style={{ borderRight: "2px grey solid" }}
             >
               
-              <NavLink to={"/sellersignup"} className="text-dark text-decoration-none">
+              <a href="http://localhost:3001/" target="_new" className="text-dark text-decoration-none">
                 Become a Supplier
-              </NavLink>
+              </a>
             </nav>
 
             <div className="d-flex gap-4 col-2 profile_cart">

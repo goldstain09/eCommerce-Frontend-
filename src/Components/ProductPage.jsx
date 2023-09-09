@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import cod from "../Media/cod.png";
 import easyReturn from "../Media/return.png";
 import lowestPrice from "../Media/lowestprice.png";
-import logo from '../Media/logo.png';
+import logo from "../Media/logo.png";
 import SuggestiveProductsUnderProductPage from "./SuggestiveProductsUnderProductPage";
+import Header from "./Header";
 
 export default function ProductPage() {
   return (
     <>
+      <Header />
       <div className="container ProductPage">
         <div className="row d-flex">
           <div className="col col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 imgDiv">
@@ -25,7 +27,9 @@ export default function ProductPage() {
           {/* -------------- */}
           <div className="col col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 textDiv">
             <div className="titleDiv">
-              <h1 className="title">Rayon Printed Blue Kurta for Women's & Girls</h1>
+              <h1 className="title">
+                Rayon Printed Blue Kurta for Women's & Girls
+              </h1>
               <h1 className="price">$241</h1>
               <button disabled className="btn btn-success">
                 4.5 <i class="bi bi-star-fill"></i>
@@ -74,49 +78,51 @@ export default function ProductPage() {
               <div className="row d-flex justify-content-center">
                 <div className="col-4  d-flex text-center">
                   <div className="icon">
-                    <img
-                      src={lowestPrice}
-                      alt=""
-                    />
+                    <img src={lowestPrice} alt="" />
                   </div>
                   <div className="text">
-                    <p>Lowest <br/>Price</p>
+                    <p>
+                      Lowest <br />
+                      Price
+                    </p>
                   </div>
                 </div>
                 <div className="col-4 d-flex  text-center">
                   <div className="icon">
-                    <img
-                      src={cod}
-                      alt=""
-                    />
+                    <img src={cod} alt="" />
                   </div>
                   <div className="text">
-                    <p>Cash on<br/> Delivery</p>
+                    <p>
+                      Cash on
+                      <br /> Delivery
+                    </p>
                   </div>
                 </div>
                 <div className="col-4 d-flex text-center">
                   <div className="icon">
-                    <img
-                      src={easyReturn}
-                      alt=""
-                    />
+                    <img src={easyReturn} alt="" />
                   </div>
                   <div className="text">
-                    <p>Easy 7 Days<br/> Return</p>
+                    <p>
+                      Easy 7 Days
+                      <br /> Return
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="Trust">
-                <div className="row d-flex">
-                    <div className="col col-2">
-                        <img src={logo} alt="" />
-                    </div>
-                    <div className="col col-10">
-                        <h4 className="h4">Best quality products from trusted suppliers</h4>
-                    </div>
+              <div className="row d-flex">
+                <div className="col col-2">
+                  <img src={logo} alt="" />
                 </div>
+                <div className="col col-10">
+                  <h4 className="h4">
+                    Best quality products from trusted suppliers
+                  </h4>
+                </div>
+              </div>
             </div>
           </div>
         </div>

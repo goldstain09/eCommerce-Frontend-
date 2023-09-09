@@ -6,10 +6,12 @@ import HomeMiddle2 from './HomeMiddle2';
 import HomeMiddle3 from './HomeMiddle3';
 import HomeMiddle4 from './HomeMiddle4';
 import ProductsForYou from './ProductsForYou';
+import Header from './Header';
 
 export default function Home() {
   return (
     <>
+    <Header />
     <HomeTop />
 
     <h1 id='homeH1'>

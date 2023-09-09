@@ -1,0 +1,71 @@
+$main: #5c0431;
+
+.CheckoutNav {
+  > li {
+    a {
+      font-size: 3rem;
+      color: $main;
+    }
+    a:hover {
+      color: $main;
+    }
+  }
+}
+
+.CheckoutDiv {
+  .h5 {
+    span {
+      color: grey;
+    }
+  }
+  > .row {
+    > .col-12 {
+      margin-top: 0.6rem;
+      border: 1px solid rgba(0, 0, 0, 0.123);
+      border-radius: 5px;
+      padding: 1rem;
+      height: fit-content !important;
+
+      > .row {
+        .col-3 {
+          img {
+            width: 80%;
+          }
+          .btn {
+            border: none !important;
+            border-radius: 0;
+          }
+        }
+        .col-9 {
+          .title {
+            font-size: 2rem;
+            font-weight: 500;
+          }
+          .price {
+            font-size: 2.1rem;
+            color: grey;
+            font-weight: 600;
+          }
+          .text {
+            font-size: 2.15rem;
+            color: rgb(89, 89, 89);
+          }
+          .qty {
+            font-size: 2.15rem;
+            color: rgb(101, 101, 101);
+          }
+          > .btn-outline-danger {
+            border: none !important;
+            border-radius: 0;
+          }
+        }
+      }
+    }
+    > .Placeorder {
+      margin-top: 2rem;
+      border: 1px solid rgba(0, 0, 0, 0.123);
+      border-radius: 5px;
+      padding: 1rem;
+    }
+  }
+}
