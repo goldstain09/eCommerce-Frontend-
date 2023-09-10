@@ -6,8 +6,9 @@ import ProductPage from "./Components/ProductPage";
 import CategoryPage from "./Components/CategoryPage";
 import CartPage from "./Components/CartPage";
 import CheckoutPage from "./Components/CheckoutPage";
-import UserSignup from "./Components/UserSignup";
-import UserLogin from "./Components/UserLogin";
+import Orders from "./Components/Orders";
+import Profile from "./Components/Profile";
+import Search from "./Components/Search";
 
 export default function Router() {
   return (
@@ -19,8 +20,11 @@ export default function Router() {
           <Route element={<CategoryPage />} path="/category" />
           <Route element={<CartPage />} path="/cart" />
           <Route element={<CheckoutPage />} path="/checkout" />
-          <Route element={<UserSignup />} path="/usersignup" />
-          <Route element={<UserLogin />} path="/userlogin" />
+          <Route  path="/profile" >
+            <Route index element={<Profile />} />
+            <Route path=":orders" element={<Orders />} />
+          </Route>
+          <Route element={<Search />} path="/search" />
         </Routes>
         <Footer />
       </BrowserRouter>

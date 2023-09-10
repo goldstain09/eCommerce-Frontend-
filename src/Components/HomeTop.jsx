@@ -1,5 +1,6 @@
 import React from "react";
 import "./SCSS/HomeTop.scss";
+import { Link } from "react-router-dom";
 
 export default function HomeTop() {
   return (
@@ -42,9 +43,9 @@ export default function HomeTop() {
               </div>
             </div>
             <div>
-              <button className="btn btn-outline-secondary">
+              <Link to={'/'} className="btn btn-outline-secondary">
                 Buy Now <i class="bi bi-bag-fill"></i>
-              </button>
+              </Link >
             </div>
           </div>
           <div className="col-12 col-lg-6 imgDiv"></div>

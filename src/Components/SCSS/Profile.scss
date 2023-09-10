@@ -1,0 +1,44 @@
+$main: #5c0431;
+
+.userDetails {
+  margin-top: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.123);
+  border-radius: 5px;
+  padding: 1rem;
+
+  > .row {
+    .profile {
+        .h1{
+    font-family: 'Raleway', sans-serif;
+font-size: 2rem;
+color: $main;
+        }
+      > .row {
+        font-family: "Raleway", sans-serif;
+
+        > .col-3 {
+          .name {
+            color: rgba(57, 57, 57, 0.773);
+            font-size: 1.5rem;
+          }
+          .email {
+            font-size: 1.5rem;
+            color: rgba(57, 57, 57, 0.773);
+          }
+        }
+        > .col-9 {
+          .name {
+            color: rgba(57, 57, 57, 0.773);
+            font-size: 1.5rem;
+          }
+          .email {
+            color: rgba(57, 57, 57, 0.773);
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+    .userOrders {
+    }
+  }
+}

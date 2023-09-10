@@ -1,10 +1,11 @@
 import React from "react";
 import "./SCSS/Header.scss";
 import logo from "../Media/logo.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import CategoriesHeader from "./CategoriesHeader";
 
-export default function Header() {
+export default function Header({active}) {
+  const navigate = useNavigate();
   return (
     <>
       <header className="p-3 mb-3 Nav_Header fixed-top bg-light">
@@ -23,6 +24,10 @@ export default function Header() {
                 className="form-control"
                 placeholder="            Try Shirts, Smartphones, etc..."
                 aria-label="Search"
+                autoFocus
+                onClick={()=>{
+                  navigate('/search')
+                }}
               />
             </form>
 
@@ -38,7 +43,7 @@ export default function Header() {
 
             <div className="d-flex gap-4 col-2 profile_cart">
               <NavLink
-              to={'/usersignup'}
+              to={'/profile'}
                 title="Hello, to access your account SignUp"
                 className="text-dark text-decoration-none"
               >

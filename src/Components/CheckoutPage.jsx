@@ -1,11 +1,14 @@
 import React from "react";
 import img from "../Media/cod.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SCSS/CheckoutPage.scss";
 import AddressForm from "./AddressForm";
 import PaymentMethod from "./PaymentMethod";
 
 export default function CheckoutPage() {
+
+  const navigate = useNavigate();
+
   return (
     <>
       {/* Header--------- */}
@@ -47,7 +50,7 @@ export default function CheckoutPage() {
           {/* payment method */}
           <div className="col col-12">
             <div className="row d-flex">
-               <PaymentMethod />
+              <PaymentMethod />
             </div>
           </div>
           {/* place order section */}
@@ -74,7 +77,12 @@ export default function CheckoutPage() {
             <div className="row">
               <div className="col col-12">
                 <button
-                  to={"/checkout"}
+                  onClick={()=>{
+                    setInterval(() => {
+                      navigate('/profile/orders')
+                    }, 2000);
+                    clearInterval();
+                  }}
                   className="w-100 btn btn-danger fs-3 py-1"
                 >
                   Place Order
@@ -84,6 +92,12 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
+
     </>
+    // <>
+    // <div>
+    //   nothing to checkout
+    // </div>
+    // </>
   );
 }

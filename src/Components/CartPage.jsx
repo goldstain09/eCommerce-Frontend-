@@ -8,6 +8,7 @@ export default function CartPage() {
     <>
       {/* Header--------- */}
       <ul class="nav border-bottom justify-content-center CartNav">
+        <Link to={'/'} className="btn btn-outline-dark" style={{position:'absolute',top:'1rem',left:'1rem'}}>back to Home</Link>
         <li class="nav-item">
           <a class="nav-link">
             <i class="bi bi-basket"></i> Cart
@@ -143,5 +144,11 @@ export default function CartPage() {
         </div>
       </div>
     </>
+
+    // <>
+    // <div>
+    //   cart is empty
+    // </div>
+    // </>
   );
 }
