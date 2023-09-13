@@ -48,8 +48,9 @@ export default function Profile() {
         <UserSignup
           setAlreadyHaveAccount={setAlreadyHaveAccount}
           alreadyHaveAccount={alreadyHaveAccount}
+         
         />
-        {alreadyHaveAccount && <UserLogin />}
+        {alreadyHaveAccount && <UserLogin  setnotHasJWToken={setnotHasJWToken}/>}
       </>
     );
   }

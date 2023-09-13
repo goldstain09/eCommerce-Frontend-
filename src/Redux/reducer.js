@@ -2,16 +2,19 @@ import {
   CREATE_USER_ERROR,
   CREATE_USER_START,
   CREATE_USER_SUCCESS,
+  LOGIN_USER_SUCCESS,
   VERIFY_USER_SUCCESS,
 } from "./constants";
 
 const initialStates = {
   //create user res--
   createUserRes: {},
-  //verified user
+  //verified user & check that user have jwt or not if not then it will show login or signup
   verifiedUser: {
-    authorise:false
+    authorise: false,
   },
+  //if user's login data is correct then in this all data of user is set but is not thenin this there is authories false sett
+  userIsLogin: {},
 };
 
 const reducer = (state = initialStates, action) => {
@@ -32,7 +35,13 @@ const reducer = (state = initialStates, action) => {
     case VERIFY_USER_SUCCESS:
       return {
         ...state,
-       verifiedUser:action.payload
+        verifiedUser: action.payload,
+      };
+
+    case LOGIN_USER_SUCCESS:
+      return {
+        ...state,
+        userIsLogin: action.payload,
       };
 
     case CREATE_USER_ERROR:

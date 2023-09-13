@@ -21,3 +21,13 @@ export const verifyUser = async (data) => {
     return error;
   }
 };
+
+export const loginUser = async (data) => {
+  try {
+    const resp = await axios.post("http://localhost:8080/user/login", data);
+    // console.log(resp.data);
+    return resp.data;
+  } catch (error) {
+    return error;
+  }
+};

@@ -5,7 +5,7 @@ import img from "../Media/cod.png";
 import { createUserStart } from "../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function UserSignup({ setAlreadyHaveAccount , alreadyHaveAccount }) {
+export default function UserSignup({ setAlreadyHaveAccount , alreadyHaveAccount}) {
   //dispatch & getting value
   const dispatch = useDispatch();
   const res = useSelector((state) => state.createUserRes);
