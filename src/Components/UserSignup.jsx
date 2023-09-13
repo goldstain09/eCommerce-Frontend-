@@ -15,8 +15,12 @@ export default function UserSignup({ setAlreadyHaveAccount , alreadyHaveAccount 
       alert("SuccessFully Sign Up");
       setUserSignUpData(SignUpData);
       setpassword1("");
+      setInterval(() => {
+        window.location.reload();
+      }, 500);
+      clearInterval();
     }
-  }, [res.hasOwnProperty("token")]);
+  }, [res]);
 
   const SignUpData = {
     userName: "",
@@ -169,12 +173,6 @@ export default function UserSignup({ setAlreadyHaveAccount , alreadyHaveAccount 
           <div className="col-7">
             <button
               type="submit"
-              onClick={()=>{
-                setInterval(() => {
-                  window.location.reload();
-                }, 2000);
-                clearInterval();
-              }}
               className="form-control btn mt-3 w-100 d-block btn-success"
             >
               Sign Up

@@ -9,7 +9,9 @@ const initialStates = {
   //create user res--
   createUserRes: {},
   //verified user
-  verifiedUser: {},
+  verifiedUser: {
+    authorise:false
+  },
 };
 
 const reducer = (state = initialStates, action) => {
