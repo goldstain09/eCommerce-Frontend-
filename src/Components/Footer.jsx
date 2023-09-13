@@ -27,11 +27,11 @@ export default function Footer() {
             </div>
             <div className="col col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2">
               <h4>Reach out to us</h4>
-              <i class="bi bi-instagram m-1"></i>
-              <i class="bi bi-facebook m-1"></i>
-              <i class="bi bi-youtube m-1"></i>
-              <i class="bi bi-linkedin m-1"></i>
-              <i class="bi bi-twitter m-1"></i>
+              <i className="bi bi-instagram m-1"></i>
+              <i className="bi bi-facebook m-1"></i>
+              <i className="bi bi-youtube m-1"></i>
+              <i className="bi bi-linkedin m-1"></i>
+              <i className="bi bi-twitter m-1"></i>
             </div>
             <div className="col col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2">
               <h4>Contact Us</h4>

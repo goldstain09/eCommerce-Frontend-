@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Orders from "./Orders";
 import "./SCSS/Profile.scss";
 import { Link, useNavigate } from "react-router-dom";
 import UserSignup from "./UserSignup";
 import UserLogin from "./UserLogin";
+import { useDispatch } from "react-redux";
+import { verifyUserStart } from "../Redux/action";
 
 export default function Profile() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  //jw token
+  const jwtoken = JSON.parse(localStorage.getItem('token'));
+  useEffect(()=>{
+    if(jwtoken){
+      console.log(jwtoken.token);
+      dispatch(verifyUserStart(jwtoken.token));
+    }
+  },[])
+
   return (
     <>
       {/* Header--------- */}
-      <ul class="nav border-bottom justify-content-center CartNav">
+      <ul className="nav border-bottom justify-content-center CartNav">
         <Link to={'/'} className="btn btn-outline-dark" style={{position:'absolute',top:'1rem',left:'1rem'}}>back to Home</Link>
-        <li class="nav-item">
-          <a class="nav-link">
-            <i class="bi bi-person-circle"></i> Profile
+        <li className="nav-item">
+          <a className="nav-link">
+            <i className="bi bi-person-circle"></i> Profile
           </a>
         </li>
       </ul>
       {/* user details */}
-      <div className="container userDetails">
+      {/* <div className="container userDetails">
         <div className="row d-flex">
           <div className="col col-12 profile">
             <h1 className="h1">Your Details</h1>
@@ -44,8 +56,8 @@ export default function Profile() {
             </div>
           </div>
         </div>
-      </div>
-      {/* <UserSignup /> */}
+      </div> */}
+      <UserSignup />
       {/* <UserLogin /> */}
     </>
   );
