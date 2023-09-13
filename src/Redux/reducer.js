@@ -8,7 +8,8 @@ import {
 const initialStates = {
   //create user res--
   createUserRes: {},
-
+  //verified user
+  verifiedUser: {},
 };
 
 const reducer = (state = initialStates, action) => {
@@ -20,17 +21,17 @@ const reducer = (state = initialStates, action) => {
       if (action.payload.hasOwnProperty("keyValue")) {
       } else {
         localStorage.setItem("token", JSON.stringify(action.payload));
-    }
-    return {
-      ...state,
-      createUserRes:action.payload,
-    };
+      }
+      return {
+        ...state,
+        createUserRes: action.payload,
+      };
 
     case VERIFY_USER_SUCCESS:
       return {
         ...state,
-
-      }
+       verifiedUser:action.payload
+      };
 
     case CREATE_USER_ERROR:
       return {};

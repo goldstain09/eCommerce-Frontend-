@@ -5,19 +5,18 @@ import img from "../Media/cod.png";
 import { createUserStart } from "../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function UserSignup() {
-
+export default function UserSignup({ setAlreadyHaveAccount , alreadyHaveAccount }) {
   //dispatch & getting value
   const dispatch = useDispatch();
-  const  res  = useSelector((state) => state.createUserRes);
+  const res = useSelector((state) => state.createUserRes);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (res.hasOwnProperty("token")) {
-      alert('SuccessFully Sign Up');
+      alert("SuccessFully Sign Up");
       setUserSignUpData(SignUpData);
-      setpassword1('');
+      setpassword1("");
     }
-  },[res.hasOwnProperty('token')]);
+  }, [res.hasOwnProperty("token")]);
 
   const SignUpData = {
     userName: "",
@@ -125,9 +124,11 @@ export default function UserSignup() {
             {emailCorrectError && (
               <p className="text-danger">Please enter a valid email.</p>
             )}
-            {
-              res.hasOwnProperty('keyValue') && <p className="text-danger">Email is already in use, Please try another one...</p>
-            }
+            {res.hasOwnProperty("keyValue") && (
+              <p className="text-danger">
+                Email is already in use, Please try another one...
+              </p>
+            )}
           </div>
           <div className="col-7">
             <input
@@ -168,6 +169,12 @@ export default function UserSignup() {
           <div className="col-7">
             <button
               type="submit"
+              onClick={()=>{
+                setInterval(() => {
+                  window.location.reload();
+                }, 2000);
+                clearInterval();
+              }}
               className="form-control btn mt-3 w-100 d-block btn-success"
             >
               Sign Up
@@ -175,6 +182,19 @@ export default function UserSignup() {
           </div>
         </div>
       </form>
+      {
+        alreadyHaveAccount ? <></> : (<h6 className="h6 text-center mt-5 pt-5">
+        Already have account?{" "}
+        <button
+          onClick={() => {
+            setAlreadyHaveAccount(true);
+          }}
+        >
+          Login
+        </button>
+      </h6>)
+      }
+      
     </>
   );
 }
