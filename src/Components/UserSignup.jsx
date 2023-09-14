@@ -17,7 +17,7 @@ export default function UserSignup({ setAlreadyHaveAccount , alreadyHaveAccount}
       setpassword1("");
       setInterval(() => {
         window.location.reload();
-      }, 500);
+      }, 10);
       clearInterval();
     }
   }, [res]);

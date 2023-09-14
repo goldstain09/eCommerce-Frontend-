@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {loginUserStart } from "../Redux/action";
+import { loginUserStart } from "../Redux/action";
 
-export default function UserLogin({ setnotHasJWToken}) {
+export default function UserLogin({ setnotHasJWToken }) {
   const dispatch = useDispatch();
 
-  const userIsLogin = useSelector((state)=>state.userIsLogin);
+  const userIsLogin = useSelector((state) => state.userIsLogin);
+  // console.log(userIsLogin);
 
   //initial data
   const initialData = {
@@ -16,23 +17,41 @@ export default function UserLogin({ setnotHasJWToken}) {
   const [initialDataLogin, setInitialDataLogin] = useState(initialData);
   const { userEmail, password } = initialDataLogin;
 
-  
-  const [userPasswordOrEmailisNotCorrect, setUserPasswordOrEmailisNotCorrect] = useState(false);
+  const [userPasswordOrEmailisNotCorrect, setUserPasswordOrEmailisNotCorrect] =
+    useState(false);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
 
-  useEffect(()=>{
-    if(userIsLogin.authorise){
-      // console.log(userIsLogin.token);
-      console.log('sdfds');
-      localStorage.setItem('token', JSON.stringify(userIsLogin.token));
-      setUserPasswordOrEmailisNotCorrect(false);
-      setnotHasJWToken(false);
-    }else if(!userIsLogin.authorise){
-      setUserPasswordOrEmailisNotCorrect(true);
-    }
-  },[userIsLogin])
+  useEffect(() => {
+    switch (userIsLogin.authorise) {
+      case true:
+        localStorage.setItem('token', JSON.stringify({token:userIsLogin.token}));
+        setUserPasswordOrEmailisNotCorrect(false);
+        setnotHasJWToken(false);
+        setInterval(() => {
+          window.location.reload();
+        }, 10);
+        clearInterval();
+        break;
+      case false:
+        setUserPasswordOrEmailisNotCorrect(true);
+        break;
 
+      // default:
+      //   console.log("truedefalt");
+      //   setUserPasswordOrEmailisNotCorrect(false);
+    }
+
+    // if(){
+    //   // console.log(userIsLogin.token);
+    //   console.log('sdfds');
+    //   localStorage.setItem('token', JSON.stringify(userIsLogin.token));
+    //   setUserPasswordOrEmailisNotCorrect(false);
+    //   setnotHasJWToken(false);
+    // }else if(!userIsLogin.authorise){
+    //   setUserPasswordOrEmailisNotCorrect(true);
+    // }
+  }, [userIsLogin]);
 
   const inputChange = (e) => {
     e.preventDefault();
@@ -45,13 +64,17 @@ export default function UserLogin({ setnotHasJWToken}) {
 
   const login = (e) => {
     e.preventDefault();
-    if(userEmail.length > 0 && userEmail.includes('.') && userEmail.includes('@')){
-      if(password.length === 8 || password.length > 8){
+    if (
+      userEmail.length > 0 &&
+      userEmail.includes(".") &&
+      userEmail.includes("@")
+    ) {
+      if (password.length === 8 || password.length > 8) {
         dispatch(loginUserStart(initialDataLogin));
-      }else{
+      } else {
         setPasswordError(true);
       }
-    }else{
+    } else {
       setEmailError(true);
     }
   };
@@ -77,31 +100,37 @@ export default function UserLogin({ setnotHasJWToken}) {
           <div className="col-7">
             <input
               onChange={inputChange}
-              onInput={()=>{setEmailError(false);setUserPasswordOrEmailisNotCorrect(false)}}
+              onInput={() => {
+                setEmailError(false);
+                setUserPasswordOrEmailisNotCorrect(false);
+              }}
               name="userEmail"
               type="email"
               placeholder="Email Address"
               className="d-block mt-3 w-100 form-control"
             />
-            {
-              emailError && <p className="text-danger">Please enter a Valid Email.</p>
-            }
+            {emailError && (
+              <p className="text-danger">Please enter a Valid Email.</p>
+            )}
           </div>
           <div className="col-7">
             <input
               onChange={inputChange}
-              onInput={()=>{setPasswordError(false);setUserPasswordOrEmailisNotCorrect(false)}}
+              onInput={() => {
+                setPasswordError(false);
+                setUserPasswordOrEmailisNotCorrect(false);
+              }}
               name="password"
               type="password"
               className="form-control mt-3 w-100 d-block"
               placeholder="Password"
             />
-            {
-              passwordError && <p className="text-danger">Enter a valid password...</p>
-            }
-            {
-              userPasswordOrEmailisNotCorrect && <p className="text-danger">Email Or Password is not Correct.</p>
-            }
+            {passwordError && (
+              <p className="text-danger">Enter a valid password...</p>
+            )}
+            {userPasswordOrEmailisNotCorrect && (
+              <p className="text-danger">Email Or Password is not Correct.</p>
+            )}
           </div>
           <div className="col-7">
             <button

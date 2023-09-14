@@ -10,9 +10,7 @@ const initialStates = {
   //create user res--
   createUserRes: {},
   //verified user & check that user have jwt or not if not then it will show login or signup
-  verifiedUser: {
-    authorise: false,
-  },
+  verifiedUser: {},
   //if user's login data is correct then in this all data of user is set but is not thenin this there is authories false sett
   userIsLogin: {},
 };

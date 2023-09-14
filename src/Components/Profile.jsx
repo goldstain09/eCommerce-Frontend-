@@ -13,6 +13,7 @@ export default function Profile() {
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const createUserRes = useSelector((state) => state.createUserRes);
 
+  console.log(verifiedUser);
   const [nothasJWToken, setnotHasJWToken] = useState(false);
   const [verified, setVerified] = useState(false);
 
@@ -25,10 +26,10 @@ export default function Profile() {
       setnotHasJWToken(true);
     }
   }, []);
-  
+
   useEffect(() => {
     setnotHasJWToken(false);
-    if(verifiedUser){
+    if (verifiedUser) {
       setnotHasJWToken(false);
       if (verifiedUser.authorise) {
         setnotHasJWToken(false);
@@ -36,6 +37,7 @@ export default function Profile() {
       } else {
         // it called when jwtoken is not valid
         setnotHasJWToken(true);
+        console.log("dsd");
       }
     }
   }, [verifiedUser]);
@@ -48,9 +50,10 @@ export default function Profile() {
         <UserSignup
           setAlreadyHaveAccount={setAlreadyHaveAccount}
           alreadyHaveAccount={alreadyHaveAccount}
-         
         />
-        {alreadyHaveAccount && <UserLogin  setnotHasJWToken={setnotHasJWToken}/>}
+        {alreadyHaveAccount && (
+          <UserLogin setnotHasJWToken={setnotHasJWToken} />
+        )}
       </>
     );
   }
@@ -104,7 +107,15 @@ export default function Profile() {
                 </button>
               </div>
               <div className="col-5 border-top my-5 py-4">
-                <button className="btn btn-outline-danger w-75">Log-Out</button>
+                <button
+                onClick={()=>{
+                  localStorage.removeItem("token");
+                  setInterval(() => {
+                    window.location.reload();
+                  }, 10);
+                  clearInterval();
+                }}
+                className="btn btn-outline-danger w-75">Log-Out</button>
               </div>
             </div>
           </div>
