@@ -42,6 +42,7 @@ export const loginUserError = (error) => ({
     payload:error
 })
 
+
 //for editing user details
 export const editUserStart = (data) => ({
     type:EDIT_USER_START,

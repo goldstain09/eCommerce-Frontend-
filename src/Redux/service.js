@@ -31,3 +31,13 @@ export const loginUser = async (data) => {
     return error;
   }
 };
+
+export const editUser = async (data) => {
+  try {
+    const resp = await axios.post("http://localhost:8080/user/edit", data);
+    // console.log(resp.data);
+    return resp.data;
+  } catch (error) {
+    return error;
+  }
+};
