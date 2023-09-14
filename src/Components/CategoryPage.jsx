@@ -3,6 +3,7 @@ import "./SCSS/CategoryPage.scss";
 import Filter from "./Filter";
 import Card from "./Card";
 import Header from "./Header";
+import Footer from "./Footer";
 
 export default function CategoryPage() {
   return (
@@ -32,6 +33,7 @@ export default function CategoryPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

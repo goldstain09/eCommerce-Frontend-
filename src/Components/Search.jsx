@@ -3,6 +3,7 @@ import Header from "./Header";
 import Card from "./Card";
 import { Link } from "react-router-dom";
 import Filter from "./Filter";
+import Footer from "./Footer";
 
 export default function Search() {
   return (
@@ -28,6 +29,7 @@ export default function Search() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

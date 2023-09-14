@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "./Components/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import ProductPage from "./Components/ProductPage";
@@ -9,6 +8,7 @@ import CheckoutPage from "./Components/CheckoutPage";
 import Orders from "./Components/Orders";
 import Profile from "./Components/Profile";
 import Search from "./Components/Search";
+import ProfileEdit from "./Components/ProfileEdit";
 
 export default function Router() {
   return (
@@ -22,11 +22,11 @@ export default function Router() {
           <Route element={<CheckoutPage />} path="/checkout" />
           <Route  path="/profile" >
             <Route index element={<Profile />} />
-            <Route path=":orders" element={<Orders />} />
+            <Route path="/profile/orders" element={<Orders />} />
+            <Route path="/profile/edit" element={<ProfileEdit />} />
           </Route>
           <Route element={<Search />} path="/search" />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </>
   );

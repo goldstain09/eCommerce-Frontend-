@@ -7,6 +7,7 @@ import HomeMiddle3 from './HomeMiddle3';
 import HomeMiddle4 from './HomeMiddle4';
 import ProductsForYou from './ProductsForYou';
 import Header from './Header';
+import Footer from './Footer';
 
 export default function Home() {
   return (
@@ -22,6 +23,8 @@ export default function Home() {
     <HomeMiddle3 />
     <HomeMiddle4 />
     <ProductsForYou />
+
+    <Footer />
     </>
   )
 }

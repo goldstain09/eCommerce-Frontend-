@@ -11,3 +11,8 @@ export const VERIFY_USER_ERROR = 'VERIFYUserError';
 export const LOGIN_USER_START = 'LOGINUserStart';
 export const LOGIN_USER_SUCCESS = 'LOGINUserSuccess';
 export const LOGIN_USER_ERROR = 'LOGINUserError';
+
+
+export const EDIT_USER_START = 'EDITUserStart';
+export const EDIT_USER_SUCCESS = 'EDITUserSuccess';
+export const EDIT_USER_ERROR = 'EDITUserError';

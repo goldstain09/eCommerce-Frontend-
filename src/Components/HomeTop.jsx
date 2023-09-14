@@ -16,7 +16,7 @@ export default function HomeTop() {
                 style={{ borderRight: "2px grey solid" }}
               >
                 <section>
-                  <i class="bi bi-truck"></i>
+                  <i className="bi bi-truck"></i>
                 </section>
                 <section>
                   Fast <br />
@@ -28,7 +28,7 @@ export default function HomeTop() {
                 style={{ borderRight: "2px grey solid" }}
               >
                 <section>
-                  <i class="bi bi-wallet2"></i>
+                  <i className="bi bi-wallet2"></i>
                 </section>
                 <section>
                   Cash on <br />
@@ -37,14 +37,14 @@ export default function HomeTop() {
               </div>
               <div className="col-4 d-flex">
                 <section>
-                  <i class="bi bi-sign-turn-slight-left"></i>
+                  <i className="bi bi-sign-turn-slight-left"></i>
                 </section>
                 <section>Easy Returns</section>
               </div>
             </div>
             <div>
               <Link to={'/'} className="btn btn-outline-secondary">
-                Buy Now <i class="bi bi-bag-fill"></i>
+                Buy Now <i className="bi bi-bag-fill"></i>
               </Link >
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { CREATE_USER_ERROR, CREATE_USER_START, CREATE_USER_SUCCESS, LOGIN_USER_ERROR, LOGIN_USER_START, LOGIN_USER_SUCCESS, VERIFY_USER_ERROR, VERIFY_USER_START, VERIFY_USER_SUCCESS } from "./constants";
+import { CREATE_USER_ERROR, CREATE_USER_START, CREATE_USER_SUCCESS, EDIT_USER_ERROR, EDIT_USER_START, EDIT_USER_SUCCESS, LOGIN_USER_ERROR, LOGIN_USER_START, LOGIN_USER_SUCCESS, VERIFY_USER_ERROR, VERIFY_USER_START, VERIFY_USER_SUCCESS } from "./constants";
 
 // create user
 export const createUserStart = (userData) => ({
@@ -39,5 +39,19 @@ export const loginUserSuccess = (data) => ({
 })
 export const loginUserError = (error) => ({
     type:LOGIN_USER_ERROR,
+    payload:error
+})
+
+//for editing user details
+export const editUserStart = (data) => ({
+    type:EDIT_USER_START,
+    payload:data
+})
+export const editUserSuccess = (data) => ({
+    type:EDIT_USER_SUCCESS,
+    payload:data
+})
+export const editUserError = (error) => ({
+    type:EDIT_USER_ERROR,
     payload:error
 })

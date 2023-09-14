@@ -36,21 +36,9 @@ export default function UserLogin({ setnotHasJWToken }) {
       case false:
         setUserPasswordOrEmailisNotCorrect(true);
         break;
-
-      // default:
-      //   console.log("truedefalt");
-      //   setUserPasswordOrEmailisNotCorrect(false);
     }
 
-    // if(){
-    //   // console.log(userIsLogin.token);
-    //   console.log('sdfds');
-    //   localStorage.setItem('token', JSON.stringify(userIsLogin.token));
-    //   setUserPasswordOrEmailisNotCorrect(false);
-    //   setnotHasJWToken(false);
-    // }else if(!userIsLogin.authorise){
-    //   setUserPasswordOrEmailisNotCorrect(true);
-    // }
+   
   }, [userIsLogin]);
 
   const inputChange = (e) => {

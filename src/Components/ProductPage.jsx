@@ -8,6 +8,7 @@ import lowestPrice from "../Media/lowestprice.png";
 import logo from "../Media/logo.png";
 import SuggestiveProductsUnderProductPage from "./SuggestiveProductsUnderProductPage";
 import Header from "./Header";
+import Footer from "./Footer";
 
 export default function ProductPage() {
   return (
@@ -128,6 +129,7 @@ export default function ProductPage() {
         </div>
       </div>
       <SuggestiveProductsUnderProductPage />
+      <Footer />
     </>
   );
 }
