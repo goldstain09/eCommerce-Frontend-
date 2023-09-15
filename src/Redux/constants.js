@@ -16,3 +16,8 @@ export const LOGIN_USER_ERROR = 'LOGINUserError';
 export const EDIT_USER_START = 'EDITUserStart';
 export const EDIT_USER_SUCCESS = 'EDITUserSuccess';
 export const EDIT_USER_ERROR = 'EDITUserError';
+
+
+export const USER_IS_LOGINNED_START = 'USER_IS_LOGINNED_Start';
+export const USER_IS_LOGINNED_SUCCESS = 'USER_IS_LOGINNEDSuccess';
+export const USER_IS_LOGINNED_ERROR = 'USER_IS_LOGINNEDError';

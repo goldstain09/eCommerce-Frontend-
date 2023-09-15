@@ -5,13 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import UserSignup from "./UserSignup";
 import UserLogin from "./UserLogin";
 import { useDispatch, useSelector } from "react-redux";
-import { verifyUserStart } from "../Redux/action";
+import { userIsLogginnedStart, verifyUserStart } from "../Redux/action";
 
 export default function Profile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const verifiedUser = useSelector((state) => state.verifiedUser);
-  const createUserRes = useSelector((state) => state.createUserRes);
 
   // console.log(verifiedUser);
 
@@ -25,6 +24,7 @@ export default function Profile() {
       dispatch(verifyUserStart(jwtoken.token));
     } else {
       setnotHasJWToken(true);
+      dispatch(userIsLogginnedStart(false));
     }
   }, []);
 
@@ -35,12 +35,14 @@ export default function Profile() {
       if (verifiedUser.authorise) {
         setnotHasJWToken(false);
         setVerified(true);
+        dispatch(userIsLogginnedStart(true));
       } else {
         // it called when jwtoken is not valid
         setnotHasJWToken(true);
       }
     }
   }, [verifiedUser]);
+  
   //if user have arlready an account then it will true
   const [alreadyHaveAccount, setAlreadyHaveAccount] = useState(false);
 
@@ -96,8 +98,8 @@ export default function Profile() {
               <div className="col-4 border-top my-5 py-4">
                 <button
                   className="btn btn-outline-secondary w-25"
-                  onClick={()=>{
-                    navigate('/profile/edit')
+                  onClick={() => {
+                    navigate("/profile/edit");
                   }}
                 >
                   Edit
@@ -131,8 +133,6 @@ export default function Profile() {
           </div>
         </div>
       </div>
-
     </>
   );
 }
-

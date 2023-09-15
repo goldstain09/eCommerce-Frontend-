@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HomeTop from './HomeTop';
 import './SCSS/Home.scss';
 import HomeMiddle1 from './HomeMiddle1';
@@ -8,8 +8,26 @@ import HomeMiddle4 from './HomeMiddle4';
 import ProductsForYou from './ProductsForYou';
 import Header from './Header';
 import Footer from './Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { userIsLogginnedStart, verifyUserStart } from '../Redux/action';
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const verifiedUser = useSelector((state)=>state.verifiedUser);
+  //jw token
+  const jwtoken = JSON.parse(localStorage.getItem("token"));
+  useEffect(() => {
+    if (jwtoken) {
+      dispatch(verifyUserStart(jwtoken.token));
+    } 
+  }, []);
+  useEffect(() => {
+    if (verifiedUser) {
+      if (verifiedUser.authorise) {
+        dispatch(userIsLogginnedStart(true));
+      }
+    }
+  }, [verifiedUser]);
   return (
     <>
     <Header />

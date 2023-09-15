@@ -1,6 +1,6 @@
 import {put, takeLatest} from 'redux-saga/effects';
-import { CREATE_USER_START, EDIT_USER_START, LOGIN_USER_START, VERIFY_USER_START } from './constants';
-import { createUserError, createUserSuccess, editUserError, editUserSuccess, loginUserError, loginUserSuccess, verifyUserError, verifyUserSuccess } from './action';
+import { CREATE_USER_START, EDIT_USER_START, LOGIN_USER_START, USER_IS_LOGINNED_START, VERIFY_USER_START } from './constants';
+import { createUserError, createUserSuccess, editUserError, editUserSuccess, loginUserError, loginUserSuccess, userIsLogginnedError, userIsLogginnedSuccess, verifyUserError, verifyUserSuccess } from './action';
 import { createUser, editUser, loginUser, verifyUser } from './service';
 
 function* createUserSaga({payload}){
@@ -44,12 +44,22 @@ function* editUserSaga({payload}){
 }
 
 
+function* userIsLoginnedSaga({payload}){
+    try {
+        yield put(userIsLogginnedSuccess(payload));
+    } catch (error) {
+        yield put(userIsLogginnedError(error.message));
+    }
+}
+
+
 
 function* Saga(){
     yield takeLatest(CREATE_USER_START,createUserSaga);
     yield takeLatest(VERIFY_USER_START,verifyUserSaga);
     yield takeLatest(LOGIN_USER_START,loginUserSaga);
     yield takeLatest(EDIT_USER_START,editUserSaga);
+    yield takeLatest(USER_IS_LOGINNED_START,userIsLoginnedSaga);
 }
 
 export default Saga;

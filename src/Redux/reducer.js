@@ -4,6 +4,7 @@ import {
   CREATE_USER_SUCCESS,
   EDIT_USER_SUCCESS,
   LOGIN_USER_SUCCESS,
+  USER_IS_LOGINNED_SUCCESS,
   VERIFY_USER_SUCCESS,
 } from "./constants";
 
@@ -15,7 +16,9 @@ const initialStates = {
   //if user's login data is correct then in this all data of user is set but is not thenin this there is authories false sett
   userIsLogin: {},
   //edited success & token
-  editSuccess:{}
+  editSuccess:{},
+  // for user is loggined or not
+  userIsLogin:false
 };
 
 const reducer = (state = initialStates, action) => {
@@ -51,8 +54,11 @@ const reducer = (state = initialStates, action) => {
         editSuccess:action.payload
       };
 
-    case CREATE_USER_ERROR:
-      return {};
+    case USER_IS_LOGINNED_SUCCESS:
+      return {
+        ...state,
+        userIsLogin:action.payload
+      }
 
     default:
       return state;
