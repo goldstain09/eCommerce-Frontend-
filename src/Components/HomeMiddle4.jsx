@@ -7,7 +7,7 @@ export default function HomeMiddle4() {
     <>
       <div className="container HomeMiddle4">
         <div className="row">
-          <Link className="btn">Sign Up Now</Link>
+          <a target="_new" href="http://localhost:3001/" className="btn">Sign Up Now</a>
         </div>
       </div>
     </>
