@@ -10,6 +10,7 @@ export default function HomeMiddle4() {
           <a target="_new" href="http://localhost:3001/" className="btn">Sign Up Now</a>
         </div>
       </div>
+      <hr id="products" className="mt-5 pt-5"/>
     </>
   );
 }

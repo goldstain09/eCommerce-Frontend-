@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import HomeTop from './HomeTop';
 import './SCSS/Home.scss';
 import HomeMiddle1 from './HomeMiddle1';
@@ -9,7 +9,7 @@ import ProductsForYou from './ProductsForYou';
 import Header from './Header';
 import Footer from './Footer';
 import { useDispatch, useSelector } from 'react-redux';
-import { userIsLogginnedStart, verifyUserStart } from '../Redux/action';
+import { getAllProductsDataStart, userIsLogginnedStart, verifyUserStart } from '../Redux/action';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -28,6 +28,19 @@ export default function Home() {
       }
     }
   }, [verifiedUser]);
+
+  const allProductsData = useSelector((state)=> state.allProductsData);
+  // console.log(allProductsData);
+
+  const [allProducts, setAllProducts] = useState({});
+  useEffect(()=>{
+    dispatch(getAllProductsDataStart());
+  },[])
+  useEffect(()=>{
+    if(allProductsData.length > 0){
+      setAllProducts(allProductsData);
+    }
+  },[allProductsData])
   return (
     <>
     <Header />
@@ -40,7 +53,7 @@ export default function Home() {
     <HomeMiddle2 />
     <HomeMiddle3 />
     <HomeMiddle4 />
-    <ProductsForYou />
+    <ProductsForYou allProducts={allProducts}/>
 
     <Footer />
     </>

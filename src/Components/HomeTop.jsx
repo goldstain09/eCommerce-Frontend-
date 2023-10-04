@@ -43,9 +43,9 @@ export default function HomeTop() {
               </div>
             </div>
             <div>
-              <Link to={'/'} className="btn btn-outline-secondary">
+              <a href="#products" className="btn btn-outline-secondary">
                 Buy Now <i className="bi bi-bag-fill"></i>
-              </Link >
+              </a>
             </div>
           </div>
           <div className="col-12 col-lg-6 imgDiv"></div>

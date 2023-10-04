@@ -3,7 +3,10 @@ import {
   CREATE_USER_START,
   CREATE_USER_SUCCESS,
   EDIT_USER_SUCCESS,
+  GET_ALL_PRODUCTS_DATA_SUCCESS,
+  GET_ONE_PRODUCT_DATA_SUCCESS,
   LOGIN_USER_SUCCESS,
+  SEARCH_SUCCESS,
   USER_IS_LOGINNED_SUCCESS,
   VERIFY_USER_SUCCESS,
 } from "./constants";
@@ -18,7 +21,15 @@ const initialStates = {
   //edited success & token
   editSuccess:{},
   // for user is loggined or not
-  userIsLogin:false
+  userIsLogin:false,
+
+  //all products data 
+  allProductsData:[],
+  //current product
+  currentProduct:{},
+
+  //searched products
+  searchedProductName:''
 };
 
 const reducer = (state = initialStates, action) => {
@@ -58,6 +69,25 @@ const reducer = (state = initialStates, action) => {
       return {
         ...state,
         userIsLogin:action.payload
+      }
+
+    //products 
+    case GET_ALL_PRODUCTS_DATA_SUCCESS:
+      return {
+        ...state,
+        allProductsData:action.payload
+      }
+    case GET_ONE_PRODUCT_DATA_SUCCESS:
+      return {
+        ...state,
+        currentProduct:action.payload
+      }
+    
+    //search 
+    case SEARCH_SUCCESS:
+      return {
+        ...state,
+        searchedProductName:action.payload
       }
 
     default:

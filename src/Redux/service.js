@@ -41,3 +41,23 @@ export const editUser = async (data) => {
     return error;
   }
 };
+
+// products
+
+export const getAllProductsData = async () => {
+  try {
+    const resp = await axios.get("http://localhost:8080/productsApi/allProducts");
+    return resp.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export const getOneProductsData = async (data) => {
+  try {
+    const resp = await axios.get(`http://localhost:8080/productsApi/oneProduct?id=${data}`);
+    return resp.data;
+  } catch (error) {
+    return error;
+  }
+}
