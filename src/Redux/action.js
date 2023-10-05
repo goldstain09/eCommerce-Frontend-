@@ -1,4 +1,7 @@
 import {
+  ADD_TO_CART_ERROR,
+  ADD_TO_CART_START,
+  ADD_TO_CART_SUCCESS,
   CREATE_USER_ERROR,
   CREATE_USER_START,
   CREATE_USER_SUCCESS,
@@ -81,7 +84,7 @@ export const editUserError = (error) => ({
   payload: error,
 });
 
-//for editing user details
+//for user is logined or not
 export const userIsLogginnedStart = (data) => ({
   type: USER_IS_LOGINNED_START,
   payload: data,
@@ -134,5 +137,20 @@ export const searchSuccess = (data) => ({
 });
 export const searchError = (error) => ({
   type: SEARCH_ERROR,
+  payload: error,
+});
+
+
+//for add to cart
+export const addToCartStart = (data) => ({
+  type: ADD_TO_CART_START,
+  payload: data,
+});
+export const addToCartSuccess = (data) => ({
+  type: ADD_TO_CART_SUCCESS,
+  payload: data,
+});
+export const addToCartError = (error) => ({
+  type: ADD_TO_CART_ERROR,
   payload: error,
 });

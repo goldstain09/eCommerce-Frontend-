@@ -7,7 +7,7 @@ import img from '../Media/logo.png'
 // Home Page Bottom but before Footer
 
 export default function ProductsForYou({allProducts}) {
-  console.log(allProducts);
+  // console.log(allProducts);
   return (
     <>
       <div className="container ProductsForYou">

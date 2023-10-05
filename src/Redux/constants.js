@@ -36,3 +36,8 @@ export const GET_ONE_PRODUCT_DATA_ERROR = 'GET_ONE_PRODUCT_DATAError';
 export const SEARCH_START = 'SEARCH_Start';
 export const SEARCH_SUCCESS = 'SEARCHSuccess';
 export const SEARCH_ERROR = 'SEARCHError';
+
+
+export const ADD_TO_CART_START = 'ADD_TO_CART_Start';
+export const ADD_TO_CART_SUCCESS = 'ADD_TO_CARTSuccess';
+export const ADD_TO_CART_ERROR = 'ADD_TO_CARTError';

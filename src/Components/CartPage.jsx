@@ -1,34 +1,61 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./SCSS/CartPage.scss";
 import img from "../Media/cod.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userIsLogginnedStart, verifyUserStart } from "../Redux/action";
+import {
+  getAllProductsDataStart,
+  userIsLogginnedStart,
+  verifyUserStart,
+} from "../Redux/action";
 
 export default function CartPage() {
-
   const dispatch = useDispatch();
-  const verifiedUser = useSelector((state)=>state.verifiedUser);
+  const verifiedUser = useSelector((state) => state.verifiedUser);
+  const allProductsData = useSelector((state) => state.allProductsData);
   //jw token
   const jwtoken = JSON.parse(localStorage.getItem("token"));
   useEffect(() => {
+    dispatch(getAllProductsDataStart());
     if (jwtoken) {
       dispatch(verifyUserStart(jwtoken.token));
-    } 
+    }
   }, []);
+
+  const [cart, setCart] = useState([]);
+  const [currentOne, setCurrentOne] = useState({});
   useEffect(() => {
-    if (verifiedUser) {
+    if (verifiedUser.hasOwnProperty("authorise")) {
       if (verifiedUser.authorise) {
         dispatch(userIsLogginnedStart(true));
       }
+      if (verifiedUser.cart.length > 0) {
+        //extracting product ids
+        const productIds = verifiedUser.cart.map((item) => item.productId);
+        //extracting products through their ids
+        const cartProducts = allProductsData.filter((item) =>
+          productIds.includes(item._id)
+        );
+        // adding quantity through verifiedUser.cart because it have quantity and extracting it and set it to products with matching their ids
+        const cartProductsWithQuantity = cartProducts.map((item2) => {
+          const matchedItem = verifiedUser.cart.find(
+            (item1) => item1.productId === item2._id
+          );
+          if (matchedItem) {
+            return {
+              ...item2,
+              quantity: matchedItem.quantity,
+            };
+          }
+          return item2;
+        });
+        setCart(cartProductsWithQuantity);
+      }
     }
-  }, [verifiedUser]);
+  }, [verifiedUser, allProductsData]);
 
-
-
-
-  const userIsLogin = useSelector((state) => state.userIsLogin);
-  if (userIsLogin) {
+  const userIsLoginned = useSelector((state) => state.userIsLoginned);
+  if (userIsLoginned) {
     return (
       <>
         {/* Header--------- */}
@@ -47,140 +74,175 @@ export default function CartPage() {
           </li>
         </ul>
         {/* Carts */}
-        <div className="container CartItemsDiv mt-5">
-          <p className="h5">
-            Cart | <span>6 Items</span>
-          </p>
-          <div className="row d-flex">
-            <div className="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        {cart.length > 0 ? (
+          <>
+            <div className="container CartItemsDiv mt-5">
+              <p className="h5">
+                Cart | <span>{cart.length} Items</span>
+              </p>
               <div className="row d-flex">
-                <div className="col col-2">
-                  <img src={img} alt="--" />
-                </div>
-                <div className="col col-8">
-                  <h1 className="title">Product Title</h1>
-                  <h1 className="price">$499</h1>
-                  <h1 className="text">All issue easy returns allowed</h1>
-                  <h1 className="qty">Quantity:2</h1>
-                  <button className="btn btn-outline-danger">
-                    <i className="bi bi-trash3"></i> Remove
-                  </button>
-                </div>
-                <div className="col col-2">
-                  <button
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight"
-                    className="btn btn-outline-secondary"
-                  >
-                    <i className="bi bi-pen"></i> Edit
-                  </button>
-                </div>
-              </div>
-              <div className="row border-top">
-                <div className="col col-9">
-                  <h6 className="h6 mt-3 text-secondary">Sold by: Admin</h6>
-                </div>
-                <div className="col col-3">
-                  <h6 className="h6 mt-3 text-secondary">Free Delivery</h6>
-                </div>
-              </div>
-            </div>
-            <div className="col-1">{/* gap */}</div>
-            <div className="col col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
-              <h1 className="h5 text-dark">Price Details</h1>
-              <div className="row border-bottom">
-                <div className="col col-9">
-                  <h1 className="h6 text-secondary mt-3 pb-3">
-                    Total Products Price
-                  </h1>
-                </div>
-                <div className="col col-3">
-                  <h1 className="h6 text-secondary mt-3 pb-3">$499</h1>
-                </div>
-              </div>
-              <div className="row border-bottom">
-                <div className="col col-9">
-                  <h1 className="h5 text-secondary mt-3 ">Order Total</h1>
-                </div>
-                <div className="col col-3">
-                  <h1 className="h5 text-secondary mt-3  pb-3">$499</h1>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col col-12">
-                  <Link
-                    to={"/checkout"}
-                    className="w-100 btn btn-danger fs-3 py-1"
-                  >
-                    Continue
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                {cart.map((item, index) => (
+                  <>
+                    <div
+                      key={index}
+                      className="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"
+                    >
+                      <div className="row d-flex">
+                        <div className="col col-2">
+                          <img src={item.productImages[0]} alt="--" />
+                        </div>
+                        <div className="col col-8">
+                          <h1 className="title">
+                            {item.productTitle.split(" ").slice(0, 6).join(" ")}
+                            ...
+                          </h1>
+                          <h1 className="price">${item.productPrice}</h1>
+                          <h1 className="text">
+                            All issue easy returns allowed
+                          </h1>
+                          <h1 className="qty">Quantity:{item.quantity}</h1>
+                          <button className="btn btn-outline-danger">
+                            <i className="bi bi-trash3"></i> Remove
+                          </button>
+                        </div>
+                        <div className="col col-2">
+                          <button
+                            type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight"
+                            className="btn btn-outline-secondary"
+                            onClick={() => {
+                              setCurrentOne(item);
+                            }}
+                          >
+                            <i className="bi bi-pen"></i> Edit
+                          </button>
+                        </div>
+                      </div>
+                      <div className="row border-top">
+                        <div className="col col-9">
+                          <h6 className="h6 mt-3 text-secondary">
+                            Sold by: {item.shopName}
+                          </h6>
+                        </div>
+                        <div className="col col-3">
+                          <h6 className="h6 mt-3 text-secondary">
+                            Free Delivery
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ))}
 
-        {/* Right Canvas */}
+                <div className="col-1">{/* gap */}</div>
+                <div className="col col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                  <h1 className="h5 text-dark">Price Details</h1>
+                  <div className="row border-bottom">
+                    <div className="col col-9">
+                      <h1 className="h6 text-secondary mt-3 pb-3">
+                        Total Products Price
+                      </h1>
+                    </div>
+                    <div className="col col-3">
+                      <h1 className="h6 text-secondary mt-3 pb-3">$499</h1>
+                    </div>
+                  </div>
+                  <div className="row border-bottom">
+                    <div className="col col-9">
+                      <h1 className="h5 text-secondary mt-3 ">Order Total</h1>
+                    </div>
+                    <div className="col col-3">
+                      <h1 className="h5 text-secondary mt-3  pb-3">$499</h1>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col col-12">
+                      <Link
+                        to={"/checkout"}
+                        className="w-100 btn btn-danger fs-3 py-1"
+                      >
+                        Continue
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <div
-          className="offcanvas offcanvas-end"
-          tabIndex="-1"
-          id="offcanvasRight"
-          aria-labelledby="offcanvasRightLabel"
-        >
-          <div className="offcanvas-header border-bottom">
-            <h5 id="offcanvasRightLabel" className="text-secondary">
-              EDIT ITEM
-            </h5>
-            <button
-              type="button"
-              className="btn-close text-reset"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div className="offcanvas-body">
-            <div className="row">
-              <div className="col col-2">
-                <img src={img} alt="" className="w-100" />
-              </div>
-              <div className="col col-10">
-                <h1 className="h6 text-secondary">Title</h1>
-                <h1 className="h5 text-dark">$499</h1>
-                <h1 className="h5 text-dark d-inline-block">Quantity</h1>&emsp;
-                <button className="btn btn-outline-danger">-</button>
-                <button className="btn btn-light" disabled>
-                  1
-                </button>
-                <button className="btn btn-outline-success">+</button>
-              </div>
-            </div>
-            <div className="row border-top border-bottom mt-4">
-              <div className="col col-9 mt-2 mb-2 h5">Total Price</div>
-              <div className="col col-3 mb-2 mt-2 h5">$499</div>
-            </div>
-            <div className="row mt-3">
-              <div className="col col-12">
+            {/* Right Canvas */}
+
+            <div
+              className="offcanvas offcanvas-end"
+              tabIndex="-1"
+              id="offcanvasRight"
+              aria-labelledby="offcanvasRightLabel"
+            >
+              <div className="offcanvas-header border-bottom">
+                <h5 id="offcanvasRightLabel" className="text-secondary">
+                  EDIT ITEM
+                </h5>
                 <button
-                  className="btn w-100 btn-danger"
+                  type="button"
+                  className="btn-close text-reset"
                   data-bs-dismiss="offcanvas"
                   aria-label="Close"
-                >
-                  Continue
-                </button>
+                ></button>
+              </div>
+              <div className="offcanvas-body">
+                <div className="row">
+                  <div className="col col-2">
+                    {currentOne.hasOwnProperty("productImages") && (
+                      <img src={currentOne.productImages[0]} alt="" className="w-100" />
+                      )
+                    }
+                  </div>
+                  <div className="col col-10">
+                    {currentOne.hasOwnProperty("productTitle") && (
+                      <h1 className="h6 text-secondary">
+                        {currentOne.productTitle
+                          .split(" ")
+                          .slice(0, 4)
+                          .join(" ")}
+                      </h1>
+                    )}
+                    <h1 className="h5 text-dark">${currentOne.productPrice}</h1>
+                    <h1 className="h5 text-dark d-inline-block">Quantity</h1>
+                    &emsp;
+                    <button className="btn btn-outline-danger">-</button>
+                    <button className="btn btn-light" disabled>
+                      {currentOne.quantity}
+                    </button>
+                    <button className="btn btn-outline-success" onClick={()=>{
+                      // set quantity to database
+                    }}>+</button>
+                  </div>
+                </div>
+                <div className="row border-top border-bottom mt-4">
+                  <div className="col col-9 mt-2 mb-2 h5">Total Price</div>
+                  <div className="col col-3 mb-2 mt-2 h5">${currentOne.productPrice}</div>
+                </div>
+                <div className="row mt-3">
+                  <div className="col col-12">
+                    <button
+                      className="btn w-100 btn-danger"
+                      data-bs-dismiss="offcanvas"
+                      aria-label="Close"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </>
+        ) : (
+          <>
+            <h1>Cart is Empty...</h1>
+          </>
+        )}
       </>
-
-      // <>
-      // <div>
-      //   cart is empty
-      // </div>
-      // </>
     );
   } else {
     return (

@@ -61,3 +61,13 @@ export const getOneProductsData = async (data) => {
     return error;
   }
 }
+
+// add to cart
+export const addToCart = async (data) => {
+  try {
+    const resp = await axios.post("http://localhost:8080/user/addtocart" , data);
+    return resp.data;
+  } catch (error) {
+    return error;
+  }
+}

@@ -22,7 +22,7 @@ export default function Home() {
     } 
   }, []);
   useEffect(() => {
-    if (verifiedUser) {
+    if (verifiedUser.hasOwnProperty('authorise')) {
       if (verifiedUser.authorise) {
         dispatch(userIsLogginnedStart(true));
       }

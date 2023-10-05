@@ -1,4 +1,5 @@
 import {
+  ADD_TO_CART_SUCCESS,
   CREATE_USER_ERROR,
   CREATE_USER_START,
   CREATE_USER_SUCCESS,
@@ -19,17 +20,17 @@ const initialStates = {
   //if user's login data is correct then in this all data of user is set but is not thenin this there is authories false sett
   userIsLogin: {},
   //edited success & token
-  editSuccess:{},
+  editSuccess: {},
   // for user is loggined or not
-  userIsLogin:false,
+  userIsLoginned: false,
 
-  //all products data 
-  allProductsData:[],
+  //all products data
+  allProductsData: [],
   //current product
-  currentProduct:{},
+  currentProduct: {},
 
   //searched products
-  searchedProductName:''
+  searchedProductName: "",
 };
 
 const reducer = (state = initialStates, action) => {
@@ -62,33 +63,40 @@ const reducer = (state = initialStates, action) => {
     case EDIT_USER_SUCCESS:
       return {
         ...state,
-        editSuccess:action.payload
+        editSuccess: action.payload,
       };
 
     case USER_IS_LOGINNED_SUCCESS:
       return {
         ...state,
-        userIsLogin:action.payload
-      }
+        userIsLoginned: action.payload,
+      };
 
-    //products 
+    //products
     case GET_ALL_PRODUCTS_DATA_SUCCESS:
       return {
         ...state,
-        allProductsData:action.payload
-      }
+        allProductsData: action.payload,
+      };
     case GET_ONE_PRODUCT_DATA_SUCCESS:
       return {
         ...state,
-        currentProduct:action.payload
-      }
-    
-    //search 
+        currentProduct: action.payload,
+      };
+
+    //search
     case SEARCH_SUCCESS:
       return {
         ...state,
-        searchedProductName:action.payload
-      }
+        searchedProductName: action.payload,
+      };
+
+    //add to cart
+    case ADD_TO_CART_SUCCESS:
+      return {
+        ...state,
+        verifiedUser: action.payload,
+      };
 
     default:
       return state;

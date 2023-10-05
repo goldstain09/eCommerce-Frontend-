@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function Orders() {
-  const userIsLogin = useSelector((state) => state.userIsLogin);
-  console.log(userIsLogin);
-  if (userIsLogin) {
+  const userIsLoginned = useSelector((state) => state.userIsLoginned);
+  if (userIsLoginned) {
     return (
       <>
         {/* Header--------- */}

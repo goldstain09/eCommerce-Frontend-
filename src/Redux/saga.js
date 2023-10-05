@@ -1,5 +1,6 @@
 import { put, takeLatest } from "redux-saga/effects";
 import {
+  ADD_TO_CART_START,
   CREATE_USER_START,
   EDIT_USER_START,
   GET_ALL_PRODUCTS_DATA_START,
@@ -10,6 +11,8 @@ import {
   VERIFY_USER_START,
 } from "./constants";
 import {
+  addToCartError,
+  addToCartSuccess,
   createUserError,
   createUserSuccess,
   editUserError,
@@ -28,6 +31,7 @@ import {
   verifyUserSuccess,
 } from "./action";
 import {
+  addToCart,
   createUser,
   editUser,
   getAllProductsData,
@@ -125,6 +129,30 @@ function* searchSaga({payload}){
   }
 }
 
+function* addToCartSaga({payload}){
+  try {
+     const res = yield addToCart(payload);
+     if(res.hasOwnProperty('added')){
+      switch (res.added) {
+        case true:
+          yield put(addToCartSuccess(res));
+          break;
+        case false:
+          if(res.hasOwnProperty('alreadyInCart')){
+            throw Error('Product Is already in your Cart...');
+          }else if(res.hasOwnProperty('someOtherError')){
+            throw Error('Something went wrong while adding this product to your cart... Please try again...');
+          }
+          break;
+      }
+     }
+  } catch (error) {
+    yield put(addToCartError(error.message));
+  }
+}
+
+
+
 function* Saga() {
   //users
   yield takeLatest(CREATE_USER_START, createUserSaga);
@@ -139,6 +167,9 @@ function* Saga() {
 
   //search
   yield takeLatest(SEARCH_START,searchSaga);
+
+  //add to cart
+  yield takeLatest(ADD_TO_CART_START,addToCartSaga);
 }
 
 export default Saga;

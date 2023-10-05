@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 import img from '../Media/logo.png';
 
 export default function Card({item}) {
-  function getFirstFiveWords(title) {
-    const words = title.split(' ');
-    return words.slice(0, 5).join(' ');
-  }
+ 
 
   return (
     <>
@@ -16,7 +13,7 @@ export default function Card({item}) {
 
         <img src={item.productImages[0]} className="card-img-top" alt="Preview" />
         {/* <div className="card-body"> */}
-          <h5 className="card-title">{getFirstFiveWords(item.productTitle)}...</h5>
+          <h5 className="card-title">{item.productTitle.split(' ').slice(0,6).join(' ')}...</h5>
           <p className="card-price">
             ${item.productPrice} <span>onwards</span>
           </p>

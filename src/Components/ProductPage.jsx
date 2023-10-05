@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./SCSS/ProductPage.scss";
-import img from "../Media/suitLady.jpg";
 import { Link, useParams } from "react-router-dom";
 import cod from "../Media/cod.png";
 import easyReturn from "../Media/return.png";
@@ -10,12 +9,53 @@ import SuggestiveProductsUnderProductPage from "./SuggestiveProductsUnderProduct
 import Header from "./Header";
 import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { getOneProductDataStart } from "../Redux/action";
+import {
+  addToCartStart,
+  getOneProductDataStart,
+  userIsLogginnedStart,
+  verifyUserStart,
+} from "../Redux/action";
 
 export default function ProductPage() {
   const params = useParams();
   const currentProduct = useSelector((state) => state.currentProduct);
-  console.log(currentProduct);
+  const userIsLoginned = useSelector((state) => state.userIsLoginned);
+  const verifiedUser = useSelector((state) => state.verifiedUser);
+  //jw token --- user verification
+  const jwtoken = JSON.parse(localStorage.getItem("token"));
+  useEffect(() => {
+    if (jwtoken) {
+      dispatch(verifyUserStart(jwtoken.token));
+    }
+  }, []);
+  useEffect(() => {
+    if (verifiedUser.hasOwnProperty("authorise")) {
+      if (verifiedUser.authorise) {
+        dispatch(userIsLogginnedStart(true));
+      }
+    }
+  }, [verifiedUser]);
+
+  //if this product is already in cart then it is true otherwise false
+  const [alreadyInCartBtn,setAlreadyInCartBtm] = useState(true);
+  useEffect(() => {
+    if (verifiedUser.hasOwnProperty("cart")) {
+      if (verifiedUser.cart.length>0) {
+        const notInCart = verifiedUser.cart.every((item)=>item.productId !== params.id);
+        // if current product present in cart it return false
+        console.log(notInCart);
+        if(notInCart){
+          setAlreadyInCartBtm(true);
+        }else{
+          setAlreadyInCartBtm(false);
+        }
+      }else{
+        setAlreadyInCartBtm(true);
+      }
+    }
+  }, [verifiedUser]);
+
+  // console.log(currentProduct);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getOneProductDataStart(params.id));
@@ -38,24 +78,75 @@ export default function ProductPage() {
               <img src={product.productImages[imageIndex]} alt="Product" />
               <div className="row d-flex">
                 <div className="col-2">
-                  <img src={product.productImages[0]} alt="" onClick={()=>{setImageIndex(0)}} />
+                  <img
+                    src={product.productImages[0]}
+                    alt=""
+                    onClick={() => {
+                      setImageIndex(0);
+                    }}
+                  />
                 </div>
                 <div className="col-2">
-                  <img src={product.productImages[1]} alt=""  onClick={()=>{setImageIndex(1)}}  />
+                  <img
+                    src={product.productImages[1]}
+                    alt=""
+                    onClick={() => {
+                      setImageIndex(1);
+                    }}
+                  />
                 </div>
                 <div className="col-2">
-                  <img src={product.productImages[2]} alt=""  onClick={()=>{setImageIndex(2)}}  />
+                  <img
+                    src={product.productImages[2]}
+                    alt=""
+                    onClick={() => {
+                      setImageIndex(2);
+                    }}
+                  />
                 </div>
                 <div className="col-2">
-                  <img src={product.productImages[3]} alt=""  onClick={()=>{setImageIndex(3)}}  />
+                  <img
+                    src={product.productImages[3]}
+                    alt=""
+                    onClick={() => {
+                      setImageIndex(3);
+                    }}
+                  />
                 </div>
                 <div className="col-2">
-                  <img src={product.productImages[4]} alt=""  onClick={()=>{setImageIndex(4)}}  />
+                  <img
+                    src={product.productImages[4]}
+                    alt=""
+                    onClick={() => {
+                      setImageIndex(4);
+                    }}
+                  />
                 </div>
               </div>
               <div>
-                <button className="btn btn-outline-danger">Add to Cart</button>
-                <Link className="btn btn-danger">Buy Now</Link>
+                {userIsLoginned ? (
+                  alreadyInCartBtn ? 
+                  (<button
+                    onClick={() => {
+                      const jwtoken = JSON.parse(localStorage.getItem("token"));
+                      dispatch(
+                        addToCartStart({
+                          userToken:jwtoken.token,
+                          userId: verifiedUser.id,
+                          productId: product._id,
+                          quantity: 1,
+                        })
+                      );
+                    }}
+                    className="btn btn-outline-danger"
+                  >
+                    Add to Cart
+                  </button>) : (<Link to={'/cart'}>Go to Cart</Link>)
+                ) : (
+                  <Link to={"/profile"} className="btn btn-outline-danger">
+                    Add to Cart
+                  </Link>
+                )}
               </div>
             </div>
             {/* -------------- */}

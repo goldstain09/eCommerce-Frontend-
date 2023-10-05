@@ -20,21 +20,13 @@
           border-radius: 0;
           font-size: 2rem;
           padding: 0.5rem 1rem;
-          width: 55%;
+          margin-left: 2.5%;
+          width: 95%;
         }
         > .btn-outline-danger:hover {
           border: #5c0431 1px solid;
           color: white !important;
           background: #5c0431 !important;
-        }
-        > .btn-danger {
-          margin-left: 5%;
-          width: 40%;
-          font-size: 2rem;
-          border-radius: 0;
-          background: #5c0431;
-          color: white;
-          border: #5c0431 1px solid;
         }
       }
     }
