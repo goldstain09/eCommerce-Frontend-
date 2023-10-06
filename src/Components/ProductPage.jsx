@@ -43,7 +43,7 @@ export default function ProductPage() {
       if (verifiedUser.cart.length>0) {
         const notInCart = verifiedUser.cart.every((item)=>item.productId !== params.id);
         // if current product present in cart it return false
-        console.log(notInCart);
+        // console.log(notInCart);
         if(notInCart){
           setAlreadyInCartBtm(true);
         }else{
@@ -141,7 +141,7 @@ export default function ProductPage() {
                     className="btn btn-outline-danger"
                   >
                     Add to Cart
-                  </button>) : (<Link to={'/cart'}>Go to Cart</Link>)
+                  </button>) : (<Link  className="btn btn-outline-danger" to={'/cart'}>Go to Cart</Link>)
                 ) : (
                   <Link to={"/profile"} className="btn btn-outline-danger">
                     Add to Cart

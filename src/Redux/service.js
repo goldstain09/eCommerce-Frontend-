@@ -71,3 +71,24 @@ export const addToCart = async (data) => {
     return error;
   }
 }
+
+//remove from cart
+export const removeFromCart = async(data) => {
+  try {
+    const resp = await axios.post("http://localhost:8080/user/removefromcart",data);
+    return resp.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+
+// set quantity
+export const setQuantityy = async(data) => {
+   try {
+    const resp = await axios.post("http://localhost:8080/user/cartproductquantityset", data);
+    return resp.data;
+   } catch (error) {
+    return error;
+   }
+}

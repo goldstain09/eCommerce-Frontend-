@@ -41,3 +41,13 @@ export const SEARCH_ERROR = 'SEARCHError';
 export const ADD_TO_CART_START = 'ADD_TO_CART_Start';
 export const ADD_TO_CART_SUCCESS = 'ADD_TO_CARTSuccess';
 export const ADD_TO_CART_ERROR = 'ADD_TO_CARTError';
+
+
+export const REMOVE_FROM_CART_START = 'REMOVE_FROM_CART_Start';
+export const REMOVE_FROM_CART_SUCCESS = 'REMOVE_FROM_CARTSuccess';
+export const REMOVE_FROM_CART_ERROR = 'REMOVE_FROM_CARTError';
+
+
+export const SET_QUANTITY_START = 'SET_QUANTITY_Start';
+export const SET_QUANTITY_SUCCESS = 'SET_QUANTITYSuccess';
+export const SET_QUANTITY_ERROR = 'SET_QUANTITYError';

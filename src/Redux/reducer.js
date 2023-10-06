@@ -7,7 +7,9 @@ import {
   GET_ALL_PRODUCTS_DATA_SUCCESS,
   GET_ONE_PRODUCT_DATA_SUCCESS,
   LOGIN_USER_SUCCESS,
+  REMOVE_FROM_CART_SUCCESS,
   SEARCH_SUCCESS,
+  SET_QUANTITY_SUCCESS,
   USER_IS_LOGINNED_SUCCESS,
   VERIFY_USER_SUCCESS,
 } from "./constants";
@@ -31,6 +33,11 @@ const initialStates = {
 
   //searched products
   searchedProductName: "",
+
+  // quantity added successfully response
+  quantityAdded: {},
+  //item removed from cart response
+  productRemovedRes: {},
 };
 
 const reducer = (state = initialStates, action) => {
@@ -97,6 +104,19 @@ const reducer = (state = initialStates, action) => {
         ...state,
         verifiedUser: action.payload,
       };
+
+    // quantity added
+    case SET_QUANTITY_SUCCESS:
+      return {
+        ...state,
+        quantityAdded: action.payload,
+      };
+
+    case REMOVE_FROM_CART_SUCCESS:
+      return {
+        ...state,
+        productRemovedRes:action.payload
+      }
 
     default:
       return state;

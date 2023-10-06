@@ -17,9 +17,15 @@ import {
   LOGIN_USER_ERROR,
   LOGIN_USER_START,
   LOGIN_USER_SUCCESS,
+  REMOVE_FROM_CART_ERROR,
+  REMOVE_FROM_CART_START,
+  REMOVE_FROM_CART_SUCCESS,
   SEARCH_ERROR,
   SEARCH_START,
   SEARCH_SUCCESS,
+  SET_QUANTITY_ERROR,
+  SET_QUANTITY_START,
+  SET_QUANTITY_SUCCESS,
   USER_IS_LOGINNED_ERROR,
   USER_IS_LOGINNED_START,
   USER_IS_LOGINNED_SUCCESS,
@@ -152,5 +158,35 @@ export const addToCartSuccess = (data) => ({
 });
 export const addToCartError = (error) => ({
   type: ADD_TO_CART_ERROR,
+  payload: error,
+});
+
+
+//for REMOVE FROM cart
+export const removeFromCartStart = (data) => ({
+  type: REMOVE_FROM_CART_START,
+  payload: data,
+});
+export const removeFromCartSuccess = (data) => ({
+  type: REMOVE_FROM_CART_SUCCESS,
+  payload: data,
+});
+export const removeFromCartError = (error) => ({
+  type: REMOVE_FROM_CART_ERROR,
+  payload: error,
+});
+
+
+//for SET NEW QUANTITY OF ANY PRODUCT
+export const setQuantityStart = (data) => ({
+  type: SET_QUANTITY_START,
+  payload: data,
+});
+export const setQuantitySuccess = (data) => ({
+  type: SET_QUANTITY_SUCCESS,
+  payload: data,
+});
+export const setQuantityError = (error) => ({
+  type: SET_QUANTITY_ERROR,
   payload: error,
 });

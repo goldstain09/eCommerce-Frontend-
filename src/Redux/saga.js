@@ -6,7 +6,9 @@ import {
   GET_ALL_PRODUCTS_DATA_START,
   GET_ONE_PRODUCT_DATA_START,
   LOGIN_USER_START,
+  REMOVE_FROM_CART_START,
   SEARCH_START,
+  SET_QUANTITY_START,
   USER_IS_LOGINNED_START,
   VERIFY_USER_START,
 } from "./constants";
@@ -23,8 +25,12 @@ import {
   getOneProductDataSuccess,
   loginUserError,
   loginUserSuccess,
+  removeFromCartError,
+  removeFromCartSuccess,
   searchError,
   searchSuccess,
+  setQuantityError,
+  setQuantitySuccess,
   userIsLogginnedError,
   userIsLogginnedSuccess,
   verifyUserError,
@@ -37,6 +43,8 @@ import {
   getAllProductsData,
   getOneProductsData,
   loginUser,
+  removeFromCart,
+  setQuantityy,
   verifyUser,
 } from "./service";
 
@@ -99,12 +107,14 @@ function* getAllProductsDataSaga() {
         case false:
           throw Error("Unable To Fetch Data, Please Retry");
       }
+    } else {
+      throw Error("Unable To Fetch Data, Please Retry");
     }
   } catch (error) {
     yield put(getAllProductsDataError(error.message));
   }
 }
-function* getOneProductsDataSaga({payload}) {
+function* getOneProductsDataSaga({ payload }) {
   try {
     const ress = yield getOneProductsData(payload);
     if (ress.hasOwnProperty("DataFound")) {
@@ -115,13 +125,15 @@ function* getOneProductsDataSaga({payload}) {
         case false:
           throw Error("Unable To Fetch Data, Please Retry");
       }
+    } else {
+      throw Error("Unable To Fetch Data, Please Retry");
     }
   } catch (error) {
     yield put(getOneProductDataError(error.message));
   }
 }
 
-function* searchSaga({payload}){
+function* searchSaga({ payload }) {
   try {
     yield put(searchSuccess(payload));
   } catch (error) {
@@ -129,29 +141,87 @@ function* searchSaga({payload}){
   }
 }
 
-function* addToCartSaga({payload}){
+function* addToCartSaga({ payload }) {
   try {
-     const res = yield addToCart(payload);
-     if(res.hasOwnProperty('added')){
+    const res = yield addToCart(payload);
+    if (res.hasOwnProperty("added")) {
       switch (res.added) {
         case true:
           yield put(addToCartSuccess(res));
           break;
         case false:
-          if(res.hasOwnProperty('alreadyInCart')){
-            throw Error('Product Is already in your Cart...');
-          }else if(res.hasOwnProperty('someOtherError')){
-            throw Error('Something went wrong while adding this product to your cart... Please try again...');
+          if (res.hasOwnProperty("alreadyInCart")) {
+            throw Error("Product Is already in your Cart...");
+          } else if (res.hasOwnProperty("someOtherError")) {
+            throw Error(
+              "Something went wrong while adding this product to your cart... Please try again..."
+            );
           }
           break;
       }
-     }
+    } else {
+      throw Error(
+        "Something went wrong while adding this product to your cart... Please try again..."
+      );
+    }
   } catch (error) {
     yield put(addToCartError(error.message));
   }
 }
 
+function* removeFromCArtSaga({ payload }) {
+  try {
+    const res = yield removeFromCart(payload);
+    if (res.hasOwnProperty("removed")) {
+      switch (res.removed) {
+        case true:
+          yield put(removeFromCartSuccess(res));
+          break;
+        case false:
+          if (res.hasOwnProperty("someOtherError")) {
+            throw Error(
+              "Something went wrong while removing this product from your cart... Please try again..."
+            );
+          } else {
+            throw Error(
+              "Something went wrong while removing this product from your cart... Please try again..."
+            );
+          }
+      }
+    } else {
+      throw Error(
+        "Something went wrong while removing this product from your cart... Please try again..."
+      );
+    }
+  } catch (error) {
+    yield put(removeFromCartError(error.message));
+  }
+}
 
+function* setQuantitySaga({ payload }) {
+  try {
+    const res = yield setQuantityy(payload);
+    if (res.hasOwnProperty("quantityUpdated")) {
+      switch (res.quantityUpdated) {
+        case true:
+          yield put(setQuantitySuccess(res));
+          break;
+        case false:
+          if (res.hasOwnProperty("someOtherError")) {
+            throw Error(
+              "Something went Wrong while editing the quantity of your product, please try again..."
+            );
+          } else {
+            throw Error(
+              "Something went Wrong while editing the quantity of your product, please try again..."
+            );
+          }
+      }
+    }
+  } catch (error) {
+    yield put(setQuantityError(error.message));
+  }
+}
 
 function* Saga() {
   //users
@@ -166,10 +236,14 @@ function* Saga() {
   yield takeLatest(GET_ONE_PRODUCT_DATA_START, getOneProductsDataSaga);
 
   //search
-  yield takeLatest(SEARCH_START,searchSaga);
+  yield takeLatest(SEARCH_START, searchSaga);
 
   //add to cart
-  yield takeLatest(ADD_TO_CART_START,addToCartSaga);
+  yield takeLatest(ADD_TO_CART_START, addToCartSaga);
+  //remove from cart
+  yield takeLatest(REMOVE_FROM_CART_START, removeFromCArtSaga);
+  // set quantity
+  yield takeLatest(SET_QUANTITY_START, setQuantitySaga);
 }
 
 export default Saga;

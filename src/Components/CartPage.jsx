@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllProductsDataStart,
+  removeFromCartStart,
+  setQuantityStart,
   userIsLogginnedStart,
   verifyUserStart,
 } from "../Redux/action";
@@ -13,6 +15,8 @@ export default function CartPage() {
   const dispatch = useDispatch();
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const allProductsData = useSelector((state) => state.allProductsData);
+  const quantityAdded = useSelector((state) => state.quantityAdded);
+  const productRemovedRes = useSelector((state) => state.productRemovedRes);
   //jw token
   const jwtoken = JSON.parse(localStorage.getItem("token"));
   useEffect(() => {
@@ -21,9 +25,25 @@ export default function CartPage() {
       dispatch(verifyUserStart(jwtoken.token));
     }
   }, []);
+  useEffect(()=>{
+    if(quantityAdded.hasOwnProperty('quantityUpdated')){
+      if(quantityAdded.quantityUpdated){
+        window.location.reload();
+      }
+    }
+  },[quantityAdded])
+  useEffect(()=>{
+    if(productRemovedRes.hasOwnProperty('removed')){
+      if(productRemovedRes.removed){
+        window.location.reload();
+      }
+    }
+  },[productRemovedRes])
 
   const [cart, setCart] = useState([]);
   const [currentOne, setCurrentOne] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [totalPrice,setTotalPrice] = useState(0);
   useEffect(() => {
     if (verifiedUser.hasOwnProperty("authorise")) {
       if (verifiedUser.authorise) {
@@ -34,13 +54,13 @@ export default function CartPage() {
         const productIds = verifiedUser.cart.map((item) => item.productId);
         //extracting products through their ids
         const cartProducts = allProductsData.filter((item) =>
-          productIds.includes(item._id)
+        productIds.includes(item._id)
         );
         // adding quantity through verifiedUser.cart because it have quantity and extracting it and set it to products with matching their ids
         const cartProductsWithQuantity = cartProducts.map((item2) => {
           const matchedItem = verifiedUser.cart.find(
             (item1) => item1.productId === item2._id
-          );
+            );
           if (matchedItem) {
             return {
               ...item2,
@@ -50,9 +70,15 @@ export default function CartPage() {
           return item2;
         });
         setCart(cartProductsWithQuantity);
+        const productTotalpriceWithQuan = cartProductsWithQuantity.map((item) => ({price:item.productPrice, quan:item.quantity}));
+        const totalPriceAccToQuantity = productTotalpriceWithQuan.map((item)=>item.price*item.quan).reduce((acc,cur)=>acc+cur,0);
+        // console.log(totalPriceAccToQuantity);
+        setTotalPrice(totalPriceAccToQuantity);
       }
     }
-  }, [verifiedUser, allProductsData]);
+  }, [verifiedUser, verifiedUser.cart ,allProductsData]);
+
+
 
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
   if (userIsLoginned) {
@@ -101,7 +127,12 @@ export default function CartPage() {
                             All issue easy returns allowed
                           </h1>
                           <h1 className="qty">Quantity:{item.quantity}</h1>
-                          <button className="btn btn-outline-danger">
+                          <button className="btn btn-outline-danger"
+                          onClick={()=>{
+                            const tokenn = JSON.parse(localStorage.getItem('token'));
+                            dispatch(removeFromCartStart({productId:item._id,token:tokenn.token,userId:verifiedUser.id}));
+                          }}
+                          >
                             <i className="bi bi-trash3"></i> Remove
                           </button>
                         </div>
@@ -114,6 +145,7 @@ export default function CartPage() {
                             className="btn btn-outline-secondary"
                             onClick={() => {
                               setCurrentOne(item);
+                              setQuantity(item.quantity);
                             }}
                           >
                             <i className="bi bi-pen"></i> Edit
@@ -146,7 +178,7 @@ export default function CartPage() {
                       </h1>
                     </div>
                     <div className="col col-3">
-                      <h1 className="h6 text-secondary mt-3 pb-3">$499</h1>
+                      <h1 className="h6 text-secondary mt-3 pb-3">${totalPrice}</h1>
                     </div>
                   </div>
                   <div className="row border-bottom">
@@ -154,7 +186,7 @@ export default function CartPage() {
                       <h1 className="h5 text-secondary mt-3 ">Order Total</h1>
                     </div>
                     <div className="col col-3">
-                      <h1 className="h5 text-secondary mt-3  pb-3">$499</h1>
+                      <h1 className="h5 text-secondary mt-3  pb-3">${totalPrice}</h1>
                     </div>
                   </div>
                   <div className="row">
@@ -210,18 +242,31 @@ export default function CartPage() {
                     <h1 className="h5 text-dark">${currentOne.productPrice}</h1>
                     <h1 className="h5 text-dark d-inline-block">Quantity</h1>
                     &emsp;
-                    <button className="btn btn-outline-danger">-</button>
+                    <button className="btn btn-outline-danger"
+                    onClick={()=>{
+                      if(quantity>1){
+                        setQuantity(quantity-1);
+                      }else{
+                        setQuantity(1);
+                      }
+                    }}
+                    
+                    >-</button>
                     <button className="btn btn-light" disabled>
-                      {currentOne.quantity}
+                      {quantity}
                     </button>
                     <button className="btn btn-outline-success" onClick={()=>{
-                      // set quantity to database
+                      if(quantity<10){
+                        setQuantity(quantity+1);
+                      }else{
+                        setQuantity(10);
+                      }
                     }}>+</button>
                   </div>
                 </div>
                 <div className="row border-top border-bottom mt-4">
                   <div className="col col-9 mt-2 mb-2 h5">Total Price</div>
-                  <div className="col col-3 mb-2 mt-2 h5">${currentOne.productPrice}</div>
+                  <div className="col col-3 mb-2 mt-2 h5">${currentOne.productPrice*quantity}</div>
                 </div>
                 <div className="row mt-3">
                   <div className="col col-12">
@@ -229,6 +274,15 @@ export default function CartPage() {
                       className="btn w-100 btn-danger"
                       data-bs-dismiss="offcanvas"
                       aria-label="Close"
+                      onClick={()=>{
+                        const tokenn = JSON.parse(localStorage.getItem('token'));
+                        dispatch(setQuantityStart({
+                          productId:currentOne._id,
+                          newQuantity:quantity,
+                          token:tokenn.token,
+                          userId:verifiedUser.id
+                        }))
+                      }}
                     >
                       Continue
                     </button>
