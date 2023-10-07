@@ -1,4 +1,7 @@
 import {
+  ADD_ADDRESS_ERROR,
+  ADD_ADDRESS_START,
+  ADD_ADDRESS_SUCCESS,
   ADD_TO_CART_ERROR,
   ADD_TO_CART_START,
   ADD_TO_CART_SUCCESS,
@@ -23,6 +26,9 @@ import {
   SEARCH_ERROR,
   SEARCH_START,
   SEARCH_SUCCESS,
+  SET_PRODUCTS_FOR_CHECKOUT_ERROR,
+  SET_PRODUCTS_FOR_CHECKOUT_START,
+  SET_PRODUCTS_FOR_CHECKOUT_SUCCESS,
   SET_QUANTITY_ERROR,
   SET_QUANTITY_START,
   SET_QUANTITY_SUCCESS,
@@ -188,5 +194,35 @@ export const setQuantitySuccess = (data) => ({
 });
 export const setQuantityError = (error) => ({
   type: SET_QUANTITY_ERROR,
+  payload: error,
+});
+
+
+//for SET product for checkout
+export const setProductsForCheckoutStart = (data) => ({
+  type: SET_PRODUCTS_FOR_CHECKOUT_START,
+  payload: data,
+});
+export const setProductsForCheckoutSuccess = (data) => ({
+  type: SET_PRODUCTS_FOR_CHECKOUT_SUCCESS,
+  payload: data,
+});
+export const setProductsForCheckoutError = (error) => ({
+  type: SET_PRODUCTS_FOR_CHECKOUT_ERROR,
+  payload: error,
+});
+
+
+//for ADDING USER ADDRESS
+export const addAddressStart = (data) => ({
+  type: ADD_ADDRESS_START,
+  payload: data,
+});
+export const addAddressSuccess = (data) => ({
+  type: ADD_ADDRESS_SUCCESS,
+  payload: data,
+});
+export const addAddressError = (error) => ({
+  type: ADD_ADDRESS_ERROR,
   payload: error,
 });

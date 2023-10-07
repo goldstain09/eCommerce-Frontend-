@@ -1,4 +1,5 @@
 import {
+  ADD_ADDRESS_SUCCESS,
   ADD_TO_CART_SUCCESS,
   CREATE_USER_ERROR,
   CREATE_USER_START,
@@ -9,6 +10,7 @@ import {
   LOGIN_USER_SUCCESS,
   REMOVE_FROM_CART_SUCCESS,
   SEARCH_SUCCESS,
+  SET_PRODUCTS_FOR_CHECKOUT_SUCCESS,
   SET_QUANTITY_SUCCESS,
   USER_IS_LOGINNED_SUCCESS,
   VERIFY_USER_SUCCESS,
@@ -38,6 +40,12 @@ const initialStates = {
   quantityAdded: {},
   //item removed from cart response
   productRemovedRes: {},
+
+  //checkout products
+  forCheckoutProduct:[],
+
+  //add address response
+  addAddressRes:{}
 };
 
 const reducer = (state = initialStates, action) => {
@@ -117,6 +125,20 @@ const reducer = (state = initialStates, action) => {
         ...state,
         productRemovedRes:action.payload
       }
+
+    case SET_PRODUCTS_FOR_CHECKOUT_SUCCESS:
+      return {
+        ...state,
+        forCheckoutProduct:action.payload
+      }
+
+    case ADD_ADDRESS_SUCCESS:
+      return {
+        ...state,
+        addAddressRes:action.payload
+      }
+
+
 
     default:
       return state;

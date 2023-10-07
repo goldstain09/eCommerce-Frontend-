@@ -1,5 +1,6 @@
 import { put, takeLatest } from "redux-saga/effects";
 import {
+  ADD_ADDRESS_START,
   ADD_TO_CART_START,
   CREATE_USER_START,
   EDIT_USER_START,
@@ -8,11 +9,14 @@ import {
   LOGIN_USER_START,
   REMOVE_FROM_CART_START,
   SEARCH_START,
+  SET_PRODUCTS_FOR_CHECKOUT_START,
   SET_QUANTITY_START,
   USER_IS_LOGINNED_START,
   VERIFY_USER_START,
 } from "./constants";
 import {
+  addAddressError,
+  addAddressSuccess,
   addToCartError,
   addToCartSuccess,
   createUserError,
@@ -29,6 +33,8 @@ import {
   removeFromCartSuccess,
   searchError,
   searchSuccess,
+  setProductsForCheckoutError,
+  setProductsForCheckoutSuccess,
   setQuantityError,
   setQuantitySuccess,
   userIsLogginnedError,
@@ -37,6 +43,7 @@ import {
   verifyUserSuccess,
 } from "./action";
 import {
+  addAddress,
   addToCart,
   createUser,
   editUser,
@@ -223,6 +230,41 @@ function* setQuantitySaga({ payload }) {
   }
 }
 
+
+function* setProductsForCheckoutSaga({payload}){
+  try {
+    yield put(setProductsForCheckoutSuccess(payload));
+  } catch (error) {
+    yield put(setProductsForCheckoutError(error.message));
+  }
+}
+
+
+function* addAddressSaga({payload}){
+  try {
+    const res = yield addAddress(payload);
+    if(res.hasOwnProperty('addressAdded')){
+      switch (res.addressAdded) {
+        case true:
+          yield put(addAddressSuccess(res));
+          break;
+        case false:
+          if(res.hasOwnProperty('someOtherError')){
+            throw Error('Something went wrong while adding your address... Please try again!');
+          }else{
+            throw Error('Something went wrong while adding your address... Please try again!');
+          }
+        }
+      }else{
+        throw Error('Something went wrong while adding your address... Please try again!');
+    }
+  } catch (error) {
+    yield put(addAddressError(error.message));
+  }
+}
+
+
+
 function* Saga() {
   //users
   yield takeLatest(CREATE_USER_START, createUserSaga);
@@ -244,6 +286,12 @@ function* Saga() {
   yield takeLatest(REMOVE_FROM_CART_START, removeFromCArtSaga);
   // set quantity
   yield takeLatest(SET_QUANTITY_START, setQuantitySaga);
+
+  //set product for checkout
+  yield takeLatest(SET_PRODUCTS_FOR_CHECKOUT_START, setProductsForCheckoutSaga);
+
+  //add user address
+  yield takeLatest(ADD_ADDRESS_START,addAddressSaga);
 }
 
 export default Saga;

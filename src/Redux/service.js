@@ -92,3 +92,14 @@ export const setQuantityy = async(data) => {
     return error;
    }
 }
+
+
+// add address
+export const addAddress = async(data) => {
+   try {
+    const resp = await axios.post("http://localhost:8080/user/addaddress", data);
+    return resp.data;
+   } catch (error) {
+    return error;
+   }
+}

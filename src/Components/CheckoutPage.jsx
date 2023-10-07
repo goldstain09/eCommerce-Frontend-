@@ -1,44 +1,97 @@
-import React from "react";
-import img from "../Media/cod.png";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./SCSS/CheckoutPage.scss";
 import AddressForm from "./AddressForm";
 import PaymentMethod from "./PaymentMethod";
+import { useSelector } from "react-redux";
 
 export default function CheckoutPage() {
-
   const navigate = useNavigate();
+
+  const forCheckoutProduct = useSelector((state) => state.forCheckoutProduct);
+  const addAddressRes = useSelector((state) => state.addAddressRes);
+  const verifiedUser = useSelector((state) => state.verifiedUser);
+
+
+  const [addressISAddedAlready,setAddressISAddedAlready] = useState(true);
+  useEffect(()=>{
+    if (verifiedUser.hasOwnProperty("address")) {
+      if (verifiedUser.address.hasOwnProperty("userPhone")) {
+        setAddressISAddedAlready(false);
+      } else {
+        setAddressISAddedAlready(true);
+      }
+    }
+  },[verifiedUser]);
+
+
+  // const [showPlaceOrderBtn, setShowPlaceOrderBtn] = useState(false);
+
+  const [checkoutProducts, setCheckoutProducts] = useState([]);
+  useEffect(() => {
+    if (forCheckoutProduct.hasOwnProperty("cart")) {
+      if (forCheckoutProduct.cart.length > 0) {
+        setCheckoutProducts(forCheckoutProduct.cart);
+      }
+    }
+  }, [forCheckoutProduct]);
+  useEffect(() => {
+    if (addAddressRes.hasOwnProperty("addressAdded")) {
+      if (addAddressRes.addressAdded) {
+        alert("Address Added SuccessFully");
+        // setShowPlaceOrderBtn(true);
+        setAddressISAddedAlready(false);
+      }
+    }
+  }, [addAddressRes]);
 
   return (
     <>
       {/* Header--------- */}
-      <ul class="nav border-bottom justify-content-center CheckoutNav">
-        <li class="nav-item">
-          <a class="nav-link">
-            <i class="bi bi-bag-check-fill"></i> Checkout
+      <ul className="nav border-bottom justify-content-center CheckoutNav">
+        <Link
+          to={"/cart"}
+          className="btn btn-outline-dark"
+          style={{ position: "absolute", top: "1rem", left: "1rem" }}
+        >
+          back to Cart
+        </Link>
+        <li className="nav-item">
+          <a className="nav-link">
+            <i className="bi bi-bag-check-fill"></i> Checkout
           </a>
         </li>
       </ul>
       {/* Carts */}
       <div className="container CheckoutDiv mt-5">
         <p className="h5">
-          Total | <span>6 Items</span>
+          Total |<span>{checkoutProducts.length} Items</span>
         </p>
         {/* product detail */}
         <div className="row d-flex">
-          <div className="col col-12">
-            <div className="row d-flex">
-              <div className="col col-3">
-                <img src={img} alt="--" />
+          {checkoutProducts.length > 0 ? (
+            checkoutProducts.map((item, index) => (
+              <div className="col col-12" key={index}>
+                <div className="row d-flex">
+                  <div className="col col-3">
+                    <img src={item.productImages[0]} alt="--" />
+                  </div>
+                  <div className="col col-9">
+                    <h1 className="title">
+                      {item.productTitle.split(" ").slice(0, 6).join(" ")}...
+                    </h1>
+                    <h1 className="price">${item.productPrice}</h1>
+                    <h1 className="text">All issue easy returns allowed</h1>
+                    <h1 className="qty">Quantity:{item.quantity}</h1>
+                  </div>
+                </div>
               </div>
-              <div className="col col-9">
-                <h1 className="title">Product Title</h1>
-                <h1 className="price">$499</h1>
-                <h1 className="text">All issue easy returns allowed</h1>
-                <h1 className="qty">Quantity:2</h1>
-              </div>
-            </div>
-          </div>
+            ))
+          ) : (
+            <>
+              <h1>No Products in cart for checkout...</h1>
+            </>
+          )}
           {/* address */}
           <div className="col col-12">
             <div className="row d-flex">
@@ -63,7 +116,13 @@ export default function CheckoutPage() {
                 </h1>
               </div>
               <div className="col col-3">
-                <h1 className="h6 text-secondary mt-3 pb-3">$499</h1>
+                {forCheckoutProduct.hasOwnProperty("totalPrice") ? (
+                  <h1 className="h6 text-secondary mt-3 pb-3">
+                    ${forCheckoutProduct.totalPrice}
+                  </h1>
+                ) : (
+                  <h1 className="h6 text-secondary mt-3 pb-3">$0</h1>
+                )}
               </div>
             </div>
             <div className="row border-bottom">
@@ -71,33 +130,35 @@ export default function CheckoutPage() {
                 <h1 className="h5 text-secondary mt-3 ">Grand Total Price</h1>
               </div>
               <div className="col col-3">
-                <h1 className="h5 text-secondary mt-3  pb-3">$499</h1>
+                {forCheckoutProduct.hasOwnProperty("totalPrice") ? (
+                  <h1 className="h6 text-secondary mt-3 pb-3">
+                    ${forCheckoutProduct.totalPrice}
+                  </h1>
+                ) : (
+                  <h1 className="h5 text-secondary mt-3  pb-3">$0</h1>
+                )}
               </div>
             </div>
-            <div className="row">
-              <div className="col col-12">
-                <button
-                  onClick={()=>{
-                    setInterval(() => {
-                      navigate('/profile/orders')
-                    }, 2000);
-                    clearInterval();
-                  }}
-                  className="w-100 btn btn-danger fs-3 py-1"
-                >
-                  Place Order
-                </button>
+            {addressISAddedAlready ? (<></>) :(
+              <div className="row">
+                <div className="col col-12">
+                  <button
+                    onClick={() => {
+                      setInterval(() => {
+                        navigate("/profile/orders");
+                      }, 2000);
+                      clearInterval();
+                    }}
+                    className="w-100 btn btn-danger fs-3 py-1"
+                  >
+                    Place Order
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
-
     </>
-    // <>
-    // <div>
-    //   nothing to checkout
-    // </div>
-    // </>
   );
 }
