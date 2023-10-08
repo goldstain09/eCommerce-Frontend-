@@ -20,6 +20,9 @@ import {
   LOGIN_USER_ERROR,
   LOGIN_USER_START,
   LOGIN_USER_SUCCESS,
+  PLACE_ORDER_ERROR,
+  PLACE_ORDER_START,
+  PLACE_ORDER_SUCCESS,
   REMOVE_FROM_CART_ERROR,
   REMOVE_FROM_CART_START,
   REMOVE_FROM_CART_SUCCESS,
@@ -224,5 +227,20 @@ export const addAddressSuccess = (data) => ({
 });
 export const addAddressError = (error) => ({
   type: ADD_ADDRESS_ERROR,
+  payload: error,
+});
+
+
+//for PLACING ORDER
+export const placeOrderStart = (data) => ({
+  type: PLACE_ORDER_START,
+  payload: data,
+});
+export const placeOrderSuccess = (data) => ({
+  type: PLACE_ORDER_SUCCESS,
+  payload: data,
+});
+export const placeOrderError = (error) => ({
+  type: PLACE_ORDER_ERROR,
   payload: error,
 });

@@ -7,6 +7,7 @@ import {
   GET_ALL_PRODUCTS_DATA_START,
   GET_ONE_PRODUCT_DATA_START,
   LOGIN_USER_START,
+  PLACE_ORDER_START,
   REMOVE_FROM_CART_START,
   SEARCH_START,
   SET_PRODUCTS_FOR_CHECKOUT_START,
@@ -50,6 +51,7 @@ import {
   getAllProductsData,
   getOneProductsData,
   loginUser,
+  placeOrder,
   removeFromCart,
   setQuantityy,
   verifyUser,
@@ -261,6 +263,15 @@ function* addAddressSaga({payload}){
   } catch (error) {
     yield put(addAddressError(error.message));
   }
+};
+
+function* placeOrderSaga({payload}){
+  try {
+    const res = yield placeOrder(payload);
+    console.log(res);
+  } catch (error) {
+    
+  }
 }
 
 
@@ -292,6 +303,9 @@ function* Saga() {
 
   //add user address
   yield takeLatest(ADD_ADDRESS_START,addAddressSaga);
+
+  //placing order
+  yield takeLatest(PLACE_ORDER_START,placeOrderSaga);
 }
 
 export default Saga;

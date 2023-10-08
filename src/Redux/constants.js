@@ -61,3 +61,8 @@ export const SET_PRODUCTS_FOR_CHECKOUT_ERROR = 'SET_PRODUCTS_FOR_CHECKOUTError';
 export const ADD_ADDRESS_START = 'ADD_ADDRESS_Start';
 export const ADD_ADDRESS_SUCCESS = 'ADD_ADDRESSSuccess';
 export const ADD_ADDRESS_ERROR = 'ADD_ADDRESSError';
+
+
+export const PLACE_ORDER_START = 'PLACE_ORDER_Start';
+export const PLACE_ORDER_SUCCESS = 'PLACE_ORDERSuccess';
+export const PLACE_ORDER_ERROR = 'PLACE_ORDERError';

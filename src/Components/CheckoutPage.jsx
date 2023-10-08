@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import "./SCSS/CheckoutPage.scss";
 import AddressForm from "./AddressForm";
 import PaymentMethod from "./PaymentMethod";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { placeOrderStart } from "../Redux/action";
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const forCheckoutProduct = useSelector((state) => state.forCheckoutProduct);
   const addAddressRes = useSelector((state) => state.addAddressRes);
@@ -144,10 +146,14 @@ export default function CheckoutPage() {
                 <div className="col col-12">
                   <button
                     onClick={() => {
-                      setInterval(() => {
-                        navigate("/profile/orders");
-                      }, 2000);
-                      clearInterval();
+                      const token = JSON.parse(localStorage.getItem('token'));
+                      dispatch(placeOrderStart({
+                        products:checkoutProducts,
+                        userDetails:{
+                          token:token.token,
+                          userId:verifiedUser.id
+                        }
+                      }));
                     }}
                     className="w-100 btn btn-danger fs-3 py-1"
                   >

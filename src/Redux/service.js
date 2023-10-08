@@ -103,3 +103,13 @@ export const addAddress = async(data) => {
     return error;
    }
 }
+
+// place order
+export const placeOrder = async(data) => {
+   try {
+    const resp = await axios.post("http://localhost:8080/user/placeorder", data);
+    return resp.data;
+   } catch (error) {
+    return error;
+   }
+}
