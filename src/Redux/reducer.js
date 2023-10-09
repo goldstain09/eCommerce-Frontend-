@@ -8,6 +8,7 @@ import {
   GET_ALL_PRODUCTS_DATA_SUCCESS,
   GET_ONE_PRODUCT_DATA_SUCCESS,
   LOGIN_USER_SUCCESS,
+  PLACE_ORDER_SUCCESS,
   REMOVE_FROM_CART_SUCCESS,
   SEARCH_SUCCESS,
   SET_PRODUCTS_FOR_CHECKOUT_SUCCESS,
@@ -45,7 +46,10 @@ const initialStates = {
   forCheckoutProduct:[],
 
   //add address response
-  addAddressRes:{}
+  addAddressRes:{},
+
+  // order is placed reponse
+  orderPlacedResponse:{}
 };
 
 const reducer = (state = initialStates, action) => {
@@ -138,6 +142,11 @@ const reducer = (state = initialStates, action) => {
         addAddressRes:action.payload
       }
 
+    case PLACE_ORDER_SUCCESS:
+      return{
+        ...state,
+        orderPlacedResponse:action.payload
+      }
 
 
     default:

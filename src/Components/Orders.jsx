@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import img from "../Media/logo.png";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProductsDataStart, userIsLogginnedStart, verifyUserStart } from "../Redux/action";
 
 export default function Orders() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
+  const verifiedUser = useSelector((state) => state.verifiedUser);
+
+  //jw token
+  const jwtoken = JSON.parse(localStorage.getItem("token"));
+  useEffect(() => {
+    dispatch(getAllProductsDataStart());
+    if (jwtoken) {
+      dispatch(verifyUserStart(jwtoken.token));
+    } else {
+      navigate("/profile");
+    }
+  }, []);
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    if(verifiedUser.hasOwnProperty('authorise')){
+      if (verifiedUser.authorise) {
+        dispatch(userIsLogginnedStart(true));
+      }else{
+        navigate('/profile');
+      }
+    }
+    if (verifiedUser.hasOwnProperty("orders")) {
+      if (verifiedUser.orders.length > 0) {
+        setOrders(verifiedUser.orders);
+      }
+    } 
+  }, [verifiedUser]);
+
   if (userIsLoginned) {
     return (
       <>
@@ -24,18 +55,26 @@ export default function Orders() {
           </li>
         </ul>
         <div className="container mt-5 pt-5">
-          <div className="row border-bottom pt-3">
-            <div className="col-3">
-              <img src={img} alt="" className="w-75" />
-            </div>
-            <div className="col-7">
-              <h5 className="h5 text-secondary">title</h5>
-              <h5 className="h5 text-secondary">$499</h5>
-            </div>
-            <div className="col-2">
-              <button className="btn btn-danger">Cancel</button>
-            </div>
-          </div>
+          {orders.length > 0 ? (
+            orders.map((item, index) => (
+              <div className="row border-bottom pt-3" key={index}>
+                <div className="col-3">
+                  <img src={item.productImages[0]} alt="" className="w-75" />
+                </div>
+                <div className="col-7">
+                  <h5 className="h5 text-secondary">{item.productTitle}</h5>
+                  <h5 className="h5 text-secondary">${item.productPrice}</h5>
+                </div>
+                <div className="col-2">
+                 <button disabled className="btn btn-secondary">{item.status}</button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+              <h1>No Orders placed...</h1>
+            </>
+          )}
         </div>
       </>
     );

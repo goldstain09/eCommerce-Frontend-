@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SCSS/CartPage.scss";
 import img from "../Media/cod.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllProductsDataStart,
@@ -14,6 +14,8 @@ import {
 
 export default function CartPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userIsLoginned = useSelector((state) => state.userIsLoginned);
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const allProductsData = useSelector((state) => state.allProductsData);
   const quantityAdded = useSelector((state) => state.quantityAdded);
@@ -24,6 +26,8 @@ export default function CartPage() {
     dispatch(getAllProductsDataStart());
     if (jwtoken) {
       dispatch(verifyUserStart(jwtoken.token));
+    }else{
+      navigate('/profile');
     }
   }, []);
   useEffect(() => {
@@ -46,10 +50,14 @@ export default function CartPage() {
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
-    if (verifiedUser.hasOwnProperty("authorise")) {
+    if(verifiedUser.hasOwnProperty('authorise')){
       if (verifiedUser.authorise) {
         dispatch(userIsLogginnedStart(true));
+      }else{
+        navigate('/profile');
       }
+    }
+    if (verifiedUser.hasOwnProperty("cart")) {
       if (verifiedUser.cart.length > 0) {
         //extracting product ids
         const productIds = verifiedUser.cart.map((item) => item.productId);
@@ -81,9 +89,8 @@ export default function CartPage() {
         setTotalPrice(totalPriceAccToQuantity);
       }
     }
-  }, [verifiedUser, verifiedUser.cart, allProductsData]);
+  }, [verifiedUser, allProductsData]);
 
-  const userIsLoginned = useSelector((state) => state.userIsLoginned);
   if (userIsLoginned) {
     return (
       <>

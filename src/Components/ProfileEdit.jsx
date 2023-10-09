@@ -21,7 +21,7 @@ export default function ProfileEdit() {
             window.location.reload();
           }, 10);
           clearInterval();
-          alert('sadf')
+          alert('Updated Successfully');
           break;
         case false:
           setPasswordIncorrectError(true);

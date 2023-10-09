@@ -124,7 +124,7 @@ export default function CategoryPage() {
           break;
       }
     }
-  }, [params.name]);
+  }, [params.name,allProductsData]);
 
   return (
     <>

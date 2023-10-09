@@ -13,19 +13,32 @@ export default function CheckoutPage() {
   const forCheckoutProduct = useSelector((state) => state.forCheckoutProduct);
   const addAddressRes = useSelector((state) => state.addAddressRes);
   const verifiedUser = useSelector((state) => state.verifiedUser);
+  const orderPlacedResponse = useSelector((state) => state.orderPlacedResponse);
 
+  useEffect(() => {
+    if (orderPlacedResponse.hasOwnProperty("orderPlaced")) {
+      if (orderPlacedResponse.orderPlaced) {
+        alert(
+          "Order is Placed Successfully...                                                           Thankyou for your Order"
+        );
+        navigate("/profile/orders");
+        // window.location.reload();
+      }
+    }
+  }, [orderPlacedResponse]);
 
-  const [addressISAddedAlready,setAddressISAddedAlready] = useState(true);
-  useEffect(()=>{
+  const [addressISAddedAlready, setAddressISAddedAlready] = useState(true);
+  useEffect(() => {
     if (verifiedUser.hasOwnProperty("address")) {
       if (verifiedUser.address.hasOwnProperty("userPhone")) {
         setAddressISAddedAlready(false);
       } else {
         setAddressISAddedAlready(true);
       }
+    } else {
+      setAddressISAddedAlready(true);
     }
-  },[verifiedUser]);
-
+  }, [verifiedUser]);
 
   // const [showPlaceOrderBtn, setShowPlaceOrderBtn] = useState(false);
 
@@ -141,19 +154,23 @@ export default function CheckoutPage() {
                 )}
               </div>
             </div>
-            {addressISAddedAlready ? (<></>) :(
+            {addressISAddedAlready ? (
+              <></>
+            ) : (
               <div className="row">
                 <div className="col col-12">
                   <button
                     onClick={() => {
-                      const token = JSON.parse(localStorage.getItem('token'));
-                      dispatch(placeOrderStart({
-                        products:checkoutProducts,
-                        userDetails:{
-                          token:token.token,
-                          userId:verifiedUser.id
-                        }
-                      }));
+                      const token = JSON.parse(localStorage.getItem("token"));
+                      dispatch(
+                        placeOrderStart({
+                          products: checkoutProducts,
+                          userDetails: {
+                            token: token.token,
+                            userId: verifiedUser.id,
+                          },
+                        })
+                      );
                     }}
                     className="w-100 btn btn-danger fs-3 py-1"
                   >

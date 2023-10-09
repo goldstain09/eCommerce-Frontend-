@@ -30,6 +30,8 @@ import {
   getOneProductDataSuccess,
   loginUserError,
   loginUserSuccess,
+  placeOrderError,
+  placeOrderSuccess,
   removeFromCartError,
   removeFromCartSuccess,
   searchError,
@@ -232,8 +234,7 @@ function* setQuantitySaga({ payload }) {
   }
 }
 
-
-function* setProductsForCheckoutSaga({payload}){
+function* setProductsForCheckoutSaga({ payload }) {
   try {
     yield put(setProductsForCheckoutSuccess(payload));
   } catch (error) {
@@ -241,38 +242,69 @@ function* setProductsForCheckoutSaga({payload}){
   }
 }
 
-
-function* addAddressSaga({payload}){
+function* addAddressSaga({ payload }) {
   try {
     const res = yield addAddress(payload);
-    if(res.hasOwnProperty('addressAdded')){
+    if (res.hasOwnProperty("addressAdded")) {
       switch (res.addressAdded) {
         case true:
           yield put(addAddressSuccess(res));
           break;
         case false:
-          if(res.hasOwnProperty('someOtherError')){
-            throw Error('Something went wrong while adding your address... Please try again!');
-          }else{
-            throw Error('Something went wrong while adding your address... Please try again!');
+          if (res.hasOwnProperty("someOtherError")) {
+            throw Error(
+              "Something went wrong while adding your address... Please try again!"
+            );
+          } else {
+            throw Error(
+              "Something went wrong while adding your address... Please try again!"
+            );
           }
-        }
-      }else{
-        throw Error('Something went wrong while adding your address... Please try again!');
+      }
+    } else {
+      throw Error(
+        "Something went wrong while adding your address... Please try again!"
+      );
     }
   } catch (error) {
     yield put(addAddressError(error.message));
   }
-};
+}
 
-function* placeOrderSaga({payload}){
+function* placeOrderSaga({ payload }) {
   try {
     const res = yield placeOrder(payload);
-    console.log(res);
+    if (res.hasOwnProperty("orderPlaced")) {
+      switch (res.orderPlaced) {
+        case true:
+          yield put(placeOrderSuccess(res));
+          break;
+        case false:
+          if (res.hasOwnProperty("someOtherError")) {
+            throw Error(
+              "Something went wrong while placing your order... Please try again after some time"
+            );
+          } else {
+            throw Error(
+              "Something went wrong while placing your order... Please try again after some time"
+            );
+          }
+      }
+    } else {
+      throw Error(
+        "Something went wrong while placing your order... Please try again after some time"
+      );
+    }
   } catch (error) {
-    
+    yield put(placeOrderError(error.message));
   }
 }
+
+
+
+
+
+
 
 
 
@@ -302,10 +334,10 @@ function* Saga() {
   yield takeLatest(SET_PRODUCTS_FOR_CHECKOUT_START, setProductsForCheckoutSaga);
 
   //add user address
-  yield takeLatest(ADD_ADDRESS_START,addAddressSaga);
+  yield takeLatest(ADD_ADDRESS_START, addAddressSaga);
 
   //placing order
-  yield takeLatest(PLACE_ORDER_START,placeOrderSaga);
+  yield takeLatest(PLACE_ORDER_START, placeOrderSaga);
 }
 
 export default Saga;
