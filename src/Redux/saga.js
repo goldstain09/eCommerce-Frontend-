@@ -4,14 +4,17 @@ import {
   ADD_TO_CART_START,
   CREATE_USER_START,
   EDIT_USER_START,
+  FOLLOW_SELLER_START,
   GET_ALL_PRODUCTS_DATA_START,
   GET_ONE_PRODUCT_DATA_START,
+  GET_SELLER_SHOP_DATA_START,
   LOGIN_USER_START,
   PLACE_ORDER_START,
   REMOVE_FROM_CART_START,
   SEARCH_START,
   SET_PRODUCTS_FOR_CHECKOUT_START,
   SET_QUANTITY_START,
+  UNFOLLOW_SELLER_START,
   USER_IS_LOGINNED_START,
   VERIFY_USER_START,
 } from "./constants";
@@ -24,10 +27,14 @@ import {
   createUserSuccess,
   editUserError,
   editUserSuccess,
+  followSellerError,
+  followSellerSuccess,
   getAllProductsDataError,
   getAllProductsDataSuccess,
   getOneProductDataError,
   getOneProductDataSuccess,
+  getSellerShopDataError,
+  getSellerShopDataSuccess,
   loginUserError,
   loginUserSuccess,
   placeOrderError,
@@ -50,12 +57,15 @@ import {
   addToCart,
   createUser,
   editUser,
+  followSeller,
   getAllProductsData,
   getOneProductsData,
+  getSellerShopData,
   loginUser,
   placeOrder,
   removeFromCart,
   setQuantityy,
+  unfollowSeller,
   verifyUser,
 } from "./service";
 
@@ -300,13 +310,70 @@ function* placeOrderSaga({ payload }) {
   }
 }
 
+function* getSellerShopDataSaga({ payload }) {
+  try {
+    const res = yield getSellerShopData(payload);
+    if (res.hasOwnProperty("sellerFound")) {
+      switch (res.sellerFound) {
+        case true:
+          yield put(getSellerShopDataSuccess(res));
+          break;
+        case false:
+          if (res.hasOwnProperty("someOtherError")) {
+            throw Error(
+              "Unable to fetch Seller's Data... Please try again after sometime!"
+            );
+          } else {
+            throw Error(
+              "Unable to fetch Seller's Data... Please try again after sometime!"
+            );
+          }
+      }
+    } else {
+      throw Error(
+        "Unable to fetch Seller's Data... Please try again after sometime!"
+      );
+    }
+  } catch (error) {
+    yield put(getSellerShopDataError(error.message));
+  }
+}
 
+function* followSellerSaga({ payload }) {
+  try {
+    const res = yield followSeller(payload);
+    if (res.hasOwnProperty("followed")) {
+      switch (res.followed) {
+        case true:
+          yield put(followSellerSuccess(res));
+          break;
+        case false:
+          if (res.hasOwnProperty("someOtherError")) {
+            throw Error(
+              "Something went wrong while following this Seller... Please try again after sometime!"
+            );
+          } else {
+            throw Error(
+              "Something went wrong while following this Seller... Please try again after sometime!"
+            );
+          }
+      }
+    } else {
+      throw Error(
+        "Something went wrong while following this Seller... Please try again after sometime!"
+      );
+    }
+  } catch (error) {
+    yield put(followSellerError(error.message));
+  }
+}
 
-
-
-
-
-
+function* unfollowSellerSaga({ payload }) {
+  try {
+    const res = yield unfollowSeller(payload);
+    console.log(res);
+  } catch (error) {}
+}
 
 function* Saga() {
   //users
@@ -338,6 +405,13 @@ function* Saga() {
 
   //placing order
   yield takeLatest(PLACE_ORDER_START, placeOrderSaga);
+
+  //getting seller shop data
+  yield takeLatest(GET_SELLER_SHOP_DATA_START, getSellerShopDataSaga);
+
+  // for follow and unfollow a seller
+  yield takeLatest(FOLLOW_SELLER_START, followSellerSaga);
+  yield takeLatest(UNFOLLOW_SELLER_START, unfollowSellerSaga);
 }
 
 export default Saga;

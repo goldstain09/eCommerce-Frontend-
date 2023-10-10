@@ -11,12 +11,18 @@ import {
   EDIT_USER_ERROR,
   EDIT_USER_START,
   EDIT_USER_SUCCESS,
+  FOLLOW_SELLER_ERROR,
+  FOLLOW_SELLER_START,
+  FOLLOW_SELLER_SUCCESS,
   GET_ALL_PRODUCTS_DATA_ERROR,
   GET_ALL_PRODUCTS_DATA_START,
   GET_ALL_PRODUCTS_DATA_SUCCESS,
   GET_ONE_PRODUCT_DATA_ERROR,
   GET_ONE_PRODUCT_DATA_START,
   GET_ONE_PRODUCT_DATA_SUCCESS,
+  GET_SELLER_SHOP_DATA_ERROR,
+  GET_SELLER_SHOP_DATA_START,
+  GET_SELLER_SHOP_DATA_SUCCESS,
   LOGIN_USER_ERROR,
   LOGIN_USER_START,
   LOGIN_USER_SUCCESS,
@@ -35,6 +41,9 @@ import {
   SET_QUANTITY_ERROR,
   SET_QUANTITY_START,
   SET_QUANTITY_SUCCESS,
+  UNFOLLOW_SELLER_ERROR,
+  UNFOLLOW_SELLER_START,
+  UNFOLLOW_SELLER_SUCCESS,
   USER_IS_LOGINNED_ERROR,
   USER_IS_LOGINNED_START,
   USER_IS_LOGINNED_SUCCESS,
@@ -242,5 +251,50 @@ export const placeOrderSuccess = (data) => ({
 });
 export const placeOrderError = (error) => ({
   type: PLACE_ORDER_ERROR,
+  payload: error,
+});
+
+
+//for GETTING SELLER SHOP DATA
+export const getSellerShopDataStart = (data) => ({
+  type: GET_SELLER_SHOP_DATA_START,
+  payload: data,
+});
+export const getSellerShopDataSuccess = (data) => ({
+  type: GET_SELLER_SHOP_DATA_SUCCESS,
+  payload: data,
+});
+export const getSellerShopDataError = (error) => ({
+  type: GET_SELLER_SHOP_DATA_ERROR,
+  payload: error,
+});
+
+
+//for FOLLOW A SELLER
+export const followSellerStart = (data) => ({
+  type: FOLLOW_SELLER_START,
+  payload: data,
+});
+export const followSellerSuccess = (data) => ({
+  type: FOLLOW_SELLER_SUCCESS,
+  payload: data,
+});
+export const followSellerError = (error) => ({
+  type: FOLLOW_SELLER_ERROR,
+  payload: error,
+});
+
+
+//for unfollow a seller
+export const unfollowSellerStart = (data) => ({
+  type: UNFOLLOW_SELLER_START,
+  payload: data,
+});
+export const unfollowSellerSuccess = (data) => ({
+  type: UNFOLLOW_SELLER_SUCCESS,
+  payload: data,
+});
+export const unfollowSellerError = (error) => ({
+  type: UNFOLLOW_SELLER_ERROR,
   payload: error,
 });

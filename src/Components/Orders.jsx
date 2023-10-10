@@ -54,7 +54,15 @@ export default function Orders() {
             </a>
           </li>
         </ul>
-        <div className="container mt-5 pt-5">
+        <div className="container mt-5">
+        <div className="row border-bottom pt-3 pb-5">
+                <div className="col-10">
+                  <h5 className="h5 text-secondary">Orders</h5>
+                </div>
+                <div className="col-2">
+                  <h5 className="h5 text-secondary">Status</h5>
+                </div>
+              </div>
           {orders.length > 0 ? (
             orders.map((item, index) => (
               <div className="row border-bottom pt-3" key={index}>
@@ -62,7 +70,7 @@ export default function Orders() {
                   <img src={item.productImages[0]} alt="" className="w-75" />
                 </div>
                 <div className="col-7">
-                  <h5 className="h5 text-secondary">{item.productTitle}</h5>
+                  <h5 className="h5 text-secondary">{item.productTitle.split(' ').slice(0,8).join(' ')} ...</h5>
                   <h5 className="h5 text-secondary">${item.productPrice}</h5>
                 </div>
                 <div className="col-2">

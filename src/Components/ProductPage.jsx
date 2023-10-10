@@ -177,7 +177,7 @@ export default function ProductPage() {
                     <h1 className="h1">{product.shopName}</h1>
                   </div>
                   <div className="col col-3">
-                    <Link className="btn btn-danger">ViewShop</Link>
+                    <Link to={`/sellerShop/${product.sellerId}`} className="btn btn-danger">ViewShop</Link>
                   </div>
                 </div>
               </div>
@@ -241,7 +241,7 @@ export default function ProductPage() {
         </>
       )}
 
-      {/* <SuggestiveProductsUnderProductPage /> */}
+      <SuggestiveProductsUnderProductPage product={product}/>
       <Footer />
     </>
   );

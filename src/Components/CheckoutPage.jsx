@@ -18,11 +18,11 @@ export default function CheckoutPage() {
   useEffect(() => {
     if (orderPlacedResponse.hasOwnProperty("orderPlaced")) {
       if (orderPlacedResponse.orderPlaced) {
-        alert(
-          "Order is Placed Successfully...                                                           Thankyou for your Order"
-        );
+        // alert(
+        //   "Order is Placed Successfully...                                                           Thankyou for your Order"
+        // );
         navigate("/profile/orders");
-        // window.location.reload();
+        window.location.reload();
       }
     }
   }, [orderPlacedResponse]);
@@ -37,6 +37,11 @@ export default function CheckoutPage() {
       }
     } else {
       setAddressISAddedAlready(true);
+    }
+    if(verifiedUser.hasOwnProperty('cart')){
+      if(verifiedUser.cart.length === 0 ){
+        navigate('/cart')
+      }
     }
   }, [verifiedUser]);
 

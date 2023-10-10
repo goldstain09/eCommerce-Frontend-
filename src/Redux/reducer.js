@@ -5,8 +5,10 @@ import {
   CREATE_USER_START,
   CREATE_USER_SUCCESS,
   EDIT_USER_SUCCESS,
+  FOLLOW_SELLER_SUCCESS,
   GET_ALL_PRODUCTS_DATA_SUCCESS,
   GET_ONE_PRODUCT_DATA_SUCCESS,
+  GET_SELLER_SHOP_DATA_SUCCESS,
   LOGIN_USER_SUCCESS,
   PLACE_ORDER_SUCCESS,
   REMOVE_FROM_CART_SUCCESS,
@@ -49,7 +51,13 @@ const initialStates = {
   addAddressRes:{},
 
   // order is placed reponse
-  orderPlacedResponse:{}
+  orderPlacedResponse:{},
+
+  //getting seller data response
+  getSellerShopDataRes:{},
+
+  // followed response
+  followSellerRes:{}
 };
 
 const reducer = (state = initialStates, action) => {
@@ -147,7 +155,18 @@ const reducer = (state = initialStates, action) => {
         ...state,
         orderPlacedResponse:action.payload
       }
+    
+    case GET_SELLER_SHOP_DATA_SUCCESS:
+      return{
+        ...state,
+        getSellerShopDataRes:action.payload
+      }
 
+    case FOLLOW_SELLER_SUCCESS:
+      return {
+        ...state,
+        followSellerRes:action.payload
+      }
 
     default:
       return state;

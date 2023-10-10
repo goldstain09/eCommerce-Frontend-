@@ -113,3 +113,33 @@ export const placeOrder = async(data) => {
     return error;
    }
 }
+
+// getting seller shop data
+export const getSellerShopData = async(data) => {
+   try {
+    const resp = await axios.post("http://localhost:8080/user/sellerShop", data);
+    return resp.data;
+   } catch (error) {
+    return error;
+   }
+}
+
+// getting seller shop data
+export const followSeller = async(data) => {
+   try {
+    const resp = await axios.post("http://localhost:8080/seller/follow", data);
+    return resp.data;
+   } catch (error) {
+    return error;
+   }
+}
+
+// getting seller shop data
+export const unfollowSeller = async(data) => {
+   try {
+    const resp = await axios.post("http://localhost:8080/seller/unfollow", data);
+    return resp.data;
+   } catch (error) {
+    return error;
+   }
+}
