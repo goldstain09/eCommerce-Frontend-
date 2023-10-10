@@ -18,6 +18,7 @@ export default function ShopPage() {
   const dispatch = useDispatch();
   const sellerId = params.sellerId;
   const [sellerShopData, setSellerShopData] = useState({});
+  const [UserIsFollowing, setUserIsFollowing] = useState(true);
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const getSellerShopDataRes = useSelector(
@@ -42,6 +43,16 @@ export default function ShopPage() {
     if (verifiedUser.hasOwnProperty("authorise")) {
       if (verifiedUser.authorise) {
         dispatch(userIsLogginnedStart(true));
+        if (
+          verifiedUser.followingSellers.every(
+            (item) => item.sellerId !== sellerId
+          )
+        ) {
+          // if user didnot following this seller this section will execute--
+          setUserIsFollowing(true);
+        } else {
+          setUserIsFollowing(false);
+        }
       }
     }
   }, [verifiedUser]);
@@ -77,26 +88,44 @@ export default function ShopPage() {
                   </h3>
                 </div>
                 <div className="col col-6">
-                  <button
-                    className="btn-primary btn"
-                    onClick={() => {
-                      if (userIsLoginned) {
-                        const jwtoken = JSON.parse(
-                          localStorage.getItem("token")
-                        );
-                        dispatch(
-                          followSellerStart({
-                            userName: verifiedUser.userName,
-                            userId: verifiedUser.id,
-                            userToken: jwtoken.token,
-                            sellerId:sellerId
-                          })
-                        );
-                      }
-                    }}
-                  >
-                    Follow
-                  </button>
+                  {UserIsFollowing ? (
+                    <button
+                      className="btn-primary btn"
+                      onClick={() => {
+                        if (userIsLoginned) {
+                          const jwtoken = JSON.parse(
+                            localStorage.getItem("token")
+                          );
+                          dispatch(
+                            followSellerStart({
+                              userName: verifiedUser.userName,
+                              userId: verifiedUser.id,
+                              userToken: jwtoken.token,
+                              sellerId: sellerId,
+                            })
+                          );
+                          setUserIsFollowing(false);
+                        }
+                      }}
+                    >
+                      Follow
+                    </button>
+                  ) : (
+                    <button
+                      className="btn-outline-primary btn"
+                      onClick={() => {
+                        if (userIsLoginned) {
+                          const jwtoken = JSON.parse(
+                            localStorage.getItem("token")
+                          );
+
+                          setUserIsFollowing(true);
+                        }
+                      }}
+                    >
+                      Unfollow
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
