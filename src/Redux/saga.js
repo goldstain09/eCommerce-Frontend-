@@ -47,6 +47,8 @@ import {
   setProductsForCheckoutSuccess,
   setQuantityError,
   setQuantitySuccess,
+  unfollowSellerError,
+  unfollowSellerSuccess,
   userIsLogginnedError,
   userIsLogginnedSuccess,
   verifyUserError,
@@ -371,8 +373,31 @@ function* followSellerSaga({ payload }) {
 function* unfollowSellerSaga({ payload }) {
   try {
     const res = yield unfollowSeller(payload);
-    console.log(res);
-  } catch (error) {}
+    if (res.hasOwnProperty("unfollowedSeller")) {
+      switch (res.unfollowedSeller) {
+        case true:
+          yield put(unfollowSellerSuccess(res));
+          break;
+
+        case false:
+          if (res.hasOwnProperty("someOtherError")) {
+            throw Error(
+              "Something went wrong while unfollowing this Seller... Please try again after sometime!"
+            );
+          } else {
+            throw Error(
+              "Something went wrong while unfollowing this Seller... Please try again after sometime!"
+            );
+          }
+      }
+    } else {
+      throw Error(
+        "Something went wrong while unfollowing this Seller... Please try again after sometime!"
+      );
+    }
+  } catch (error) {
+    yield put(unfollowSellerError(error.message));
+  }
 }
 
 function* Saga() {

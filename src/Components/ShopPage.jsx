@@ -7,6 +7,7 @@ import {
   followSellerStart,
   getAllProductsDataStart,
   getSellerShopDataStart,
+  unfollowSellerStart,
   userIsLogginnedStart,
   verifyUserStart,
 } from "../Redux/action";
@@ -118,7 +119,11 @@ export default function ShopPage() {
                           const jwtoken = JSON.parse(
                             localStorage.getItem("token")
                           );
-
+                          dispatch(unfollowSellerStart({
+                              userId: verifiedUser.id,
+                              userToken: jwtoken.token,
+                              sellerId: sellerId,
+                          }));
                           setUserIsFollowing(true);
                         }
                       }}

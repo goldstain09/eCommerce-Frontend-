@@ -15,6 +15,7 @@ import {
   SEARCH_SUCCESS,
   SET_PRODUCTS_FOR_CHECKOUT_SUCCESS,
   SET_QUANTITY_SUCCESS,
+  UNFOLLOW_SELLER_SUCCESS,
   USER_IS_LOGINNED_SUCCESS,
   VERIFY_USER_SUCCESS,
 } from "./constants";
@@ -57,7 +58,9 @@ const initialStates = {
   getSellerShopDataRes:{},
 
   // followed response
-  followSellerRes:{}
+  followSellerRes:{},
+  // unfollowed response
+  unfollowSellerRes:{}
 };
 
 const reducer = (state = initialStates, action) => {
@@ -166,6 +169,12 @@ const reducer = (state = initialStates, action) => {
       return {
         ...state,
         followSellerRes:action.payload
+      }
+    
+    case UNFOLLOW_SELLER_SUCCESS:
+      return {
+        ...state,
+        unfollowSellerRes:action.payload
       }
 
     default:
