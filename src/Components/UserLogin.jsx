@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { loginUserStart } from "../Redux/action";
+import { loginUserStart } from "../Redux/action"; 
+ import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function UserLogin({ setnotHasJWToken }) {
   const dispatch = useDispatch();
@@ -28,6 +30,7 @@ export default function UserLogin({ setnotHasJWToken }) {
         localStorage.setItem('token', JSON.stringify({token:userIsLogin.token}));
         setUserPasswordOrEmailisNotCorrect(false);
         setnotHasJWToken(false);
+        toast.success("LoggedIn SuccessFully!",{theme:"dark"})
         setInterval(() => {
           window.location.reload();
         }, 10);
@@ -130,6 +133,7 @@ export default function UserLogin({ setnotHasJWToken }) {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </>
   );
 }

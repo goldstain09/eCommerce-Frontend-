@@ -1,4 +1,4 @@
-import { put, takeLatest } from "redux-saga/effects";
+import { delay, put, takeLatest } from "redux-saga/effects";
 import {
   ADD_ADDRESS_START,
   ADD_TO_CART_START,
@@ -75,8 +75,10 @@ function* createUserSaga({ payload }) {
   try {
     const res = yield createUser(payload);
     // console.log(res)
+    yield delay(2000);
     yield put(createUserSuccess(res.data));
   } catch (error) {
+    yield delay(2000);
     yield put(createUserError(error.message));
   }
 }
@@ -85,8 +87,10 @@ function* verifyUserSaga({ payload }) {
   try {
     const ress = yield verifyUser(payload);
     // console.log(ress)
+    yield delay(2000);
     yield put(verifyUserSuccess(ress));
   } catch (error) {
+    yield delay(2000);
     yield put(verifyUserError(error.message));
   }
 }
@@ -95,8 +99,10 @@ function* loginUserSaga({ payload }) {
   try {
     const ress = yield loginUser(payload);
     // console.log(ress)
+    yield delay(2000);
     yield put(loginUserSuccess(ress));
   } catch (error) {
+    yield delay(2000);
     yield put(loginUserError(error.message));
   }
 }
@@ -105,16 +111,20 @@ function* editUserSaga({ payload }) {
   try {
     const ress = yield editUser(payload);
     // console.log(ress);
+    yield delay(2000);
     yield put(editUserSuccess(ress));
   } catch (error) {
+    yield delay(2000);
     yield put(editUserError(error.message));
   }
 }
 
 function* userIsLoginnedSaga({ payload }) {
   try {
+    yield delay(0);
     yield put(userIsLogginnedSuccess(payload));
   } catch (error) {
+    yield delay(0);
     yield put(userIsLogginnedError(error.message));
   }
 }
@@ -125,15 +135,21 @@ function* getAllProductsDataSaga() {
     if (ress.hasOwnProperty("DataFound")) {
       switch (ress.DataFound) {
         case true:
+          yield delay(2000);
           yield put(getAllProductsDataSuccess(ress.data));
           break;
         case false:
-          throw Error("Unable To Fetch Data, Please Retry");
+          throw Error(
+            "Unable to fetch Product's Data! Please try again after sometime!"
+          );
       }
     } else {
-      throw Error("Unable To Fetch Data, Please Retry");
+      throw Error(
+        "Unable to fetch Product's Data! Please try again after sometime!"
+      );
     }
   } catch (error) {
+    yield delay(2000);
     yield put(getAllProductsDataError(error.message));
   }
 }
@@ -143,23 +159,31 @@ function* getOneProductsDataSaga({ payload }) {
     if (ress.hasOwnProperty("DataFound")) {
       switch (ress.DataFound) {
         case true:
+          yield delay(2000);
           yield put(getOneProductDataSuccess(ress.data));
           break;
         case false:
-          throw Error("Unable To Fetch Data, Please Retry");
+          throw Error(
+            "Unable to fetch Product Data! Please try again after sometime!"
+          );
       }
     } else {
-      throw Error("Unable To Fetch Data, Please Retry");
+      throw Error(
+        "Unable to fetch Product Data! Please try again after sometime!"
+      );
     }
   } catch (error) {
+    yield delay(2000);
     yield put(getOneProductDataError(error.message));
   }
 }
 
 function* searchSaga({ payload }) {
   try {
+    yield delay(2000);
     yield put(searchSuccess(payload));
   } catch (error) {
+    yield delay(2000);
     yield put(searchError(error.message));
   }
 }
@@ -170,6 +194,7 @@ function* addToCartSaga({ payload }) {
     if (res.hasOwnProperty("added")) {
       switch (res.added) {
         case true:
+          yield delay(1000);
           yield put(addToCartSuccess(res));
           break;
         case false:
@@ -177,17 +202,18 @@ function* addToCartSaga({ payload }) {
             throw Error("Product Is already in your Cart...");
           } else if (res.hasOwnProperty("someOtherError")) {
             throw Error(
-              "Something went wrong while adding this product to your cart... Please try again..."
+              "Something went wrong while adding this product to your cart! Please try again after sometime!"
             );
           }
           break;
       }
     } else {
       throw Error(
-        "Something went wrong while adding this product to your cart... Please try again..."
+        "Something went wrong while adding this product to your cart! Please try again after sometime!"
       );
     }
   } catch (error) {
+    yield delay(1000);
     yield put(addToCartError(error.message));
   }
 }
@@ -198,25 +224,27 @@ function* removeFromCArtSaga({ payload }) {
     if (res.hasOwnProperty("removed")) {
       switch (res.removed) {
         case true:
+          yield delay(1000);
           yield put(removeFromCartSuccess(res));
           break;
         case false:
           if (res.hasOwnProperty("someOtherError")) {
             throw Error(
-              "Something went wrong while removing this product from your cart... Please try again..."
+              "Something went wrong while removing this product from your cart! Please try again after sometime!"
             );
           } else {
             throw Error(
-              "Something went wrong while removing this product from your cart... Please try again..."
+              "Something went wrong while removing this product from your cart! Please try again after sometime!"
             );
           }
       }
     } else {
       throw Error(
-        "Something went wrong while removing this product from your cart... Please try again..."
+        "Something went wrong while removing this product from your cart! Please try again after sometime!"
       );
     }
   } catch (error) {
+    yield delay(1000);
     yield put(removeFromCartError(error.message));
   }
 }
@@ -227,6 +255,7 @@ function* setQuantitySaga({ payload }) {
     if (res.hasOwnProperty("quantityUpdated")) {
       switch (res.quantityUpdated) {
         case true:
+          yield delay(1000);
           yield put(setQuantitySuccess(res));
           break;
         case false:
@@ -242,14 +271,17 @@ function* setQuantitySaga({ payload }) {
       }
     }
   } catch (error) {
+    yield delay(1000);
     yield put(setQuantityError(error.message));
   }
 }
 
 function* setProductsForCheckoutSaga({ payload }) {
   try {
+    yield delay(3000);
     yield put(setProductsForCheckoutSuccess(payload));
   } catch (error) {
+    yield delay(3000);
     yield put(setProductsForCheckoutError(error.message));
   }
 }
@@ -260,25 +292,27 @@ function* addAddressSaga({ payload }) {
     if (res.hasOwnProperty("addressAdded")) {
       switch (res.addressAdded) {
         case true:
+          yield delay(2000);
           yield put(addAddressSuccess(res));
           break;
         case false:
           if (res.hasOwnProperty("someOtherError")) {
             throw Error(
-              "Something went wrong while adding your address... Please try again!"
+              "Something went wrong while adding your address! Please try again after sometime!"
             );
           } else {
             throw Error(
-              "Something went wrong while adding your address... Please try again!"
+              "Something went wrong while adding your address! Please try again after sometime!"
             );
           }
       }
     } else {
       throw Error(
-        "Something went wrong while adding your address... Please try again!"
+        "Something went wrong while adding your address! Please try again after sometime!"
       );
     }
   } catch (error) {
+    yield delay(2000);
     yield put(addAddressError(error.message));
   }
 }
@@ -289,25 +323,27 @@ function* placeOrderSaga({ payload }) {
     if (res.hasOwnProperty("orderPlaced")) {
       switch (res.orderPlaced) {
         case true:
+          yield delay(4000);
           yield put(placeOrderSuccess(res));
           break;
         case false:
           if (res.hasOwnProperty("someOtherError")) {
             throw Error(
-              "Something went wrong while placing your order... Please try again after some time"
+              "Something went wrong while placing your order! Please try again after sometime!"
             );
           } else {
             throw Error(
-              "Something went wrong while placing your order... Please try again after some time"
+              "Something went wrong while placing your order! Please try again after sometime!"
             );
           }
       }
     } else {
       throw Error(
-        "Something went wrong while placing your order... Please try again after some time"
+        "Something went wrong while placing your order! Please try again after sometime!"
       );
     }
   } catch (error) {
+    yield delay(4000);
     yield put(placeOrderError(error.message));
   }
 }
@@ -318,25 +354,27 @@ function* getSellerShopDataSaga({ payload }) {
     if (res.hasOwnProperty("sellerFound")) {
       switch (res.sellerFound) {
         case true:
+          yield delay(2000);
           yield put(getSellerShopDataSuccess(res));
           break;
         case false:
           if (res.hasOwnProperty("someOtherError")) {
             throw Error(
-              "Unable to fetch Seller's Data... Please try again after sometime!"
+              "Unable to fetch Seller's Shop Data! Please try again after sometime!"
             );
           } else {
             throw Error(
-              "Unable to fetch Seller's Data... Please try again after sometime!"
+              "Unable to fetch Seller's Shop Data! Please try again after sometime!"
             );
           }
       }
     } else {
       throw Error(
-        "Unable to fetch Seller's Data... Please try again after sometime!"
+        "Unable to fetch Seller's Shop Data! Please try again after sometime!"
       );
     }
   } catch (error) {
+    yield delay(2000);
     yield put(getSellerShopDataError(error.message));
   }
 }
@@ -347,25 +385,27 @@ function* followSellerSaga({ payload }) {
     if (res.hasOwnProperty("followed")) {
       switch (res.followed) {
         case true:
+          yield delay(1000);
           yield put(followSellerSuccess(res));
           break;
         case false:
           if (res.hasOwnProperty("someOtherError")) {
             throw Error(
-              "Something went wrong while following this Seller... Please try again after sometime!"
+              "Something went wrong while Following this Shop! Please try again after sometime!"
             );
           } else {
             throw Error(
-              "Something went wrong while following this Seller... Please try again after sometime!"
+              "Something went wrong while Following this Shop! Please try again after sometime!"
             );
           }
       }
     } else {
       throw Error(
-        "Something went wrong while following this Seller... Please try again after sometime!"
+        "Something went wrong while Following this Shop! Please try again after sometime!"
       );
     }
   } catch (error) {
+    yield delay(1000);
     yield put(followSellerError(error.message));
   }
 }
@@ -376,26 +416,28 @@ function* unfollowSellerSaga({ payload }) {
     if (res.hasOwnProperty("unfollowedSeller")) {
       switch (res.unfollowedSeller) {
         case true:
+          yield delay(1000);
           yield put(unfollowSellerSuccess(res));
           break;
 
         case false:
           if (res.hasOwnProperty("someOtherError")) {
             throw Error(
-              "Something went wrong while unfollowing this Seller... Please try again after sometime!"
+              "Something went wrong while Unfollowing this Shop! Please try again after sometime!"
             );
           } else {
             throw Error(
-              "Something went wrong while unfollowing this Seller... Please try again after sometime!"
+              "Something went wrong while Unfollowing this Shop! Please try again after sometime!"
             );
           }
       }
     } else {
       throw Error(
-        "Something went wrong while unfollowing this Seller... Please try again after sometime!"
+        "Something went wrong while Unfollowing this Shop! Please try again after sometime!"
       );
     }
   } catch (error) {
+    yield delay(1000);
     yield put(unfollowSellerError(error.message));
   }
 }

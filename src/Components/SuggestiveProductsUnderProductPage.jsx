@@ -26,7 +26,7 @@ export default function SuggestiveProductsUnderProductPage({product}) {
         <div className="row d-flex">
             {
               allSuggestiveProducts.length>0 ? allSuggestiveProducts.map((item,index)=>(
-                <Card key={index} item={item} />
+                <Card key={index} item={item} onProductPage={true} />
               )) : (<><h1>No Products Related to this product...</h1></>)
             }
         </div>

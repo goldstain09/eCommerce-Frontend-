@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import img from "../Media/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProductsDataStart, userIsLogginnedStart, verifyUserStart } from "../Redux/action";
+import {
+  getAllProductsDataStart,
+  userIsLogginnedStart,
+  verifyUserStart,
+} from "../Redux/action";
 
 export default function Orders() {
   const dispatch = useDispatch();
@@ -22,18 +26,18 @@ export default function Orders() {
   }, []);
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    if(verifiedUser.hasOwnProperty('authorise')){
+    if (verifiedUser.hasOwnProperty("authorise")) {
       if (verifiedUser.authorise) {
         dispatch(userIsLogginnedStart(true));
-      }else{
-        navigate('/profile');
+      } else {
+        navigate("/profile");
       }
     }
     if (verifiedUser.hasOwnProperty("orders")) {
       if (verifiedUser.orders.length > 0) {
-        setOrders(verifiedUser.orders);
+        setOrders(verifiedUser.orders.reverse());
       }
-    } 
+    }
   }, [verifiedUser]);
 
   if (userIsLoginned) {
@@ -55,26 +59,42 @@ export default function Orders() {
           </li>
         </ul>
         <div className="container mt-5">
-        <div className="row border-bottom pt-3 pb-5">
-                <div className="col-10">
-                  <h5 className="h5 text-secondary">Orders</h5>
-                </div>
-                <div className="col-2">
-                  <h5 className="h5 text-secondary">Status</h5>
-                </div>
-              </div>
+          <div className="row border-bottom pt-3 pb-5">
+            <div className="col-10">
+              <h5 className="h5 text-secondary">Orders</h5>
+            </div>
+            <div className="col-2">
+              <h5 className="h5 text-secondary">Status</h5>
+            </div>
+          </div>
           {orders.length > 0 ? (
             orders.map((item, index) => (
               <div className="row border-bottom pt-3" key={index}>
                 <div className="col-3">
-                  <img src={item.productImages[0]} alt="" className="w-75" />
+                  <img
+                    onClick={() => {
+                      navigate(`/product/${item._id}`);
+                    }}
+                    src={item.productImages[0]}
+                    alt=""
+                    className="w-75"
+                  />
                 </div>
                 <div className="col-7">
-                  <h5 className="h5 text-secondary">{item.productTitle.split(' ').slice(0,8).join(' ')} ...</h5>
+                  <h5
+                    className="h5 text-secondary"
+                    onClick={() => {
+                      navigate(`/product/${item._id}`);
+                    }}
+                  >
+                    {item.productTitle.split(" ").slice(0, 8).join(" ")} ...
+                  </h5>
                   <h5 className="h5 text-secondary">${item.productPrice}</h5>
                 </div>
                 <div className="col-2">
-                 <button disabled className="btn btn-secondary">{item.status}</button>
+                  <button disabled className="btn btn-secondary">
+                    {item.status}
+                  </button>
                 </div>
               </div>
             ))

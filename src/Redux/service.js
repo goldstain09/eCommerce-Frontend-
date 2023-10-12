@@ -5,7 +5,7 @@ export const createUser = async (data) => {
     const res = await axios.post("http://localhost:8080/user/create", data);
     return res;
   } catch (error) {
-    return error;
+    throw Error('Unable to create your account at this time! Please try again after sometime!');
   }
 };
 
@@ -18,7 +18,7 @@ export const verifyUser = async (data) => {
     });
     return resp.data;
   } catch (error) {
-    return error;
+    throw Error('Unable to fetch data! Please Retry!');
   }
 };
 
@@ -28,7 +28,7 @@ export const loginUser = async (data) => {
     // console.log(resp.data);
     return resp.data;
   } catch (error) {
-    return error;
+    throw Error('Something went wrong while Loggining into your account! Please try again after sometime!');
   }
 };
 
@@ -38,7 +38,7 @@ export const editUser = async (data) => {
     // console.log(resp.data);
     return resp.data;
   } catch (error) {
-    return error;
+    throw Error('Something went wrong while editing your Personal info! Please try again after sometime!');
   }
 };
 
@@ -49,7 +49,7 @@ export const getAllProductsData = async () => {
     const resp = await axios.get("http://localhost:8080/productsApi/allProducts");
     return resp.data;
   } catch (error) {
-    return error;
+    throw Error("Unable to fetch Product's Data! Please try again after sometime!");
   }
 }
 
@@ -58,7 +58,7 @@ export const getOneProductsData = async (data) => {
     const resp = await axios.get(`http://localhost:8080/productsApi/oneProduct?id=${data}`);
     return resp.data;
   } catch (error) {
-    return error;
+    throw Error("Unable to fetch Product Data! Please try again after sometime!");
   }
 }
 
@@ -68,7 +68,7 @@ export const addToCart = async (data) => {
     const resp = await axios.post("http://localhost:8080/user/addtocart" , data);
     return resp.data;
   } catch (error) {
-    return error;
+    throw Error('Something went wrong while adding this product to your cart! Please try again after sometime!');
   }
 }
 
@@ -78,7 +78,7 @@ export const removeFromCart = async(data) => {
     const resp = await axios.post("http://localhost:8080/user/removefromcart",data);
     return resp.data;
   } catch (error) {
-    return error;
+    throw Error('Something went wrong while removing this product from your cart! Please try again after sometime!');
   }
 }
 
@@ -89,7 +89,7 @@ export const setQuantityy = async(data) => {
     const resp = await axios.post("http://localhost:8080/user/cartproductquantityset", data);
     return resp.data;
    } catch (error) {
-    return error;
+    throw Error('Something went wrong while editing quantity of this product! Please try again after sometime!');
    }
 }
 
@@ -100,7 +100,7 @@ export const addAddress = async(data) => {
     const resp = await axios.post("http://localhost:8080/user/addaddress", data);
     return resp.data;
    } catch (error) {
-    return error;
+    throw Error('Something went wrong while adding your address! Please try again after sometime!');
    }
 }
 
@@ -110,7 +110,7 @@ export const placeOrder = async(data) => {
     const resp = await axios.post("http://localhost:8080/user/placeorder", data);
     return resp.data;
    } catch (error) {
-    return error;
+    throw Error('Something went wrong while placing your order! Please try again after sometime!');
    }
 }
 
@@ -120,7 +120,7 @@ export const getSellerShopData = async(data) => {
     const resp = await axios.post("http://localhost:8080/user/sellerShop", data);
     return resp.data;
    } catch (error) {
-    return error;
+    throw Error("Unable to fetch Seller's Shop Data! Please try again after sometime!");
    }
 }
 
@@ -130,7 +130,7 @@ export const followSeller = async(data) => {
     const resp = await axios.post("http://localhost:8080/seller/follow", data);
     return resp.data;
    } catch (error) {
-    return error;
+    throw Error('Something went wrong while Following this Shop! Please try again after sometime!');
    }
 }
 
@@ -140,6 +140,6 @@ export const unfollowSeller = async(data) => {
     const resp = await axios.post("http://localhost:8080/seller/unfollow", data);
     return resp.data;
    } catch (error) {
-    return error;
+    throw Error('Something went wrong while Unfollowing this Shop! Please try again after sometime!');
    }
 }

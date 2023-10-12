@@ -37,6 +37,12 @@ export default function ProfileEdit() {
     userName: userName,
     password: "",
   };
+  useEffect(()=>{
+    if(verifiedUser.hasOwnProperty('authorise')){
+    }else{
+      navigate('/profile');
+    }
+  },[])
 
   const [editData, setEditData] = useState(initialEditData);
   // const { userEmail, userName } = editData; //we have to set name similar to db but here if we extract then keys are same intwo constant...

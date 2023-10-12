@@ -19,7 +19,7 @@ export default function ShopPage() {
   const dispatch = useDispatch();
   const sellerId = params.sellerId;
   const [sellerShopData, setSellerShopData] = useState({});
-  const [UserIsFollowing, setUserIsFollowing] = useState(true);
+  const [UserIsNotFollowing, setUserIsNotFollowing] = useState(true);
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const getSellerShopDataRes = useSelector(
@@ -50,9 +50,9 @@ export default function ShopPage() {
           )
         ) {
           // if user didnot following this seller this section will execute--
-          setUserIsFollowing(true);
+          setUserIsNotFollowing(true);
         } else {
-          setUserIsFollowing(false);
+          setUserIsNotFollowing(false);
         }
       }
     }
@@ -89,7 +89,7 @@ export default function ShopPage() {
                   </h3>
                 </div>
                 <div className="col col-6">
-                  {UserIsFollowing ? (
+                  {UserIsNotFollowing ? (
                     <button
                       className="btn-primary btn"
                       onClick={() => {
@@ -105,7 +105,7 @@ export default function ShopPage() {
                               sellerId: sellerId,
                             })
                           );
-                          setUserIsFollowing(false);
+                          setUserIsNotFollowing(false);
                         }
                       }}
                     >
@@ -124,7 +124,7 @@ export default function ShopPage() {
                               userToken: jwtoken.token,
                               sellerId: sellerId,
                           }));
-                          setUserIsFollowing(true);
+                          setUserIsNotFollowing(true);
                         }
                       }}
                     >

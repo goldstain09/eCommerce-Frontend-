@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
-import Orders from "./Orders";
 import "./SCSS/Profile.scss";
 import { Link, useNavigate } from "react-router-dom";
 import UserSignup from "./UserSignup";
 import UserLogin from "./UserLogin";
 import { useDispatch, useSelector } from "react-redux";
-import { userIsLogginnedStart, verifyUserStart } from "../Redux/action";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {
+  followSellerStart,
+  unfollowSellerStart,
+  userIsLogginnedStart,
+  verifyUserStart,
+} from "../Redux/action";
 
 export default function Profile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const verifiedUser = useSelector((state) => state.verifiedUser);
-
   // console.log(verifiedUser);
 
   const [nothasJWToken, setnotHasJWToken] = useState(false);
@@ -29,20 +34,19 @@ export default function Profile() {
   }, []);
 
   useEffect(() => {
-    setnotHasJWToken(false);
-    if (verifiedUser) {
-      setnotHasJWToken(false);
+    if (verifiedUser.hasOwnProperty("authorise")) {
       if (verifiedUser.authorise) {
         setnotHasJWToken(false);
         setVerified(true);
         dispatch(userIsLogginnedStart(true));
+        toast.success("LoggedIn SuccessFully!",{theme:"dark"});
       } else {
         // it called when jwtoken is not valid
         setnotHasJWToken(true);
       }
     }
   }, [verifiedUser]);
-  
+
   //if user have arlready an account then it will true
   const [alreadyHaveAccount, setAlreadyHaveAccount] = useState(false);
 
@@ -133,6 +137,79 @@ export default function Profile() {
           </div>
         </div>
       </div>
+      <div className="container mt-5 pt-5">
+        <h6>Following:</h6>
+        {verifiedUser.hasOwnProperty("authorise") &&
+          (verifiedUser.followingSellers.length > 0 ? (
+            verifiedUser.followingSellers.map((item, index) => (
+              <div className="row d-flex border-top pt-4" key={index}>
+                <div className="col col-10">
+                  <h3
+                    onClick={() => {
+                      navigate(`/sellerShop/${item.sellerId}`);
+                    }}
+                  >
+                    {item.Shopname}
+                  </h3>
+                </div>
+                <div className="col col-2">
+                  <button
+                    id={`${item.sellerId}unfollow`}
+                    style={{ visibility: "visible" }}
+                    className="btn btn-outline-danger"
+                    onClick={() => {
+                      document.getElementById(
+                        `${item.sellerId}follow`
+                      ).style.visibility = "visible";
+                      document.getElementById(
+                        `${item.sellerId}unfollow`
+                      ).style.visibility = "hidden";
+                      const jwtoken = JSON.parse(localStorage.getItem("token"));
+                      dispatch(
+                        unfollowSellerStart({
+                          userId: verifiedUser.id,
+                          userToken: jwtoken.token,
+                          sellerId: item.sellerId,
+                        })
+                      );
+                    }}
+                  >
+                    Unfollow
+                  </button>
+                  <button
+                    id={item.sellerId + "follow"}
+                    style={{ visibility: "hidden" }}
+                    className="btn btn-outline-danger"
+                    onClick={() => {
+                      document.getElementById(
+                        `${item.sellerId}unfollow`
+                      ).style.visibility = "visible";
+                      document.getElementById(
+                        `${item.sellerId}follow`
+                      ).style.visibility = "hidden";
+                      const jwtoken = JSON.parse(localStorage.getItem("token"));
+                      dispatch(
+                        followSellerStart({
+                          userName: verifiedUser.userName,
+                          userId: verifiedUser.id,
+                          userToken: jwtoken.token,
+                          sellerId: item.sellerId,
+                        })
+                      );
+                    }}
+                  >
+                    Undo
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+              <h3>You didn't followed any seller...</h3>
+            </>
+          ))}
+      </div>
+      <ToastContainer />
     </>
   );
 }

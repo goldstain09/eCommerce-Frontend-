@@ -1,10 +1,10 @@
 import React from "react";
 import './SCSS/Card.scss';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import img from '../Media/logo.png';
 
-export default function Card({item}) {
- 
+export default function Card({item, onProductPage}) {
+ const navigate = useNavigate();
 
   return (
     <>
@@ -19,7 +19,12 @@ export default function Card({item}) {
           </p>
           <button disabled className="btn btn-light">Free Delivery</button>
           <button disabled className="btn btn-success">{item.productRating}</button>
-          <Link to={`/product/${item._id}`} className="btn btn-warning d-block">Check Now</Link>
+          <button onClick={()=>{
+            navigate(`/product/${item._id}`);
+            if(onProductPage){
+              window.location.reload();
+            }
+          }} className="btn btn-warning d-block">Check Now</button>
         </div>
         {/* </div> */}
       </div>

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./SCSS/UserSignup.scss";
-import img from "../Media/cod.png";
 import { createUserStart } from "../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,7 +11,6 @@ export default function UserSignup({ setAlreadyHaveAccount , alreadyHaveAccount}
 
   useEffect(() => {
     if (res.hasOwnProperty("token")) {
-      alert("SuccessFully Sign Up");
       setUserSignUpData(SignUpData);
       setpassword1("");
       setInterval(() => {
