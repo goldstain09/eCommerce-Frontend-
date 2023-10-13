@@ -1,7 +1,6 @@
 import React from "react";
 import './SCSS/Card.scss';
 import { Link, useNavigate } from "react-router-dom";
-import img from '../Media/logo.png';
 
 export default function Card({item, onProductPage}) {
  const navigate = useNavigate();

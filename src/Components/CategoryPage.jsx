@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsDataStart } from "../Redux/action";
+import Loading from "./Loading";
 
 export default function CategoryPage() {
   const params = useParams();
@@ -14,6 +15,9 @@ export default function CategoryPage() {
     dispatch(getAllProductsDataStart());
   }, []);
   const allProductsData = useSelector((state) => state.allProductsData);
+  const allProductsDataLoading = useSelector(
+    (state) => state.allProductsDataLoading
+  );
   const [products, setProducts] = useState([]);
   useEffect(() => {
     if (allProductsData.length > 0) {
@@ -124,30 +128,38 @@ export default function CategoryPage() {
           break;
       }
     }
-  }, [params.name,allProductsData]);
+  }, [params.name, allProductsData]);
 
-  return (
-    <>
-      <Header />
-      <div className="container CategoryPage">
-        <div className="row d-flex">
-          <div className="col col-12 ">
-            <h3 className="h3">{params.name}</h3>
-            <div className="container">
-              <div className="row">
-                {products.length > 0 ? (
-                  products.map((item, index) => (
-                    <Card key={index} item={item} />
-                  ))
-                ) : (
-                  <>Unable to fetch data please retry...</>
-                )}
+  if (allProductsDataLoading) {
+    return (
+      <>
+        <Header />
+        <Loading />
+      </>
+    );
+  } else
+    return (
+      <>
+        <Header />
+        <div className="container CategoryPage">
+          <div className="row d-flex">
+            <div className="col col-12 ">
+              <h3 className="h3">{params.name}</h3>
+              <div className="container">
+                <div className="row">
+                  {products.length > 0 ? (
+                    products.map((item, index) => (
+                      <Card key={index} item={item} />
+                    ))
+                  ) : (
+                    <>Unable to fetch data please retry...</>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
-    </>
-  );
+        <Footer />
+      </>
+    );
 }

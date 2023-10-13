@@ -87,10 +87,10 @@ function* verifyUserSaga({ payload }) {
   try {
     const ress = yield verifyUser(payload);
     // console.log(ress)
-    yield delay(2000);
+    yield delay(1000);
     yield put(verifyUserSuccess(ress));
   } catch (error) {
-    yield delay(2000);
+    yield delay(1000);
     yield put(verifyUserError(error.message));
   }
 }
@@ -135,7 +135,7 @@ function* getAllProductsDataSaga() {
     if (ress.hasOwnProperty("DataFound")) {
       switch (ress.DataFound) {
         case true:
-          yield delay(2000);
+          yield delay(500);
           yield put(getAllProductsDataSuccess(ress.data));
           break;
         case false:
@@ -159,7 +159,7 @@ function* getOneProductsDataSaga({ payload }) {
     if (ress.hasOwnProperty("DataFound")) {
       switch (ress.DataFound) {
         case true:
-          yield delay(2000);
+          yield delay(1000);
           yield put(getOneProductDataSuccess(ress.data));
           break;
         case false:
@@ -180,7 +180,7 @@ function* getOneProductsDataSaga({ payload }) {
 
 function* searchSaga({ payload }) {
   try {
-    yield delay(2000);
+    yield delay(1000);
     yield put(searchSuccess(payload));
   } catch (error) {
     yield delay(2000);
@@ -292,7 +292,7 @@ function* addAddressSaga({ payload }) {
     if (res.hasOwnProperty("addressAdded")) {
       switch (res.addressAdded) {
         case true:
-          yield delay(2000);
+          yield delay(1000);
           yield put(addAddressSuccess(res));
           break;
         case false:
@@ -323,7 +323,7 @@ function* placeOrderSaga({ payload }) {
     if (res.hasOwnProperty("orderPlaced")) {
       switch (res.orderPlaced) {
         case true:
-          yield delay(4000);
+          yield delay(3000);
           yield put(placeOrderSuccess(res));
           break;
         case false:
@@ -354,7 +354,7 @@ function* getSellerShopDataSaga({ payload }) {
     if (res.hasOwnProperty("sellerFound")) {
       switch (res.sellerFound) {
         case true:
-          yield delay(2000);
+          yield delay(1000);
           yield put(getSellerShopDataSuccess(res));
           break;
         case false:

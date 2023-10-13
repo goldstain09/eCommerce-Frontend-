@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import ProductPage from "./Components/ProductPage";
@@ -16,7 +16,7 @@ export default function Router() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route element={<Home />} path="/" />
+          <Route element={<Home/>} path="/" />
           <Route element={<ProductPage />} path="/product/:id" />
           <Route element={<CategoryPage />} path="/category/:name" />
           <Route element={<CartPage />} path="/cart" />

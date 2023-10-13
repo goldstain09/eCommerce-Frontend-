@@ -5,22 +5,24 @@ import AddressForm from "./AddressForm";
 import PaymentMethod from "./PaymentMethod";
 import { useDispatch, useSelector } from "react-redux";
 import { placeOrderStart } from "../Redux/action";
+import Loading from "./Loading";
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const forCheckoutProduct = useSelector((state) => state.forCheckoutProduct);
+  const forCheckoutProductLoading = useSelector(
+    (state) => state.forCheckoutProductLoading
+  );
   const addAddressRes = useSelector((state) => state.addAddressRes);
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const orderPlacedResponse = useSelector((state) => state.orderPlacedResponse);
+  const orderPlacedLoading = useSelector((state) => state.orderPlacedLoading);
 
   useEffect(() => {
     if (orderPlacedResponse.hasOwnProperty("orderPlaced")) {
       if (orderPlacedResponse.orderPlaced) {
-        // alert(
-        //   "Order is Placed Successfully...                                                           Thankyou for your Order"
-        // );
         navigate("/profile/orders");
         window.location.reload();
       }
@@ -38,9 +40,9 @@ export default function CheckoutPage() {
     } else {
       setAddressISAddedAlready(true);
     }
-    if(verifiedUser.hasOwnProperty('cart')){
-      if(verifiedUser.cart.length === 0 ){
-        navigate('/cart')
+    if (verifiedUser.hasOwnProperty("cart")) {
+      if (verifiedUser.cart.length === 0) {
+        navigate("/cart");
       }
     }
   }, [verifiedUser]);
@@ -58,12 +60,26 @@ export default function CheckoutPage() {
   useEffect(() => {
     if (addAddressRes.hasOwnProperty("addressAdded")) {
       if (addAddressRes.addressAdded) {
-        alert("Address Added SuccessFully");
         // setShowPlaceOrderBtn(true);
         setAddressISAddedAlready(false);
       }
     }
   }, [addAddressRes]);
+
+  if (orderPlacedLoading || forCheckoutProductLoading) {
+    return (
+    <>
+     <ul className="nav border-bottom justify-content-center CheckoutNav">
+        <li className="nav-item">
+          <a className="nav-link">
+            <i className="bi bi-bag-check-fill"></i> Checkout
+          </a>
+        </li>
+      </ul>
+    <Loading />
+    </>
+    );
+  }
 
   return (
     <>

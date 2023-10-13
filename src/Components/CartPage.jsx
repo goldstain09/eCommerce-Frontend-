@@ -11,6 +11,7 @@ import {
   userIsLogginnedStart,
   verifyUserStart,
 } from "../Redux/action";
+import Loading from "./Loading";
 
 export default function CartPage() {
   const dispatch = useDispatch();
@@ -18,16 +19,26 @@ export default function CartPage() {
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const allProductsData = useSelector((state) => state.allProductsData);
+  const allProductsDataLoading = useSelector(
+    (state) => state.allProductsDataLoading
+  );
   const quantityAdded = useSelector((state) => state.quantityAdded);
+  const quantityAddedLoading = useSelector(
+    (state) => state.quantityAddedLoading
+  );
   const productRemovedRes = useSelector((state) => state.productRemovedRes);
+  const productRemovedLoading = useSelector(
+    (state) => state.productRemovedLoading
+  );
+  const addToCartLoading = useSelector((state) => state.addToCartLoading);
   //jw token
   const jwtoken = JSON.parse(localStorage.getItem("token"));
   useEffect(() => {
     dispatch(getAllProductsDataStart());
     if (jwtoken) {
       dispatch(verifyUserStart(jwtoken.token));
-    }else{
-      navigate('/profile');
+    } else {
+      navigate("/profile");
     }
   }, []);
   useEffect(() => {
@@ -50,11 +61,11 @@ export default function CartPage() {
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
-    if(verifiedUser.hasOwnProperty('authorise')){
+    if (verifiedUser.hasOwnProperty("authorise")) {
       if (verifiedUser.authorise) {
         dispatch(userIsLogginnedStart(true));
-      }else{
-        navigate('/profile');
+      } else {
+        navigate("/profile");
       }
     }
     if (verifiedUser.hasOwnProperty("cart")) {
@@ -90,6 +101,33 @@ export default function CartPage() {
       }
     }
   }, [verifiedUser, allProductsData]);
+
+  if (
+    quantityAddedLoading ||
+    allProductsDataLoading ||
+    productRemovedLoading ||
+    addToCartLoading
+  ) {
+    return (
+      <>
+        <ul className="nav border-bottom justify-content-center CartNav">
+          <Link
+            to={"/"}
+            className="btn btn-outline-dark"
+            style={{ position: "absolute", top: "1rem", left: "1rem" }}
+          >
+            back to Home
+          </Link>
+          <li className="nav-item">
+            <a className="nav-link">
+              <i className="bi bi-basket"></i> Cart
+            </a>
+          </li>
+        </ul>
+        <Loading />
+      </>
+    );
+  }
 
   if (userIsLoginned) {
     return (
@@ -214,7 +252,12 @@ export default function CartPage() {
                         to={"/checkout"}
                         className="w-100 btn btn-danger fs-3 py-1"
                         onClick={() => {
-                          dispatch(setProductsForCheckoutStart({cart:cart,totalPrice:totalPrice}));
+                          dispatch(
+                            setProductsForCheckoutStart({
+                              cart: cart,
+                              totalPrice: totalPrice,
+                            })
+                          );
                         }}
                       >
                         Continue
@@ -335,16 +378,6 @@ export default function CartPage() {
           </>
         )}
       </>
-    );
-  } else {
-    return (
-      <h3
-        className="h3 text-center mt-5 pt-5"
-        style={{ color: "#5c0431", fontFamily: "'Inter', sans-serif" }}
-      >
-        You have to be loginned for your Cart{" "}
-        <Link to={"/profile"}>Login & SignUp</Link>{" "}
-      </h3>
     );
   }
 }

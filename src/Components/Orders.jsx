@@ -7,12 +7,14 @@ import {
   userIsLogginnedStart,
   verifyUserStart,
 } from "../Redux/action";
+import Loading from "./Loading";
 
 export default function Orders() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
   const verifiedUser = useSelector((state) => state.verifiedUser);
+  const verifiedUserLoading = useSelector((state) => state.verifiedUserLoading);
 
   //jw token
   const jwtoken = JSON.parse(localStorage.getItem("token"));
@@ -40,6 +42,20 @@ export default function Orders() {
     }
   }, [verifiedUser]);
 
+  if (verifiedUserLoading) {
+    return (
+      <>
+        <ul class="nav border-bottom justify-content-center CartNav">
+          <li class="nav-item">
+            <a class="nav-link">
+              <i class="bi bi-person-circle"></i> Your Orders
+            </a>
+          </li>
+        </ul>
+        <Loading />
+      </>
+    );
+  }
   if (userIsLoginned) {
     return (
       <>
@@ -105,16 +121,6 @@ export default function Orders() {
           )}
         </div>
       </>
-    );
-  } else {
-    return (
-      <h3
-        className="h3 text-center mt-5 pt-5"
-        style={{ color: "#5c0431", fontFamily: "'Inter', sans-serif" }}
-      >
-        You have to be loginned for your orders{" "}
-        <Link to={"/profile"}>Login & SignUp</Link>{" "}
-      </h3>
     );
   }
 }

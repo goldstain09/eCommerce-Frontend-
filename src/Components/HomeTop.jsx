@@ -1,6 +1,5 @@
 import React from "react";
 import "./SCSS/HomeTop.scss";
-import { Link } from "react-router-dom";
 
 export default function HomeTop() {
   return (

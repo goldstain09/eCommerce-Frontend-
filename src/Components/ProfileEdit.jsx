@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { editUserStart } from "../Redux/action";
+import Loading from "./Loading";
 
 export default function ProfileEdit() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const responseOfEdit = useSelector((state) => state.editSuccess);
+  const editUserSuccessLoading = useSelector((state) => state.editUserSuccessLoading);
 
   useEffect(() => {
     if (responseOfEdit) {
@@ -83,6 +85,21 @@ export default function ProfileEdit() {
       [e.target.name]: e.target.value,
     });
   };
+
+  if(editUserSuccessLoading){
+    return(
+      <>
+      <ul className="nav border-bottom justify-content-center CartNav">
+        <li className="nav-item">
+          <a className="nav-link">
+            <i className="bi bi-person-circle"></i> Updating...
+          </a>
+        </li>
+      </ul>
+      <Loading />
+      </>
+    )
+  }
   return (
     <>
       {/* Header--------- */}

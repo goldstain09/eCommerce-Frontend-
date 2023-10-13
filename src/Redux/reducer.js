@@ -45,7 +45,6 @@ import {
   UNFOLLOW_SELLER_START,
   UNFOLLOW_SELLER_SUCCESS,
   USER_IS_LOGINNED_ERROR,
-  USER_IS_LOGINNED_START,
   USER_IS_LOGINNED_SUCCESS,
   VERIFY_USER_ERROR,
   VERIFY_USER_START,
@@ -53,81 +52,95 @@ import {
 } from "./constants";
 
 const initialStates = {
-  //Loadings & errors
-  loading: false,
-  productsPageLoading: false,
-  errorMessage: "",
-
   //create user res--
   createUserRes: {},
+  createUserLoading: false,
+  createUserError: "",
+
   //verified user & check that user have jwt or not if not then it will show login or signup
   verifiedUser: {},
+  verifiedUserLoading: false,
+  verifiedUserError: "",
+
   //if user's login data is correct then in this all data of user is set but is not thenin this there is authories false sett
   userIsLogin: {},
+  userIsLoginLoading: false,
+  userIsLoginError: "",
+
   //edited success & token
   editSuccess: {},
+  editUserSuccessLoading: false,
+  editUserError: "",
+
   // for user is loggined or not
   userIsLoginned: false,
+  userIsLoginnedError: "",
 
   //all products data
   allProductsData: [],
+  allProductsDataLoading: false,
+  allProductsDataError: "",
+
   //current product
   currentProduct: {},
+  productsPageLoading: false,
+  productsPageError: "",
 
   //searched products
   searchedProductName: "",
+  searchedProductLoading: false,
+  searchedProductError: "",
 
   // quantity added successfully response
   quantityAdded: {},
+  quantityAddedLoading: false,
+  quantityAddedError: "",
+
   //item removed from cart response
   productRemovedRes: {},
+  productRemovedLoading: false,
+  productRemovedError: "",
+  addToCartLoading: false, // becoz in response of add to cart i updated verified user response so....
+  addToCArtError: "",
 
   //checkout products
   forCheckoutProduct: [],
+  forCheckoutProductLoading: false,
+  forCheckoutProductError: "",
 
   //add address response
   addAddressRes: {},
+  addAddressLoading: false,
+  addAddressError: "",
 
   // order is placed reponse
   orderPlacedResponse: {},
+  orderPlacedLoading: false,
+  orderPlacedError: "",
 
   //getting seller data response
   getSellerShopDataRes: {},
+  getSellerShopDataLoading: false,
+  getSellerShopDataError: "",
 
   // followed response
   followSellerRes: {},
+  followSellerLoading: false,
+  followSellerError: "",
   // unfollowed response
   unfollowSellerRes: {},
+  unfollowSellerloading: false,
+  unfollowSellerError: "",
 };
 
 const reducer = (state = initialStates, action) => {
   switch (action.type) {
     case CREATE_USER_START:
-    case VERIFY_USER_START:
-    case LOGIN_USER_START:
-    case EDIT_USER_START:
-    case GET_ALL_PRODUCTS_DATA_START:
-    case SEARCH_START:
-    case ADD_TO_CART_START:
-    case REMOVE_FROM_CART_START:
-    case SET_QUANTITY_START:
-    case SET_PRODUCTS_FOR_CHECKOUT_START:
-    case ADD_ADDRESS_START:
-    case PLACE_ORDER_START:
-    case GET_SELLER_SHOP_DATA_START:
-    case FOLLOW_SELLER_START:
-    case UNFOLLOW_SELLER_START:
       return {
         ...state,
-        loading: true,
-        errorMessage: "",
+        createUserLoading: true,
+        createUserError: "",
       };
-    case GET_ONE_PRODUCT_DATA_START:
-      return {
-        ...state,
-        productsPageLoading: true,
-      };
-
     case CREATE_USER_SUCCESS:
       if (action.payload.hasOwnProperty("token")) {
         localStorage.setItem("token", JSON.stringify(action.payload));
@@ -135,162 +148,347 @@ const reducer = (state = initialStates, action) => {
       return {
         ...state,
         createUserRes: action.payload,
-        loading: false,
-        errorMessage: "",
+        createUserLoading: false,
+        createUserError: "",
       };
+    case CREATE_USER_ERROR:
+      return {
+        ...state,
+        createUserLoading: false,
+        createUserError: action.payload,
+      };
+    // --------------------------------------------------------
 
+    case VERIFY_USER_START:
+      return {
+        ...state,
+        verifiedUserLoading: true,
+        verifiedUserError: "",
+      };
     case VERIFY_USER_SUCCESS:
       return {
         ...state,
         verifiedUser: action.payload,
-        loading: false,
-        errorMessage: "",
+        verifiedUserLoading: false,
+        verifiedUserError: "",
       };
+    case VERIFY_USER_ERROR:
+      return {
+        ...state,
+        verifiedUserLoading: false,
+        verifiedUserError: action.payload,
+      };
+    // --------------------------------------------------------
 
+    case LOGIN_USER_START:
+      return {
+        ...state,
+        userIsLoginLoading: true,
+        userIsLoginError: "",
+      };
     case LOGIN_USER_SUCCESS:
       return {
         ...state,
         userIsLogin: action.payload,
-        loading: false,
-        errorMessage: "",
+        userIsLoginLoading: false,
+        userIsLoginError: "",
       };
+    case LOGIN_USER_ERROR:
+      return {
+        ...state,
+        userIsLoginLoading: false,
+        userIsLoginError: action.payload,
+      };
+    // ---------------------------------------------------------
 
+    case EDIT_USER_START:
+      return {
+        ...state,
+        editUserSuccessLoading: true,
+        editUserError: "",
+      };
     case EDIT_USER_SUCCESS:
       return {
         ...state,
         editSuccess: action.payload,
-        loading: false,
-        errorMessage: "",
+        editUserSuccessLoading: false,
+        editUserError: "",
       };
+    case EDIT_USER_ERROR:
+      return {
+        ...state,
+        editUserSuccessLoading: false,
+        editUserError: action.payload,
+      };
+    // ----------------------------------------------------------
 
     case USER_IS_LOGINNED_SUCCESS:
       return {
         ...state,
         userIsLoginned: action.payload,
-        loading: false,
-        errorMessage: "",
+        userIsLoginnedError: "",
       };
+    case USER_IS_LOGINNED_ERROR:
+      return {
+        ...state,
+        userIsLoginnedError: action.payload,
+      };
+    // --------------------------------------------------------
 
     //products
+    case GET_ALL_PRODUCTS_DATA_START:
+      return {
+        ...state,
+        allProductsDataLoading: true,
+        allProductsDataError: "",
+      };
     case GET_ALL_PRODUCTS_DATA_SUCCESS:
       return {
         ...state,
         allProductsData: action.payload,
-        loading: false,
-        errorMessage: "",
+        allProductsDataLoading: false,
+        allProductsDataError: "",
+      };
+    case GET_ALL_PRODUCTS_DATA_ERROR:
+      return {
+        ...state,
+        allProductsDataLoading: false,
+        allProductsDataError: action.payload,
+      };
+    // ---------------------------------------------------------
+
+    case GET_ONE_PRODUCT_DATA_START:
+      return {
+        ...state,
+        productsPageLoading: true,
+        productsPageError: "",
       };
     case GET_ONE_PRODUCT_DATA_SUCCESS:
       return {
         ...state,
         currentProduct: action.payload,
         productsPageLoading: false,
-        errorMessage: "",
+        productsPageError: "",
       };
+    case GET_ONE_PRODUCT_DATA_ERROR:
+      return {
+        ...state,
+        productsPageLoading: false,
+        productsPageError: action.payload,
+      };
+    // ---------------------------------------------------------
 
     //search
+    case SEARCH_START:
+      return {
+        ...state,
+        searchedProductLoading: true,
+        searchedProductError: "",
+      };
     case SEARCH_SUCCESS:
       return {
         ...state,
         searchedProductName: action.payload,
-        loading: false,
-        errorMessage: "",
+        searchedProductLoading: false,
+        searchedProductError:"",
       };
+    case SEARCH_ERROR:
+      return {
+        ...state,
+        searchedProductLoading: false,
+        searchedProductError: action.payload,
+      };
+    // ---------------------------------------------------------
 
     //add to cart
+    case ADD_TO_CART_START:
+      return {
+        ...state,
+        addToCartLoading: true,
+        addToCArtError: "",
+      };
     case ADD_TO_CART_SUCCESS:
       return {
         ...state,
         verifiedUser: action.payload,
-        loading: false,
-        errorMessage: "",
+        addToCartLoading: false,
+        addToCArtError: "",
       };
+    case ADD_TO_CART_ERROR:
+      return {
+        ...state,
+        addToCartLoading: false,
+        addToCArtError: action.payload,
+      };
+    // -----------------------------------------------------------
 
     // quantity added
+    case SET_QUANTITY_START:
+      return {
+        ...state,
+        quantityAddedLoading: true,
+        quantityAddedError: "",
+      };
     case SET_QUANTITY_SUCCESS:
       return {
         ...state,
         quantityAdded: action.payload,
-        loading: false,
-        errorMessage: "",
+        quantityAddedLoading: false,
+        quantityAddedError: "",
       };
+    case SET_QUANTITY_ERROR:
+      return {
+        ...state,
+        quantityAddedLoading: false,
+        quantityAddedError: action.payload,
+      };
+    // -----------------------------------------------------------
 
+    case REMOVE_FROM_CART_START:
+      return {
+        ...state,
+        productRemovedLoading: true,
+        productRemovedError: "",
+      };
     case REMOVE_FROM_CART_SUCCESS:
       return {
         ...state,
         productRemovedRes: action.payload,
-        loading: false,
-        errorMessage: "",
+        productRemovedLoading: false,
+        productRemovedError: "",
       };
+    case REMOVE_FROM_CART_ERROR:
+      return {
+        ...state,
+        productRemovedLoading: false,
+        productRemovedError: action.payload,
+      };
+    // -----------------------------------------------------------
 
+    case SET_PRODUCTS_FOR_CHECKOUT_START:
+      return {
+        ...state,
+        forCheckoutProductLoading: true,
+        forCheckoutProductError: "",
+      };
     case SET_PRODUCTS_FOR_CHECKOUT_SUCCESS:
       return {
         ...state,
         forCheckoutProduct: action.payload,
-        loading: false,
-        errorMessage: "",
+        forCheckoutProductLoading: false,
+        forCheckoutProductError: "",
       };
+    case SET_PRODUCTS_FOR_CHECKOUT_ERROR:
+      return {
+        ...state,
+        forCheckoutProductLoading: false,
+        forCheckoutProductError: action.payload,
+      };
+    // -----------------------------------------------------------
 
+    case ADD_ADDRESS_START:
+      return {
+        ...state,
+        addAddressLoading: true,
+        addAddressError: "",
+      };
     case ADD_ADDRESS_SUCCESS:
       return {
         ...state,
         addAddressRes: action.payload,
-        loading: false,
-        errorMessage: "",
+        addAddressLoading: false,
+        addAddressError: "",
       };
+    case ADD_ADDRESS_ERROR:
+      return {
+        ...state,
+        addAddressLoading: false,
+        addAddressError: action.payload,
+      };
+    // ------------------------------------------------------------
 
+    case PLACE_ORDER_START:
+      return {
+        ...state,
+        orderPlacedLoading: true,
+        orderPlacedError: "",
+      };
     case PLACE_ORDER_SUCCESS:
       return {
         ...state,
         orderPlacedResponse: action.payload,
-        loading: false,
-        errorMessage: "",
+        orderPlacedLoading: false,
+        orderPlacedError: "",
       };
+    case PLACE_ORDER_ERROR:
+      return {
+        ...state,
+        orderPlacedLoading: false,
+        orderPlacedError: action.payload,
+      };
+    // -------------------------------------------------------------
 
+    case GET_SELLER_SHOP_DATA_START:
+      return {
+        ...state,
+        getSellerShopDataLoading: true,
+        getSellerShopDataError: "",
+      };
     case GET_SELLER_SHOP_DATA_SUCCESS:
       return {
         ...state,
         getSellerShopDataRes: action.payload,
-        loading: false,
-        errorMessage: "",
+        getSellerShopDataLoading: false,
+        getSellerShopDataError: "",
       };
+    case GET_SELLER_SHOP_DATA_ERROR:
+      return {
+        ...state,
+        getSellerShopDataLoading: false,
+        getSellerShopDataError: action.payload,
+      };
+    // --------------------------------------------------------------
 
+    case FOLLOW_SELLER_START:
+      return {
+        ...state,
+        followSellerLoading: true,
+        followSellerError: "",
+      };
     case FOLLOW_SELLER_SUCCESS:
       return {
         ...state,
         followSellerRes: action.payload,
-        loading: false,
-        errorMessage: "",
+        followSellerLoading: false,
+        followSellerError: "",
       };
-
+    case FOLLOW_SELLER_ERROR:
+      return {
+        ...state,
+        followSellerLoading: false,
+        followSellerError: action.payload,
+      };
+    // ------------------------------------------------------------------
+    case UNFOLLOW_SELLER_START:
+      return {
+        ...state,
+        unfollowSellerloading: true,
+        unfollowSellerError: "",
+      };
     case UNFOLLOW_SELLER_SUCCESS:
       return {
         ...state,
         unfollowSellerRes: action.payload,
-        loading: false,
-        errorMessage: "",
+        unfollowSellerloading: false,
+        unfollowSellerError: "",
       };
-
-    case CREATE_USER_ERROR:
-    case VERIFY_USER_ERROR:
-    case LOGIN_USER_ERROR:
-    case EDIT_USER_ERROR:
-    case USER_IS_LOGINNED_ERROR:
-    case GET_ALL_PRODUCTS_DATA_ERROR:
-    case GET_ONE_PRODUCT_DATA_ERROR:
-    case SEARCH_ERROR:
-    case ADD_TO_CART_ERROR:
-    case REMOVE_FROM_CART_ERROR:
-    case SET_QUANTITY_ERROR:
-    case SET_PRODUCTS_FOR_CHECKOUT_ERROR:
-    case ADD_ADDRESS_ERROR:
-    case PLACE_ORDER_ERROR:
-    case GET_SELLER_SHOP_DATA_ERROR:
-    case FOLLOW_SELLER_ERROR:
     case UNFOLLOW_SELLER_ERROR:
       return {
         ...state,
-        errorMessage: action.payload,
+        unfollowSellerloading: false,
+        unfollowSellerError: action.payload,
       };
+    // ------------------------------------------------------------------
 
     default:
       return state;

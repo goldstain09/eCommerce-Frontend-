@@ -22,9 +22,9 @@ import Loading from "./Loading";
 export default function ProductPage() {
   const params = useParams();
   const currentProduct = useSelector((state) => state.currentProduct);
+  const productsPageLoading = useSelector((state) => state.productsPageLoading);
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
   const verifiedUser = useSelector((state) => state.verifiedUser);
-  const productsPageLoading = useSelector((state) => state.productsPageLoading);
   //jw token --- user verification
   const jwtoken = JSON.parse(localStorage.getItem("token"));
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function ProductPage() {
         <Loading />
       </>
     );
-  }
+  } else
     return (
       <>
         <Header />
@@ -284,5 +284,4 @@ export default function ProductPage() {
         <ToastContainer />
       </>
     );
-  }
-
+}

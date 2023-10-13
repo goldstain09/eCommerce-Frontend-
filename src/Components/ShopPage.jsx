@@ -13,17 +13,26 @@ import {
 } from "../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
+import Loading from "./Loading";
 
 export default function ShopPage() {
   const params = useParams();
   const dispatch = useDispatch();
   const sellerId = params.sellerId;
   const [sellerShopData, setSellerShopData] = useState({});
+  const [followers, setfollowers] = useState(0);
   const [UserIsNotFollowing, setUserIsNotFollowing] = useState(true);
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
   const verifiedUser = useSelector((state) => state.verifiedUser);
+  const followSellerLoading = useSelector((state) => state.followSellerLoading);
+  const unfollowSellerloading = useSelector(
+    (state) => state.unfollowSellerloading
+  );
   const getSellerShopDataRes = useSelector(
     (state) => state.getSellerShopDataRes
+  );
+  const getSellerShopDataLoading = useSelector(
+    (state) => state.getSellerShopDataLoading
   );
   //jw token --- user verification
   const jwtoken = JSON.parse(localStorage.getItem("token"));
@@ -60,9 +69,18 @@ export default function ShopPage() {
   useEffect(() => {
     if (getSellerShopDataRes.hasOwnProperty("ShopName")) {
       setSellerShopData(getSellerShopDataRes);
+      setfollowers(getSellerShopDataRes.sellerFollowers.length);
     }
   }, [getSellerShopDataRes]);
 
+  if (getSellerShopDataLoading) {
+    return (
+      <>
+        <Header />
+        <Loading />
+      </>
+    );
+  }
   return (
     <>
       <Header />
@@ -85,11 +103,18 @@ export default function ShopPage() {
               <div className="row d-flex">
                 <div className="col col-6">
                   <h3 className="card-title">
-                    Followers: {sellerShopData.sellerFollowers.length}
+                    Followers:
+                    {followSellerLoading || unfollowSellerloading ? (
+                      <>Loading</>
+                    ) : (
+                      followers
+                    )}
                   </h3>
                 </div>
                 <div className="col col-6">
-                  {UserIsNotFollowing ? (
+                  {followSellerLoading || unfollowSellerloading ? (
+                    <> Loading</>
+                  ) : UserIsNotFollowing ? (
                     <button
                       className="btn-primary btn"
                       onClick={() => {
@@ -106,6 +131,7 @@ export default function ShopPage() {
                             })
                           );
                           setUserIsNotFollowing(false);
+                          setfollowers(followers + 1);
                         }
                       }}
                     >
@@ -119,12 +145,15 @@ export default function ShopPage() {
                           const jwtoken = JSON.parse(
                             localStorage.getItem("token")
                           );
-                          dispatch(unfollowSellerStart({
+                          dispatch(
+                            unfollowSellerStart({
                               userId: verifiedUser.id,
                               userToken: jwtoken.token,
                               sellerId: sellerId,
-                          }));
+                            })
+                          );
                           setUserIsNotFollowing(true);
+                          setfollowers(followers - 1);
                         }
                       }}
                     >
