@@ -5,14 +5,21 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 import { getAllProductsDataStart } from "../Redux/action";
+import Error from "./Error";
 
 export default function Search() {
   const dispatch = useDispatch();
   const allProductsData = useSelector((state) => state.allProductsData);
+  const allProductsDataError = useSelector(
+    (state) => state.allProductsDataError
+  );
   const allProductsDataLoading = useSelector(
     (state) => state.allProductsDataLoading
   );
   const searchedProductName = useSelector((state) => state.searchedProductName);
+  const searchedProductError = useSelector(
+    (state) => state.searchedProductError
+  );
   const searchedProductLoading = useSelector(
     (state) => state.searchedProductLoading
   );
@@ -49,6 +56,18 @@ export default function Search() {
       <>
         <Header />
         <Loading />
+      </>
+    );
+  } else if (searchedProductError !== "") {
+    return (
+      <>
+        <Error errorMessage={searchedProductError} />
+      </>
+    );
+  } else if (allProductsDataError !== "") {
+    return (
+      <>
+        <Error errorMessage={allProductsDataError} />
       </>
     );
   }

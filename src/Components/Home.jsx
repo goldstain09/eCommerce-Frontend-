@@ -15,14 +15,20 @@ import {
   verifyUserStart,
 } from "../Redux/action";
 import Loading from "./Loading";
+import Error from "./Error";
 
 export default function Home() {
   const dispatch = useDispatch();
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const allProductsData = useSelector((state) => state.allProductsData);
-  const allProductsDataLoading = useSelector((state) => state.allProductsDataLoading);
+  const allProductsDataError = useSelector(
+    (state) => state.allProductsDataError
+  );
+  const allProductsDataLoading = useSelector(
+    (state) => state.allProductsDataLoading
+  );
   const [allProducts, setAllProducts] = useState({});
-  
+
   //jw token
   const jwtoken = JSON.parse(localStorage.getItem("token"));
   useEffect(() => {
@@ -43,12 +49,18 @@ export default function Home() {
       setAllProducts(allProductsData);
     }
   }, [allProductsData]);
-  
+
   if (allProductsDataLoading) {
     return (
       <>
         <Header />
         <Loading />
+      </>
+    );
+  } else if (allProductsDataError !== "") {
+    return (
+      <>
+        <Error errorMessage={allProductsDataError} />
       </>
     );
   }
@@ -66,18 +78,13 @@ export default function Home() {
   );
 }
 
-
-
-
-
-
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
 // toast.success("LoggedIn SuccessFully!", {
-  //   theme: "dark",
-  //   autoClose: 7000,
-  //   position: "top-center",
-  //   draggable: true,
-  //   pauseOnHover: true,
-  // });
+//   theme: "dark",
+//   autoClose: 7000,
+//   position: "top-center",
+//   draggable: true,
+//   pauseOnHover: true,
+// });

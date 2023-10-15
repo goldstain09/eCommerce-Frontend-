@@ -3,12 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { editUserStart } from "../Redux/action";
 import Loading from "./Loading";
+import Error from "./Error";
 
 export default function ProfileEdit() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const responseOfEdit = useSelector((state) => state.editSuccess);
-  const editUserSuccessLoading = useSelector((state) => state.editUserSuccessLoading);
+  const editUserError = useSelector((state) => state.editUserError);
+  const editUserSuccessLoading = useSelector(
+    (state) => state.editUserSuccessLoading
+  );
 
   useEffect(() => {
     if (responseOfEdit) {
@@ -23,7 +27,7 @@ export default function ProfileEdit() {
             window.location.reload();
           }, 10);
           clearInterval();
-          alert('Updated Successfully');
+          alert("Updated Successfully");
           break;
         case false:
           setPasswordIncorrectError(true);
@@ -39,12 +43,12 @@ export default function ProfileEdit() {
     userName: userName,
     password: "",
   };
-  useEffect(()=>{
-    if(verifiedUser.hasOwnProperty('authorise')){
-    }else{
-      navigate('/profile');
+  useEffect(() => {
+    if (verifiedUser.hasOwnProperty("authorise")) {
+    } else {
+      navigate("/profile");
     }
-  },[])
+  }, []);
 
   const [editData, setEditData] = useState(initialEditData);
   // const { userEmail, userName } = editData; //we have to set name similar to db but here if we extract then keys are same intwo constant...
@@ -86,19 +90,25 @@ export default function ProfileEdit() {
     });
   };
 
-  if(editUserSuccessLoading){
-    return(
+  if (editUserSuccessLoading) {
+    return (
       <>
-      <ul className="nav border-bottom justify-content-center CartNav">
-        <li className="nav-item">
-          <a className="nav-link">
-            <i className="bi bi-person-circle"></i> Updating...
-          </a>
-        </li>
-      </ul>
-      <Loading />
+        <ul className="nav border-bottom justify-content-center CartNav">
+          <li className="nav-item">
+            <a className="nav-link">
+              <i className="bi bi-person-circle"></i> Updating...
+            </a>
+          </li>
+        </ul>
+        <Loading />
       </>
-    )
+    );
+  } else if (editUserError !== "") {
+    return (
+      <>
+        <Error errorMessage={editUserError} />
+      </>
+    );
   }
   return (
     <>
@@ -181,5 +191,3 @@ export default function ProfileEdit() {
     </>
   );
 }
-
-

@@ -5,12 +5,14 @@ import { loginUserStart } from "../Redux/action";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "./Loading";
+import Error from "./Error";
 
 export default function UserLogin({ setnotHasJWToken }) {
   const dispatch = useDispatch();
 
   const userIsLogin = useSelector((state) => state.userIsLogin);
   const userIsLoginLoading = useSelector((state) => state.userIsLoginLoading);
+  const userIsLoginError = useSelector((state) => state.userIsLoginError);
   // console.log(userIsLogin);
 
   //initial data
@@ -72,7 +74,14 @@ export default function UserLogin({ setnotHasJWToken }) {
       setEmailError(true);
     }
   };
-  if (userIsLoginLoading) {
+
+  if (userIsLoginError !== "") {
+    return (
+      <>
+        <Error errorMessage={userIsLoginError} />
+      </>
+    );
+  } else if (userIsLoginLoading) {
     return (
       <>
         {/* Header--------- */}
@@ -86,72 +95,72 @@ export default function UserLogin({ setnotHasJWToken }) {
         <Loading />
       </>
     );
-  } else
-    return (
-      <>
-        {/* Header--------- */}
-        <ul className="nav border-bottom justify-content-center CartNav mt-5 pt-5">
-          <Link
-            to={"/"}
-            className="btn btn-outline-dark"
-            style={{ position: "absolute", top: "1rem", left: "1rem" }}
-          >
-            back to Home
-          </Link>
-          <li className="nav-item">
-            <a className="nav-link">
-              <i className="bi bi-person-circle"></i> Login
-            </a>
-          </li>
-        </ul>
-        <form className="container mt-5" onSubmit={login}>
-          <div className="row justify-content-center">
-            <div className="col-7">
-              <input
-                onChange={inputChange}
-                onInput={() => {
-                  setEmailError(false);
-                  setUserPasswordOrEmailisNotCorrect(false);
-                }}
-                name="userEmail"
-                type="email"
-                placeholder="Email Address"
-                className="d-block mt-3 w-100 form-control"
-              />
-              {emailError && (
-                <p className="text-danger">Please enter a Valid Email.</p>
-              )}
-            </div>
-            <div className="col-7">
-              <input
-                onChange={inputChange}
-                onInput={() => {
-                  setPasswordError(false);
-                  setUserPasswordOrEmailisNotCorrect(false);
-                }}
-                name="password"
-                type="password"
-                className="form-control mt-3 w-100 d-block"
-                placeholder="Password"
-              />
-              {passwordError && (
-                <p className="text-danger">Enter a valid password...</p>
-              )}
-              {userPasswordOrEmailisNotCorrect && (
-                <p className="text-danger">Email Or Password is not Correct.</p>
-              )}
-            </div>
-            <div className="col-7">
-              <button
-                type="submit"
-                className="form-control btn mt-3 w-100 d-block btn-success"
-              >
-                Login
-              </button>
-            </div>
+  }
+  return (
+    <>
+      {/* Header--------- */}
+      <ul className="nav border-bottom justify-content-center CartNav mt-5 pt-5">
+        <Link
+          to={"/"}
+          className="btn btn-outline-dark"
+          style={{ position: "absolute", top: "1rem", left: "1rem" }}
+        >
+          back to Home
+        </Link>
+        <li className="nav-item">
+          <a className="nav-link">
+            <i className="bi bi-person-circle"></i> Login
+          </a>
+        </li>
+      </ul>
+      <form className="container mt-5" onSubmit={login}>
+        <div className="row justify-content-center">
+          <div className="col-7">
+            <input
+              onChange={inputChange}
+              onInput={() => {
+                setEmailError(false);
+                setUserPasswordOrEmailisNotCorrect(false);
+              }}
+              name="userEmail"
+              type="email"
+              placeholder="Email Address"
+              className="d-block mt-3 w-100 form-control"
+            />
+            {emailError && (
+              <p className="text-danger">Please enter a Valid Email.</p>
+            )}
           </div>
-        </form>
-        <ToastContainer />
-      </>
-    );
+          <div className="col-7">
+            <input
+              onChange={inputChange}
+              onInput={() => {
+                setPasswordError(false);
+                setUserPasswordOrEmailisNotCorrect(false);
+              }}
+              name="password"
+              type="password"
+              className="form-control mt-3 w-100 d-block"
+              placeholder="Password"
+            />
+            {passwordError && (
+              <p className="text-danger">Enter a valid password...</p>
+            )}
+            {userPasswordOrEmailisNotCorrect && (
+              <p className="text-danger">Email Or Password is not Correct.</p>
+            )}
+          </div>
+          <div className="col-7">
+            <button
+              type="submit"
+              className="form-control btn mt-3 w-100 d-block btn-success"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+      <ToastContainer />
+    </>
+  );
 }

@@ -14,6 +14,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import Loading from "./Loading";
+import Error from "./Error";
 
 export default function ShopPage() {
   const params = useParams();
@@ -25,14 +26,19 @@ export default function ShopPage() {
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const followSellerLoading = useSelector((state) => state.followSellerLoading);
+  const followSellerError = useSelector((state) => state.followSellerError);
   const unfollowSellerloading = useSelector(
     (state) => state.unfollowSellerloading
   );
+  const unfollowSellerError = useSelector((state) => state.unfollowSellerError);
   const getSellerShopDataRes = useSelector(
     (state) => state.getSellerShopDataRes
   );
   const getSellerShopDataLoading = useSelector(
     (state) => state.getSellerShopDataLoading
+  );
+  const getSellerShopDataError = useSelector(
+    (state) => state.getSellerShopDataError
   );
   //jw token --- user verification
   const jwtoken = JSON.parse(localStorage.getItem("token"));
@@ -78,6 +84,24 @@ export default function ShopPage() {
       <>
         <Header />
         <Loading />
+      </>
+    );
+  } else if (getSellerShopDataError !== "") {
+    return (
+      <>
+        <Error errorMessage={getSellerShopDataError} />
+      </>
+    );
+  } else if (followSellerError !== "") {
+    return (
+      <>
+        <Error errorMessage={followSellerError} />
+      </>
+    );
+  } else if (unfollowSellerError !== "") {
+    return (
+      <>
+        <Error errorMessage={unfollowSellerError} />
       </>
     );
   }

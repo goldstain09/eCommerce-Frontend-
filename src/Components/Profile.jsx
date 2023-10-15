@@ -13,6 +13,7 @@ import {
   verifyUserStart,
 } from "../Redux/action";
 import Loading from "./Loading";
+import Error from "./Error";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ export default function Profile() {
   const userIsLoginLoading = useSelector((state) => state.userIsLoginLoading);
   const createUserLoading = useSelector((state) => state.createUserLoading);
   const verifiedUserLoading = useSelector((state) => state.verifiedUserLoading);
+  const userIsLoginError = useSelector((state) => state.userIsLoginError);
+  const createUserError = useSelector((state) => state.createUserError);
+  const verifiedUserError = useSelector((state) => state.verifiedUserError);
   // console.log(verifiedUser);
 
   const [nothasJWToken, setnotHasJWToken] = useState(false);
@@ -66,7 +70,7 @@ export default function Profile() {
         )}
       </>
     );
-  } else if (createUserLoading) {
+  } else if (createUserLoading || verifiedUserLoading || userIsLoginLoading) {
     return (
       <>
         <ul className="nav border-bottom justify-content-center CartNav">
@@ -79,183 +83,171 @@ export default function Profile() {
         <Loading />
       </>
     );
-  } else if (userIsLoginLoading) {
+  } else if (userIsLoginError !== "") {
     return (
       <>
-        <ul className="nav border-bottom justify-content-center CartNav">
-          <li className="nav-item">
-            <a className="nav-link">
-              <i className="bi bi-person-circle"></i> Profile
-            </a>
-          </li>
-        </ul>
-        <Loading />
+        <Error errorMessage={userIsLoginError} />
       </>
     );
-  } else if (verifiedUserLoading) {
+  } else if (createUserError !== "") {
     return (
       <>
-        <ul className="nav border-bottom justify-content-center CartNav">
-          <li className="nav-item">
-            <a className="nav-link">
-              <i className="bi bi-person-circle"></i> Profile
-            </a>
-          </li>
-        </ul>
-        <Loading />
+        <Error errorMessage={createUserError} />
       </>
     );
-  } else
+  } else if (verifiedUserError !== "") {
     return (
       <>
-        {/* Header--------- */}
-        <ul className="nav border-bottom justify-content-center CartNav">
-          <Link
-            to={"/"}
-            className="btn btn-outline-dark"
-            style={{ position: "absolute", top: "1rem", left: "1rem" }}
-          >
-            back to Home
-          </Link>
-          <li className="nav-item">
-            <a className="nav-link">
-              <i className="bi bi-person-circle"></i> Profile
-            </a>
-          </li>
-        </ul>
-        {/* user details */}
-        <div className="container userDetails">
-          <div className="row d-flex">
-            <div className="col col-12 profile">
-              <h1 className="h1">Your Details</h1>
-              <div className="row">
-                <div className="col-3">
-                  <h1 className="name">Name :</h1>
-                  <h1 className="email">Email :</h1>
-                </div>
-                <div className="col-9">
-                  {verified && (
-                    <>
-                      <h1 className="name">{verifiedUser.userName}</h1>
-                      <h1 className="email">{verifiedUser.userEmail}</h1>{" "}
-                    </>
-                  )}
-                </div>
-                <div className="col-4 border-top my-5 py-4">
-                  <button
-                    className="btn btn-outline-secondary w-25"
-                    onClick={() => {
-                      navigate("/profile/edit");
-                    }}
-                  >
-                    Edit
-                  </button>
-                </div>
-                <div className="col-3 border-top my-5 py-4">
-                  <button
-                    className="btn btn-outline-primary w-75"
-                    onClick={() => {
-                      navigate("/profile/orders");
-                    }}
-                  >
-                    Your Orders
-                  </button>
-                </div>
-                <div className="col-5 border-top my-5 py-4">
-                  <button
-                    onClick={() => {
-                      localStorage.removeItem("token");
-                      setInterval(() => {
-                        window.location.reload();
-                      }, 10);
-                      clearInterval();
-                    }}
-                    className="btn btn-outline-danger w-75"
-                  >
-                    Log-Out
-                  </button>
-                </div>
+        <Error errorMessage={verifiedUserError} />
+      </>
+    );
+  }
+  return (
+    <>
+      {/* Header--------- */}
+      <ul className="nav border-bottom justify-content-center CartNav">
+        <Link
+          to={"/"}
+          className="btn btn-outline-dark"
+          style={{ position: "absolute", top: "1rem", left: "1rem" }}
+        >
+          back to Home
+        </Link>
+        <li className="nav-item">
+          <a className="nav-link">
+            <i className="bi bi-person-circle"></i> Profile
+          </a>
+        </li>
+      </ul>
+      {/* user details */}
+      <div className="container userDetails">
+        <div className="row d-flex">
+          <div className="col col-12 profile">
+            <h1 className="h1">Your Details</h1>
+            <div className="row">
+              <div className="col-3">
+                <h1 className="name">Name :</h1>
+                <h1 className="email">Email :</h1>
+              </div>
+              <div className="col-9">
+                {verified && (
+                  <>
+                    <h1 className="name">{verifiedUser.userName}</h1>
+                    <h1 className="email">{verifiedUser.userEmail}</h1>{" "}
+                  </>
+                )}
+              </div>
+              <div className="col-4 border-top my-5 py-4">
+                <button
+                  className="btn btn-outline-secondary w-25"
+                  onClick={() => {
+                    navigate("/profile/edit");
+                  }}
+                >
+                  Edit
+                </button>
+              </div>
+              <div className="col-3 border-top my-5 py-4">
+                <button
+                  className="btn btn-outline-primary w-75"
+                  onClick={() => {
+                    navigate("/profile/orders");
+                  }}
+                >
+                  Your Orders
+                </button>
+              </div>
+              <div className="col-5 border-top my-5 py-4">
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    setInterval(() => {
+                      window.location.reload();
+                    }, 10);
+                    clearInterval();
+                  }}
+                  className="btn btn-outline-danger w-75"
+                >
+                  Log-Out
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="container mt-5 pt-5">
-          <h6>Following:</h6>
-          {verifiedUser.hasOwnProperty("authorise") &&
-            (verifiedUser.followingSellers.length > 0 ? (
-              verifiedUser.followingSellers.map((item, index) => (
-                <div className="row d-flex border-top pt-4" key={index}>
-                  <div className="col col-10">
-                    <h3
-                      onClick={() => {
-                        navigate(`/sellerShop/${item.sellerId}`);
-                      }}
-                    >
-                      {item.Shopname}
-                    </h3>
-                  </div>
-                  <div className="col col-2">
-                    <button
-                      id={`${item.sellerId}unfollow`}
-                      style={{ visibility: "visible" }}
-                      className="btn btn-outline-danger"
-                      onClick={() => {
-                        document.getElementById(
-                          `${item.sellerId}follow`
-                        ).style.visibility = "visible";
-                        document.getElementById(
-                          `${item.sellerId}unfollow`
-                        ).style.visibility = "hidden";
-                        const jwtoken = JSON.parse(
-                          localStorage.getItem("token")
-                        );
-                        dispatch(
-                          unfollowSellerStart({
-                            userId: verifiedUser.id,
-                            userToken: jwtoken.token,
-                            sellerId: item.sellerId,
-                          })
-                        );
-                      }}
-                    >
-                      Unfollow
-                    </button>
-                    <button
-                      id={item.sellerId + "follow"}
-                      style={{ visibility: "hidden" }}
-                      className="btn btn-outline-danger"
-                      onClick={() => {
-                        document.getElementById(
-                          `${item.sellerId}unfollow`
-                        ).style.visibility = "visible";
-                        document.getElementById(
-                          `${item.sellerId}follow`
-                        ).style.visibility = "hidden";
-                        const jwtoken = JSON.parse(
-                          localStorage.getItem("token")
-                        );
-                        dispatch(
-                          followSellerStart({
-                            userName: verifiedUser.userName,
-                            userId: verifiedUser.id,
-                            userToken: jwtoken.token,
-                            sellerId: item.sellerId,
-                          })
-                        );
-                      }}
-                    >
-                      Undo
-                    </button>
-                  </div>
+      </div>
+      <div className="container mt-5 pt-5">
+        <h6>Following:</h6>
+        {verifiedUser.hasOwnProperty("authorise") &&
+          (verifiedUser.followingSellers.length > 0 ? (
+            verifiedUser.followingSellers.map((item, index) => (
+              <div className="row d-flex border-top pt-4" key={index}>
+                <div className="col col-10">
+                  <h3
+                    onClick={() => {
+                      navigate(`/sellerShop/${item.sellerId}`);
+                    }}
+                  >
+                    {item.Shopname}
+                  </h3>
                 </div>
-              ))
-            ) : (
-              <>
-                <h3>You didn't followed any seller...</h3>
-              </>
-            ))}
-        </div>
-        <ToastContainer />
-      </>
-    );
+                <div className="col col-2">
+                  <button
+                    id={`${item.sellerId}unfollow`}
+                    style={{ visibility: "visible" }}
+                    className="btn btn-outline-danger"
+                    onClick={() => {
+                      document.getElementById(
+                        `${item.sellerId}follow`
+                      ).style.visibility = "visible";
+                      document.getElementById(
+                        `${item.sellerId}unfollow`
+                      ).style.visibility = "hidden";
+                      const jwtoken = JSON.parse(localStorage.getItem("token"));
+                      dispatch(
+                        unfollowSellerStart({
+                          userId: verifiedUser.id,
+                          userToken: jwtoken.token,
+                          sellerId: item.sellerId,
+                        })
+                      );
+                    }}
+                  >
+                    Unfollow
+                  </button>
+                  <button
+                    id={item.sellerId + "follow"}
+                    style={{ visibility: "hidden" }}
+                    className="btn btn-outline-danger"
+                    onClick={() => {
+                      document.getElementById(
+                        `${item.sellerId}unfollow`
+                      ).style.visibility = "visible";
+                      document.getElementById(
+                        `${item.sellerId}follow`
+                      ).style.visibility = "hidden";
+                      const jwtoken = JSON.parse(localStorage.getItem("token"));
+                      dispatch(
+                        followSellerStart({
+                          userName: verifiedUser.userName,
+                          userId: verifiedUser.id,
+                          userToken: jwtoken.token,
+                          sellerId: item.sellerId,
+                        })
+                      );
+                    }}
+                  >
+                    Undo
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <>
+              <h3>You didn't followed any seller...</h3>
+            </>
+          ))}
+      </div>
+      <ToastContainer />
+    </>
+  );
 }

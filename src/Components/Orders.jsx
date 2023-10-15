@@ -8,6 +8,7 @@ import {
   verifyUserStart,
 } from "../Redux/action";
 import Loading from "./Loading";
+import Error from "./Error";
 
 export default function Orders() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export default function Orders() {
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const verifiedUserLoading = useSelector((state) => state.verifiedUserLoading);
+  const verifiedUserError = useSelector((state) => state.verifiedUserError);
 
   //jw token
   const jwtoken = JSON.parse(localStorage.getItem("token"));
@@ -53,6 +55,13 @@ export default function Orders() {
           </li>
         </ul>
         <Loading />
+      </>
+    );
+  }
+  if (verifiedUserError !== "") {
+    return (
+      <>
+        <Error errorMessage={verifiedUserError} />
       </>
     );
   }

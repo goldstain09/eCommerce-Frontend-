@@ -97,7 +97,6 @@ const initialStates = {
   quantityAddedError: "",
 
   //item removed from cart response
-  productRemovedRes: {},
   productRemovedLoading: false,
   productRemovedError: "",
   addToCartLoading: false, // becoz in response of add to cart i updated verified user response so....
@@ -353,7 +352,7 @@ const reducer = (state = initialStates, action) => {
     case REMOVE_FROM_CART_SUCCESS:
       return {
         ...state,
-        productRemovedRes: action.payload,
+        verifiedUser: action.payload,
         productRemovedLoading: false,
         productRemovedError: "",
       };

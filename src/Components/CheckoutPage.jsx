@@ -6,19 +6,25 @@ import PaymentMethod from "./PaymentMethod";
 import { useDispatch, useSelector } from "react-redux";
 import { placeOrderStart } from "../Redux/action";
 import Loading from "./Loading";
+import Error from "./Error";
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const forCheckoutProduct = useSelector((state) => state.forCheckoutProduct);
+  const forCheckoutProductError = useSelector(
+    (state) => state.forCheckoutProductError
+  );
   const forCheckoutProductLoading = useSelector(
     (state) => state.forCheckoutProductLoading
   );
   const addAddressRes = useSelector((state) => state.addAddressRes);
+  const addAddressError = useSelector((state) => state.addAddressError);
   const verifiedUser = useSelector((state) => state.verifiedUser);
   const orderPlacedResponse = useSelector((state) => state.orderPlacedResponse);
   const orderPlacedLoading = useSelector((state) => state.orderPlacedLoading);
+  const orderPlacedError = useSelector((state) => state.orderPlacedError);
 
   useEffect(() => {
     if (orderPlacedResponse.hasOwnProperty("orderPlaced")) {
@@ -68,19 +74,36 @@ export default function CheckoutPage() {
 
   if (orderPlacedLoading || forCheckoutProductLoading) {
     return (
-    <>
-     <ul className="nav border-bottom justify-content-center CheckoutNav">
-        <li className="nav-item">
-          <a className="nav-link">
-            <i className="bi bi-bag-check-fill"></i> Checkout
-          </a>
-        </li>
-      </ul>
-    <Loading />
-    </>
+      <>
+        <ul className="nav border-bottom justify-content-center CheckoutNav">
+          <li className="nav-item">
+            <a className="nav-link">
+              <i className="bi bi-bag-check-fill"></i> Checkout
+            </a>
+          </li>
+        </ul>
+        <Loading />
+      </>
+    );
+  } else if (forCheckoutProductError !== "") {
+    return (
+      <>
+        <Error errorMessage={forCheckoutProductError} />
+      </>
+    );
+  } else if (addAddressError !== "") {
+    return (
+      <>
+        <Error errorMessage={addAddressError} />
+      </>
+    );
+  } else if (orderPlacedError !== "") {
+    return (
+      <>
+        <Error errorMessage={orderPlacedError} />
+      </>
     );
   }
-
   return (
     <>
       {/* Header--------- */}

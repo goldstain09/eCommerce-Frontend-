@@ -12,25 +12,33 @@ import {
   verifyUserStart,
 } from "../Redux/action";
 import Loading from "./Loading";
+import Error from "./Error";
 
 export default function CartPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userIsLoginned = useSelector((state) => state.userIsLoginned);
   const verifiedUser = useSelector((state) => state.verifiedUser);
+  const verifiedUserError = useSelector((state) => state.verifiedUserError);
   const allProductsData = useSelector((state) => state.allProductsData);
+  const allProductsDataError = useSelector(
+    (state) => state.allProductsDataError
+  );
   const allProductsDataLoading = useSelector(
     (state) => state.allProductsDataLoading
   );
   const quantityAdded = useSelector((state) => state.quantityAdded);
+  const quantityAddedError = useSelector((state) => state.quantityAddedError);
   const quantityAddedLoading = useSelector(
     (state) => state.quantityAddedLoading
   );
-  const productRemovedRes = useSelector((state) => state.productRemovedRes);
+  // const productRemovedRes = useSelector((state) => state.productRemovedRes);
+  const productRemovedError = useSelector((state) => state.productRemovedError);
   const productRemovedLoading = useSelector(
     (state) => state.productRemovedLoading
   );
   const addToCartLoading = useSelector((state) => state.addToCartLoading);
+  const addToCArtError = useSelector((state) => state.addToCArtError);
   //jw token
   const jwtoken = JSON.parse(localStorage.getItem("token"));
   useEffect(() => {
@@ -49,12 +57,12 @@ export default function CartPage() {
     }
   }, [quantityAdded]);
   useEffect(() => {
-    if (productRemovedRes.hasOwnProperty("removed")) {
-      if (productRemovedRes.removed) {
-        window.location.reload();
+    if (verifiedUser.hasOwnProperty("removed")) {
+      if (verifiedUser.removed) {
+        setCart(verifiedUser.cart);
       }
     }
-  }, [productRemovedRes]);
+  }, [verifiedUser]);
 
   const [cart, setCart] = useState([]);
   const [currentOne, setCurrentOne] = useState({});
@@ -127,9 +135,37 @@ export default function CartPage() {
         <Loading />
       </>
     );
-  }
-
-  if (userIsLoginned) {
+  } else if (addToCArtError !== "") {
+    return (
+      <>
+        <Error errorMessage={addToCArtError} />
+      </>
+    );
+  } else if (verifiedUserError !== "") {
+    return (
+      <>
+        <Error errorMessage={verifiedUserError} />
+      </>
+    );
+  } else if (allProductsDataError !== "") {
+    return (
+      <>
+        <Error errorMessage={allProductsDataError} />
+      </>
+    );
+  } else if (quantityAddedError !== "") {
+    return (
+      <>
+        <Error errorMessage={quantityAddedError} />
+      </>
+    );
+  } else if (productRemovedError !== "") {
+    return (
+      <>
+        <Error errorMessage={productRemovedError} />
+      </>
+    );
+  } else if (userIsLoginned) {
     return (
       <>
         {/* Header--------- */}

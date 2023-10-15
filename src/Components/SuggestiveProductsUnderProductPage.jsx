@@ -3,10 +3,14 @@ import Card from "./Card";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductsDataStart } from "../Redux/action";
 import Loading from "./Loading";
+import Error from "./Error";
 
 export default function SuggestiveProductsUnderProductPage({ product }) {
   const dispatch = useDispatch();
   const allProductsData = useSelector((state) => state.allProductsData);
+  const allProductsDataError = useSelector(
+    (state) => state.allProductsDataError
+  );
   const allProductsDataLoading = useSelector(
     (state) => state.allProductsDataLoading
   );
@@ -38,6 +42,12 @@ export default function SuggestiveProductsUnderProductPage({ product }) {
           </h1>
         </div>
         <Loading />
+      </>
+    );
+  } else if (allProductsDataError !== "") {
+    return (
+      <>
+        <Error errorMessage={allProductsDataError} />
       </>
     );
   }
