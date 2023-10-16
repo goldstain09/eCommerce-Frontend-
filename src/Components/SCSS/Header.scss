@@ -1,56 +1,368 @@
+$main: #5c0431;
 
-
-.Nav_Header{
-    .container{
-        >.d-flex{
-
-            >a{
-                img{
-                    width: 130px;
-                    height: 40px;
-                }
-            }
-            >form{
-                input{
-                    padding: .6rem;
-                    box-shadow: none;
-                    border: rgba(0, 0, 0, 0.475) 1px solid;
-                    border-radius: 3px;
-                    background:url('./Media/search.png');
-                    background-size: 45px;
-                    
-                    background-repeat: no-repeat;
-                }
-            }
-            >nav{
-                a{
-                    font-size: 1.1rem;
-                }
-            }
-            >.profile_cart{
-                a{
-                    font-size: 1.1rem;
-                }
-                a:hover{
-                    color: red!important;
-                    border-bottom: 2px solid red;
-                }
-            }
-
-
-
-
-
+.header_mobile {
+  display: none;
+}
+.Nav_Header {
+  .container {
+    > .d-flex {
+      > a {
+        img {
+          width: 130px;
+          height: 40px;
         }
-    }
-    .container-fluid{
-        .categories{
-            nav{
-
-                a{
-                    font-size: 1.1rem;
-                }
-            }
+      }
+      > form {
+        display: flex !important;
+        img {
+          width: 10%;
+          border: rgba(0, 0, 0, 0.475) 1px solid;
+          border-right: none;
         }
+        input {
+          width: 80%;
+          padding: 0.6rem;
+          box-shadow: none;
+          border: rgba(0, 0, 0, 0.475) 1px solid;
+          border-left: none;
+          border-radius: 0px;
+          background: none;
+        }
+      }
+      > nav {
+        a {
+          font-size: 1.1rem;
+        }
+      }
+      > .profile_cart {
+        a {
+          font-size: 1.1rem;
+        }
+        a:hover {
+          color: $main !important;
+        }
+      }
     }
+  }
+  .container-fluid {
+    .categories {
+      nav {
+        a {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .Nav_Header {
+    .container {
+      > .d-flex {
+        > a {
+          img {
+            width: 60px;
+            height: 20px;
+            margin-top: 0.3rem;
+          }
+        }
+        > form {
+          img {
+            width: 15%;
+          }
+          input {
+            width: 80%;
+            padding: 0.2rem;
+          }
+        }
+        > nav {
+          margin-top: 0.5rem !important;
+          a {
+            font-size: 0.7rem;
+          }
+        }
+        > .profile_cart {
+          a {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+    .container-fluid {
+      .categories {
+        nav {
+          a {
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .Nav_Header {
+    display: none;
+  }
+  .header_mobile {
+    position: fixed;
+    display: block;
+    top: 0;
+    background: #ffffffde;
+    .row {
+      .col-6 {
+        img {
+          width: 130px;
+          margin-top: 2rem;
+          margin-left: 2rem;
+        }
+        button {
+          position: relative;
+          right: -12rem;
+          margin-top: 1.3rem;
+          background: none;
+          font-size: 2rem;
+          color: $main;
+          border: none;
+        }
+      }
+    }
+    .mobileSearchbar {
+      margin-top: 1rem;
+      padding-bottom: 1rem;
+      > form {
+        display: flex !important;
+        img {
+          width: 6.5%;
+          border: rgba(0, 0, 0, 0.475) 1px solid;
+          border-right: none;
+          margin-left: 0%;
+        }
+        input {
+          width: 80%;
+          padding: 0.6rem;
+          box-shadow: none;
+          border: rgba(0, 0, 0, 0.475) 1px solid;
+          border-left: none;
+          border-radius: 0px;
+          background: none;
+        }
+      }
+    }
+  }
+  .mobileviewCanvas {
+    background: #ffffff43;
+    backdrop-filter: blur(7px);
+    .offcanvas-header {
+      .offcanvas-title {
+        img {
+          width: 130px;
+        }
+      }
+      > button {
+        i {
+          font-size: 2rem !important;
+          color: $main;
+        }
+      }
+      > button:hover {
+        border: solid 1px $main;
+        transition: all 0.3s !important;
+      }
+    }
+    .offcanvas-body {
+      > a {
+        text-decoration: none;
+        display: block;
+        background: none;
+        color: $main !important;
+        font-size: 1.3rem;
+        border: none;
+        width: 90%;
+        text-align: left;
+        padding: 1.2rem;
+        i {
+          color: $main;
+        }
+      }
+      > a:hover {
+        background: #0000001c;
+        transition: all 0.3s;
+        color: $main;
+      }
+      > .accordion {
+        > .accordion-item {
+          background: none !important;
+          > .accordion-header {
+            button {
+              border: none;
+              box-shadow: none;
+              background: none !important;
+              color: $main;
+              font-size: 1.3rem;
+            }
+            button:hover {
+              background: #0000001c !important;
+              transition: all 0.3s;
+              color: $main;
+            }
+          }
+          > .accordion-collapse {
+            > .accordion-body {
+              > a {
+                display: block;
+                padding: 1rem;
+                transition: all 0.2s;
+                font-size: 1.1rem;
+              }
+              > a:hover {
+                background: #00000016;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .header_mobile {
+    .row {
+      .col-6 {
+        img {
+          width: 110px;
+          margin-top: 1rem;
+          margin-left: 1rem;
+        }
+        button {
+          right: -8rem;
+          margin-top: 0.3rem;
+          font-size: 1.7rem;
+        }
+      }
+    }
+    .mobileSearchbar {
+      margin-top: 1rem;
+      padding-bottom: 1rem;
+      > form {
+        img {
+          width: 9.5%;
+          border-right: none;
+        }
+        input {
+          width: 80%;
+          padding: 0.3rem;
+        }
+      }
+    }
+  }
+  .mobileviewCanvas {
+    .offcanvas-header {
+      .offcanvas-title {
+        img {
+          width: 110px;
+        }
+      }
+      > button {
+        i {
+          font-size: 1.7rem !important;
+        }
+      }
+    }
+    .offcanvas-body {
+      > a {
+        font-size: 1.3rem;
+        width: 90%;
+        padding: 1rem;
+      }
+      > .accordion {
+        > .accordion-item {
+          > .accordion-header {
+            button {
+              font-size: 1.3rem;
+            }
+          }
+          > .accordion-collapse {
+            > .accordion-body {
+              > a {
+                padding: 1rem;
+                font-size: 1.1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 396px) {
+  .header_mobile {
+    .row {
+      .col-6 {
+        img {
+          width: 80px;
+          margin-top: 1rem;
+          margin-left: 1rem;
+        }
+        button {
+          right: -4rem;
+          margin-top: 0rem;
+          font-size: 1.7rem;
+        }
+      }
+    }
+    .mobileSearchbar {
+      margin-top: 1rem;
+      padding-bottom: 1rem;
+      > form {
+        img {
+          width: 9.5%;
+        }
+        input {
+          width: 80%;
+          padding: 0.3rem;
+        }
+      }
+    }
+  }
+  .mobileviewCanvas {
+    .offcanvas-header {
+      .offcanvas-title {
+        img {
+          width: 80px;
+        }
+      }
+      > button {
+        i {
+          font-size: 1.7rem !important;
+        }
+      }
+    }
+    .offcanvas-body {
+      > a {
+        font-size: 1.1rem;
+        width: 90%;
+        padding: 1rem;
+      }
+      > .accordion {
+        > .accordion-item {
+          > .accordion-header {
+            button {
+              font-size: 1.1rem;
+            }
+          }
+          > .accordion-collapse {
+            > .accordion-body {
+              > a {
+                padding: 1rem;
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

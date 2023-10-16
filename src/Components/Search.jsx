@@ -30,7 +30,8 @@ export default function Search() {
   const [products, setProducts] = useState({});
   useEffect(() => {
     if (allProductsData.length > 0) {
-      setProducts(allProductsData);
+      const shuffledArray = [...allProductsData].sort(() => Math.random() - 0.5);
+      setProducts(shuffledArray);
     }
   }, [allProductsData]);
   useEffect(() => {
@@ -47,7 +48,8 @@ export default function Search() {
           .includes(searchedProductName.toLowerCase())
       );
       const result = [...searchResult, ...searchResultbyCategory];
-      setProducts(result);
+      const shuffledArray = [...result].sort(() => Math.random() - 0.5);
+      setProducts(shuffledArray);
     }
   }, [searchedProductName.length]);
 

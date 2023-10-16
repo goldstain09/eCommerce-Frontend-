@@ -46,7 +46,8 @@ export default function Home() {
   }, [verifiedUser]);
   useEffect(() => {
     if (allProductsData.length > 0) {
-      setAllProducts(allProductsData);
+      const shuffledArray = [...allProductsData].sort(() => Math.random() - 0.5);
+      setAllProducts(shuffledArray);
     }
   }, [allProductsData]);
 

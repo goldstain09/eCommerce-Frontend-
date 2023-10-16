@@ -5,6 +5,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import CategoriesHeader from "./CategoriesHeader";
 import { useDispatch } from "react-redux";
 import { searchStart } from "../Redux/action";
+import searchicon from "./SCSS/Media/search.png";
 
 export default function Header({ active }) {
   const navigate = useNavigate();
@@ -37,10 +38,11 @@ export default function Header({ active }) {
               className="nav d-flex col-4  me-lg-auto mb-2 justify-content-center mb-md-0"
               onSubmit={search}
             >
+              <img src={searchicon} alt="" />
               <input
                 type="search"
                 className="form-control"
-                placeholder="            Try Shirts, Smartphones, etc..."
+                placeholder=" Try Shirts, Smartphones, etc..."
                 aria-label="Search"
                 autoFocus
                 onClick={() => {
@@ -69,30 +71,212 @@ export default function Header({ active }) {
               </a>
             </nav>
 
-            <div className="d-flex gap-4 col-2 profile_cart">
+            <div className="d-flex gap-3 col-2 profile_cart">
               <NavLink
                 to={"/profile"}
                 title="Hello, to access your account SignUp"
                 className="text-dark text-decoration-none"
               >
                 &nbsp;&nbsp;&nbsp;<i className="bi bi-person"></i>
-                <br />
-                Profile
               </NavLink>
               <NavLink
                 to={"/cart"}
-                title="Hello, to see your cart Login/SignUp"
+                title="Hello, to see your cart!"
                 className="text-dark text-decoration-none"
               >
                 &nbsp;<i className="bi bi-cart3"></i>
-                <br />
-                Cart
               </NavLink>
             </div>
           </div>
         </div>
         <CategoriesHeader />
       </header>
+
+      {/* off canvas and header for mobile view--- */}
+      <header className="container-fluid header_mobile">
+        <div className="row d-flex">
+          <div className="col-6">
+            <img src={logo} alt="" />
+          </div>
+          <div className="col-6">
+            <button
+              className="btn btn-primary"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
+            >
+              <i className="bi bi-chevron-double-right"></i>
+            </button>
+          </div>
+        </div>
+        <div className="row mobileSearchbar">
+          <form
+            className="nav d-flex col-12  me-lg-auto mb-2 justify-content-center mb-md-0"
+            onSubmit={search}
+          >
+            <img src={searchicon} alt="" />
+            <input
+              type="search"
+              className="form-control"
+              placeholder=" Try Shirts, Smartphones, etc..."
+              aria-label="Search"
+              autoFocus
+              onClick={() => {
+                navigate("/search");
+              }}
+              onChange={(e) => {
+                setSearchValue(e.target.value);
+                setEmptyError(false);
+              }}
+            />
+            {emptyError && (
+              <p className="text-danger">Please Enter Something...</p>
+            )}
+          </form>
+        </div>
+      </header>
+
+      <div
+        className="offcanvas offcanvas-start mobileviewCanvas"
+        tabIndex="-1"
+        id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel"
+      >
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="offcanvasExampleLabel">
+            <img src={logo} alt="" />
+          </h5>
+          <button
+            type="button"
+            className="btn text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <i className="bi bi-chevron-double-left"></i>
+          </button>
+        </div>
+        <div className="offcanvas-body">
+          <NavLink
+            to={"/profile"}
+            title="Hello, to access your account SignUp"
+            className="text-dark text-decoration-none"
+          >
+            <i className="bi bi-person"></i> Profile
+          </NavLink>
+          <NavLink
+            to={"/cart"}
+            title="Hello, to see your cart!"
+            className="text-dark text-decoration-none"
+          >
+            <i className="bi bi-cart3"></i> Cart
+          </NavLink>
+          <div className="accordion accordion-flush" id="accordionFlushExample">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="flush-headingOne">
+                <button
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseOne"
+                >
+                  Categories
+                </button>
+              </h2>
+              <div
+                id="flush-collapseOne"
+                className="accordion-collapse collapse"
+                aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div className="accordion-body">
+                  <Link
+                    to={"/category/Men's Clothing"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Men's Clothing
+                  </Link>
+                  <Link
+                    to={"/category/Women's Clothing"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Women's Clothing
+                  </Link>
+                  <Link
+                    to={"/category/Kid's Clothing"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Kid's Clothing
+                  </Link>
+                  <Link
+                    to={"/category/Kid's Accessories"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Kid's Accessories
+                  </Link>
+                  <Link
+                    to={"/category/Jewelleries"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Jewelleries
+                  </Link>
+                  <Link
+                    to={"/category/Footwear"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Footwear
+                  </Link>
+                  <Link
+                    to={"/category/Health Care"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Health Care
+                  </Link>
+                  <Link
+                    to={"/category/Accessories"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Accessories
+                  </Link>
+                  <Link
+                    to={"/category/Watches"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Watches
+                  </Link>
+                  <Link
+                    to={"/category/Electronics"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Electronics
+                  </Link>
+                  <Link
+                    to={"/category/Home Decor"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Home Decor
+                  </Link>
+                  <Link
+                    to={"/category/Grooming"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Grooming
+                  </Link>
+                  <Link
+                    to={"/category/Beauty"}
+                    className="text-dark text-decoration-none"
+                  >
+                    Beauty
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="">Become a Supplier |</a>
+        </div>
+      </div>
     </>
   );
 }

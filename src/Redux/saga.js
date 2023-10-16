@@ -131,6 +131,7 @@ function* userIsLoginnedSaga({ payload }) {
 
 function* getAllProductsDataSaga() {
   try {
+    // throw Error("Unable to fetch Product's Data! Please try again after sometime!");
     const ress = yield getAllProductsData();
     if (ress.hasOwnProperty("DataFound")) {
       switch (ress.DataFound) {
