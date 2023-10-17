@@ -1,43 +1,373 @@
+$main: #5c0431;
 
-.productCard{
+.CourseCard{
+    margin-top: 5rem;
+    border-radius: 0;
+    width: 30%;
     border: none;
     
-    >.card-body{
-        border: 1px solid rgba(0, 0, 0, 0.41);
-        border-radius: 5px;
-        >.card-title{
-            font-family: "Inter", sans-serif;
-            font-size: 1.4rem;
-            color: rgba(0, 0, 0, 0.413);
-            font-weight: 800;
+    img{
+        width: 80%;
+        margin-left: 10%;
+        height: auto;
+    }
+    .card-body{
+        overflow-x: hidden!important;
+        h5{
+            font-size: 2.5rem;
+            font-family: 'Quicksand', sans-serif;
         }
-        >.card-price{
-            font-weight: 900;
-            font-size: 1.2rem;
-            color: black;
-            span{
-                font-size: .8rem;
-                color: rgba(0, 0, 0, 0.253);
-            }
-        }
-        >.btn-light{
-            font-family: "Inter", sans-serif;
-            font-size: .9rem;
-            font-weight: 700;
-            color: grey;
-            display: block;
-        }
-        >.btn-success{
-            display: inline;
-            border-radius: 50px;
-            font-family: "Inter", sans-serif;
-            margin: .9rem .5rem;
+        p{
+            font-family: 'Quicksand', sans-serif;
             
-            +p{
-                font-family: "Inter", sans-serif;
-                display: inline;
-                font-size: .8rem;
+        }
+        .stars{
+            text-align: left!important;
+            transform: translateX(-100%);
+        }
+        .prices{
+            text-align: right!important;
+            transform: translateX(200%);
+            h6{
+                font-size: 1rem;
+                font-family: 'Quicksand', sans-serif;
             }
+        }
+        .students{
+            text-align: left;
+            transform: translate(-100%);
+            h4{
+                font-family: 'Quicksand', sans-serif;
+                font-size: 1rem;
+            }
+        }
+        .btn{
+            position: relative;
+            top: -5rem;
+            background: none;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-family: 'Quicksand', sans-serif;
+            border: $main 1px solid;
+            color: $main;
+        }
+        .btn:hover{
+            background: $main;
+            color: white;
+            border-radius: 25px;
+            box-shadow: 0px 0px 60px $main;
         }
     }
+}
+.CourseCard:hover{
+    border-bottom: $main 2px solid;
+    transition: all .3s;
+    transform: scale(1.03);
+    .stars{
+        transition: all .4s;
+        transform: translateX(0%);
+    }
+    .prices{
+        transition: all .4s;
+        transform: translateX(0%);
+    }
+    .students{
+        transition: all .4s;
+        transform: translate(0%);
+    }
+    .btn{
+        transition: all .4s;
+        top: 0;
+    }
+    .card-body{
+        h5{
+            transition: all .5s;
+            color: $main;
+            text-shadow: 1px 1px 10px $main;
+        }
+    }
+}
+
+
+
+
+
+
+@media (max-width:1400px) {
+    
+.CourseCard{
+    margin-top: 5rem;
+    width: 30%;
+    
+    img{
+        width: 80%;
+        margin-left: 10%;
+    }
+    .card-body{
+        h5{
+            font-size: 2.1rem;
+            
+        }
+        p{
+            font-size: .9rem;
+        }
+        .prices{
+            h6{
+                font-size: .96rem;
+            }
+        }
+        .students{
+            h4{
+                font-size: .96rem;
+            }
+        }
+        .btn{
+            top: -5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+    }
+}
+.CourseCard:hover{
+    .btn{
+        transition: all .4s;
+        top: 0;
+    }
+}
+}
+
+
+@media (max-width:1200px) {
+    
+.CourseCard{
+    margin-top: 5rem;
+    width: 31%;
+    
+    img{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .card-body{
+        h5{
+            font-size: 1.4rem;
+            
+        }
+        p{
+            font-size: .8rem;
+        }
+        .prices{
+            h6{
+                font-size: .9rem;
+                margin-top: .5rem;
+            }
+        }
+        .students{
+            h4{
+                margin-top: 1.5rem;
+                font-size: .9rem;
+            }
+        }
+        .btn{
+            top: -5rem;
+            margin-top: 1.2rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+    }
+}
+.CourseCard:hover{
+    .btn{
+        transition: all .4s;
+        top: 0;
+    }
+}
+}
+
+
+@media (max-width:992px) {
+    
+.CourseCard{
+    margin-top: 4rem;
+    width: 45%!important;
+    
+    img{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .card-body{
+        h5{
+            font-size: 1.2rem;
+            
+        }
+        p{
+            font-size: .75rem;
+        }
+        .prices{
+            h6{
+                font-size: .86rem;
+                margin-top: .5rem;
+            }
+        }
+        .students{
+            h4{
+                margin-top: 1.5rem;
+                font-size: .86rem;
+            }
+        }
+        .btn{
+            top: -6rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: .9rem;
+        }
+    }
+}
+.CourseCard:hover{
+    .btn{
+        transition: all .4s;
+        top: 0;
+    }
+}
+}
+
+@media (max-width:768px) {
+    
+.CourseCard{
+    margin-top: 3.5rem;
+    width: 45%!important;
+    
+    img{
+        width: 98%;
+        margin-left: 1%;
+    }
+    .card-body{
+        h5{
+            font-size: 1.1rem;
+            
+        }
+        p{
+            font-size: .7rem;
+        }
+        .prices{
+            h6{
+                font-size: .8rem;
+                margin-top: .5rem;
+            }
+        }
+        .students{
+            h4{
+                margin-top: 1.3rem;
+                font-size: .8rem;
+            }
+        }
+        .btn{
+            top: -6rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: .8rem;
+        }
+    }
+}
+.CourseCard:hover{
+    .btn{
+        transition: all .4s;
+        top: 0;
+    }
+}
+}
+
+@media (max-width:576px) {
+    
+.CourseCard{
+    margin-top: 3.5rem;
+    width: 90%!important;
+    margin-left: 5%;
+    
+    img{
+        width: 98%;
+        margin-left: 1%;
+    }
+    .card-body{
+        h5{
+            font-size: 1.4rem;
+            
+        }
+        p{
+            font-size: .9rem;
+        }
+        .prices{
+            h6{
+                font-size: .9rem;
+                margin-top: .5rem;
+            }
+        }
+        .students{
+            h4{
+                margin-top: 1.6rem;
+                font-size: .9rem;
+            }
+        }
+        .btn{
+            top: -6rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: .9rem;
+        }
+    }
+}
+.CourseCard:hover{
+    .btn{
+        transition: all .4s;
+        top: 0;
+    }
+}
+}
+
+@media (max-width:394px) {
+    
+.CourseCard{
+    margin-top: 1rem;
+    width: 96%!important;
+    margin-left: 2%;
+    
+    img{
+        width: 98%;
+        margin-left: 1%;
+    }
+    .card-body{
+        h5{
+            font-size: 1.1rem;
+            
+        }
+        p{
+            font-size: .7rem;
+        }
+        .prices{
+            h6{
+                font-size: .75rem;
+                margin-top: .5rem;
+            }
+        }
+        .students{
+            h4{
+                margin-top: 1.3rem;
+                font-size: .75rem;
+            }
+        }
+        .btn{
+            top: -6rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: .7rem;
+        }
+    }
+}
+.CourseCard:hover{
+    .btn{
+        transition: all .4s;
+        top: 0;
+    }
+}
 }

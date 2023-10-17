@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./SCSS/CartPage.scss";
-import img from "../Media/cod.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -27,7 +26,6 @@ export default function CartPage() {
   const allProductsDataLoading = useSelector(
     (state) => state.allProductsDataLoading
   );
-  const quantityAdded = useSelector((state) => state.quantityAdded);
   const quantityAddedError = useSelector((state) => state.quantityAddedError);
   const quantityAddedLoading = useSelector(
     (state) => state.quantityAddedLoading
@@ -50,12 +48,12 @@ export default function CartPage() {
     }
   }, []);
   useEffect(() => {
-    if (quantityAdded.hasOwnProperty("quantityUpdated")) {
-      if (quantityAdded.quantityUpdated) {
-        window.location.reload();
+    if (verifiedUser.hasOwnProperty("quantityUpdated")) {
+      if (verifiedUser.quantityUpdated) {
+        setCart(verifiedUser.cart);
       }
     }
-  }, [quantityAdded]);
+  }, [verifiedUser]);
   useEffect(() => {
     if (verifiedUser.hasOwnProperty("removed")) {
       if (verifiedUser.removed) {

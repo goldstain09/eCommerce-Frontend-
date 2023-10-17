@@ -1,55 +1,272 @@
 .HomeMiddle2 {
+  margin-top: 3rem;
+  .row {
+    height: 30rem;
+    background: url("./Media/homeMiddle2bg.jpg");
+    background-size: 100% 100%;
+
+    .col-lg-4 {
+      > h1 {
+        position: relative !important;
+        text-align: left;
+        top: 8rem;
+        font-family: "Inter", sans-serif;
+        font-weight: 800;
+        color: aliceblue;
+      }
+      > .btn {
+        margin-top: 10rem;
+        font-weight: 600;
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+        color: aliceblue;
+      }
+    }
+    .col-lg-2 {
+      margin-top: 4rem !important;
+      a {
+        position: relative;
+        top: 105%;
+        font-family: "Inter", sans-serif;
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.705);
+        border-radius: 0;
+      }
+    }
+    .col-lg-2:nth-child(2) {
+      height: 20rem;
+      background: url("./Media/homeMiddle2a.jpg");
+      background-size: 100% 100%;
+    }
+    .col-lg-2:nth-child(3) {
+      height: 20rem;
+      background: url("./Media/homeMiddle2b.jpg");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    .col-lg-2:nth-child(4) {
+      height: 20rem;
+      background: url("./Media/homeMiddle2c.jpg");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .HomeMiddle2 {
     margin-top: 3rem;
     .row {
-      height: 30rem;
-      background: url('./Media/homeMiddle2bg.jpg');
-      background-size: 100% 100%;
-      
-      .col-lg-4{
-        > h1 {
-          position: relative !important;
-          text-align: left;
-          top:8rem;
-          font-family: "Inter", sans-serif;
-          font-weight: 800;
-          color: aliceblue;
-        }
-        >.btn{margin-top: 10rem;
-          font-weight: 600;
-          padding: 1rem 2rem;
-          font-size: 1.4rem;
-          color: aliceblue;
+      height: 27rem;
 
+      .col-lg-4 {
+        > h1 {
+          top: 7rem;
+        }
+        > .btn {
+          margin-top: 8rem;
+          padding: .4rem 1.2rem;
+          font-size: 1.2rem;
         }
       }
       .col-lg-2 {
-          margin-top: 4rem !important;
-          a {
-            position: relative;
-            top: 105%;
-            font-family: "Inter", sans-serif;
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.705);
-            border-radius: 0;
-          }
+        margin-top: 3rem !important;
+        a {
+          top: 105%;
+          font-size: 1rem;
+        }
       }
       .col-lg-2:nth-child(2) {
-        height: 20rem;
-        background: url("./Media/homeMiddle2a.jpg");
-        background-size: 100% 100%;
+        height: 17rem;
       }
       .col-lg-2:nth-child(3) {
-        height: 20rem;
-        background: url("./Media/homeMiddle2b.jpg");
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
+        height: 17rem;
       }
       .col-lg-2:nth-child(4) {
-        height: 20rem;
-        background: url("./Media/homeMiddle2c.jpg");
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
+        height: 17rem;
       }
     }
   }
-  
+}
+
+@media (max-width: 1200px) {
+  .HomeMiddle2 {
+    margin-top: 3rem;
+    .row {
+      height: 23rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 5rem;
+        }
+        > .btn {
+          margin-top: 6rem;
+          padding: .4rem 1.2rem;
+          font-size: 1.2rem;
+        }
+      }
+      .col-lg-2 {
+        margin-top: 2rem !important;
+        a {
+          top: 105%;
+          font-size: .9rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 15rem;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 15rem;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 15rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .HomeMiddle2 {
+    height: 53rem;
+    margin-top: 3rem;
+    .row {
+      height: 53rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 1rem;
+        }
+        > .btn {
+          margin-top: 1rem;
+          padding: .4rem 1rem;
+          font-size: 1rem;
+        }
+      }
+      .col-lg-2 {
+        margin-top: .5rem !important;
+        a {
+          top: 105%;
+          font-size: .9rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 15rem;width: 30%;margin-left: 30%;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 15rem;width: 30%;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 15rem;width: 30%;margin-left: 30%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .HomeMiddle2 {
+    height: 53rem;
+    margin-top: 3rem;
+    .row {
+      height: 53rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 1rem;
+        }
+        > .btn {
+          margin-top: 1rem;
+          padding: .4rem 1rem;
+          font-size: 1rem;
+        }
+      }
+      .col-lg-2 {
+        margin-top: 0rem !important;
+        a {
+          top: 105%;
+          font-size: .9rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 15rem;width: 30%;margin-left: 20%;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 15rem;width: 30%;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 15rem;width: 30%;margin-left: 20%;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .HomeMiddle2 {
+    height: 50rem;
+    margin-top: 3rem;
+    .row {
+      height: 52rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 1rem;
+        }
+        > .btn {
+          margin-top: 1rem;
+          padding: .4rem 1rem;
+          font-size: .9rem;
+        }
+      }
+      .col-lg-2 {
+        a {
+          top: 105%;
+          font-size: .7rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 15rem;width: 30%;margin-left: 20%;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 15rem;width: 30%;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 15rem;width: 30%;margin-left: 20%;
+      }
+    }
+  }
+}
+
+@media (max-width: 394px) {
+  .HomeMiddle2 {
+    height: 67rem;
+    margin-top: 3rem;
+    .row {
+      height: 67rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 1rem;
+        }
+        > .btn {
+          margin-top: 1rem;
+          padding: .4rem 1rem;
+          font-size: .9rem;
+        }
+      }
+      .col-lg-2 {
+        a {
+          top: 105%;
+          font-size: .7rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 15rem;width: 60%;margin-left: 20%;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 15rem;width: 60%;margin-left: 20%;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 15rem;width: 60%;margin-left: 20%;
+      }
+    }
+  }
+}

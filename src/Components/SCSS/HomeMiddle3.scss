@@ -57,3 +57,222 @@
     }
   }
   
+
+  
+@media (max-width: 1400px) {
+  .HomeMiddle3 {
+    margin-top: 3rem;
+    .row {
+      height: 27rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 7rem;
+        }
+        > .btn {
+          margin-top: 8rem;
+          padding: .4rem 1.2rem;
+          font-size: 1.2rem;
+        }
+      }
+      .col-lg-2 {
+        margin-top: 3rem !important;
+        a {
+          top: 105%;
+          font-size: 1rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 17rem;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 17rem;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 17rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .HomeMiddle3 {
+    margin-top: 3rem;
+    .row {
+      height: 23rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 5rem;
+        }
+        > .btn {
+          margin-top: 6rem;
+          padding: .4rem 1.2rem;
+          font-size: 1.2rem;
+        }
+      }
+      .col-lg-2 {
+        margin-top: 2rem !important;
+        a {
+          top: 105%;
+          font-size: .9rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 15rem;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 15rem;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 15rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .HomeMiddle3 {
+    height: 53rem;
+    margin-top: 3rem;
+    .row {
+      height: 53rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 1rem;
+        }
+        > .btn {
+          margin-top: 1rem;
+          padding: .4rem 1rem;
+          font-size: 1rem;
+        }
+      }
+      .col-lg-2 {
+        margin-top: .5rem !important;
+        a {
+          top: 105%;
+          font-size: .9rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 15rem;width: 30%;margin-left: 30%;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 15rem;width: 30%;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 15rem;width: 30%;margin-left: 30%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .HomeMiddle3 {
+    height: 53rem;
+    margin-top: 3rem;
+    .row {
+      height: 53rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 1rem;
+        }
+        > .btn {
+          margin-top: 1rem;
+          padding: .4rem 1rem;
+          font-size: 1rem;
+        }
+      }
+      .col-lg-2 {
+        margin-top: 0rem !important;
+        a {
+          top: 105%;
+          font-size: .9rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 15rem;width: 30%;margin-left: 20%;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 15rem;width: 30%;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 15rem;width: 30%;margin-left: 20%;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .HomeMiddle3 {
+    height: 50rem;
+    margin-top: 3rem;
+    .row {
+      height: 52rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 1rem;
+        }
+        > .btn {
+          margin-top: 1rem;
+          padding: .4rem 1rem;
+          font-size: .9rem;
+        }
+      }
+      .col-lg-2 {
+        a {
+          top: 105%;
+          font-size: .7rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 15rem;width: 30%;margin-left: 20%;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 15rem;width: 30%;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 15rem;width: 30%;margin-left: 20%;
+      }
+    }
+  }
+}
+
+@media (max-width: 394px) {
+  .HomeMiddle3 {
+    height: 67rem;
+    margin-top: 3rem;
+    .row {
+      height: 67rem;
+
+      .col-lg-4 {
+        > h1 {
+          top: 1rem;
+        }
+        > .btn {
+          margin-top: 1rem;
+          padding: .4rem 1rem;
+          font-size: .9rem;
+        }
+      }
+      .col-lg-2 {
+        a {
+          top: 105%;
+          font-size: .7rem;
+        }
+      }
+      .col-lg-2:nth-child(2) {
+        height: 15rem;width: 60%;margin-left: 20%;
+      }
+      .col-lg-2:nth-child(3) {
+        height: 15rem;width: 60%;margin-left: 20%;
+      }
+      .col-lg-2:nth-child(4) {
+        height: 15rem;width: 60%;margin-left: 20%;
+      }
+    }
+  }
+}

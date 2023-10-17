@@ -1,13 +1,13 @@
-#homeH1{
+#homeH1 {
   text-align: center;
   font-size: 4rem;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   margin-top: 6rem;
   color: rgba(0, 0, 0, 0.579);
-  span{
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 2rem;
-      color: orange;
+  span {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 2rem;
+    color: orange;
   }
 }
 .HomeMiddle1 {
@@ -31,12 +31,12 @@
       }
     }
     .col-lg-3 {
-        margin-top: 11rem !important;
-        a {
-          font-family: "Inter", sans-serif;
-          font-size: 1.3rem;
-          color: rgba(0, 0, 0, 0.705);
-        }
+      margin-top: 11rem !important;
+      a {
+        font-family: "Inter", sans-serif;
+        font-size: 1.3rem;
+        color: rgba(0, 0, 0, 0.705);
+      }
     }
     .col-lg-5:nth-child(2) {
       height: 30rem;
@@ -56,3 +56,279 @@
   }
 }
 
+@media (max-width: 1400px) {
+  #homeH1 {
+    font-size: 3rem;
+    margin-top: 6rem;
+    span {
+      font-size: 1.5rem;
+    }
+  }
+  .HomeMiddle1 {
+    margin-top: 4rem;
+    .row {
+      > h1 {
+        top: 3rem;
+        right: 2rem;
+      }
+
+      .col-lg-5 {
+        margin-top: 2rem !important;
+        a {
+          font-size: 1rem !important;
+        }
+      }
+      .col-lg-3 {
+        margin-top: 10rem !important;
+        a {
+          font-size: 1rem;
+        }
+      }
+      .col-lg-5:nth-child(2) {
+        height: 27rem;
+        background-size: 100% 90%;
+      }
+      .col-lg-3:nth-child(3) {
+        background-size: 100% 100%;
+      }
+      .col-lg-3:nth-child(4) {
+        background-size: 100% 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  #homeH1 {
+    font-size: 2.4rem;
+    margin-top: 6rem;
+    span {
+      font-size: 1.3rem;
+    }
+  }
+  .HomeMiddle1 {
+    margin-top: 4rem;
+    .row {
+      > h1 {
+        top: 2rem;
+        right: 1rem;
+      }
+
+      .col-lg-5 {
+        margin-top: 1rem !important;
+        a {
+          font-size: 1rem !important;
+        }
+      }
+      .col-lg-3 {
+        margin-top: 7rem !important;
+        a {
+          font-size: 1rem;
+        }
+      }
+      .col-lg-5:nth-child(2) {
+        height: 23rem;
+        background-size: 100% 90%;
+      }
+    }
+  }
+}
+@media (max-width: 992px) {
+  #homeH1 {
+    font-size: 2rem;
+    margin-top: 5rem;
+    span {
+      font-size: 1rem;
+    }
+  }
+  .HomeMiddle1 {
+    margin-top: 4rem;
+    .row {
+      > h1 {
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .col-lg-5 {
+        margin-top: 3rem !important;
+        a {
+          h2 {
+            font-size: 1.1rem !important;
+          }
+        }
+      }
+      .col-lg-3 {
+        margin-top: 1rem !important;
+        a {
+          h2 {
+            font-size: 1.1rem !important;
+          }
+        }
+      }
+      .col-lg-5:nth-child(2) {
+        width: 90%;
+        margin-left: 5%;
+        background-size: 100% 100%;
+      }
+      .col-lg-3:nth-child(3) {
+        width: 90%;
+        height: 23rem;
+        margin-left: 5%;
+        background-size: 100% 100%;
+      }
+      .col-lg-3:nth-child(4) {
+        width: 90%;
+        height: 23rem;
+        margin-left: 5%;
+        background-size: 100% 100%;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  #homeH1 {
+    font-size: 1.5rem;
+    margin-top: 5rem;
+    span {
+      font-size: 0.9rem;
+    }
+  }
+  .HomeMiddle1 {
+    margin-top: 3rem;
+    .row {
+      > h1 {
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .col-lg-5 {
+        margin-top: 1.5rem !important;
+        a {
+          h2 {
+            font-size: 1rem !important;
+          }
+        }
+      }
+      .col-lg-3 {
+        margin-top: 1rem !important;
+        a {
+          h2 {
+            font-size: 1rem !important;
+          }
+        }
+      }
+      .col-lg-5:nth-child(2) {
+        width: 90%;
+        margin-left: 5%;
+        background-size: 100% 100%;
+      }
+      .col-lg-3:nth-child(3) {
+        width: 90%;
+        margin-left: 5%;
+        background-size: 100% 100%;
+      }
+      .col-lg-3:nth-child(4) {
+        width: 90%;
+        margin-left: 5%;
+        background-size: 100% 100%;
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  #homeH1 {
+    font-size: 1rem;
+    margin-top: 5rem;
+    span {
+      font-size: 0.7rem;
+    }
+  }
+  .HomeMiddle1 {
+    margin-top: 2rem;
+    .row {
+      > h1 {
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .col-lg-5 {
+        margin-top: 1rem !important;
+        a {
+          h2 {
+            font-size: 0.9rem !important;
+          }
+        }
+      }
+      .col-lg-3 {
+        margin-top: 1rem !important;
+        a {
+          h2 {
+            font-size: 0.9rem !important;
+          }
+        }
+      }
+      .col-lg-5:nth-child(2) {
+        width: 90%;
+        margin-left: 5%;
+      }
+      .col-lg-3:nth-child(3) {
+        width: 90%;
+        margin-left: 5%;
+      }
+      .col-lg-3:nth-child(4) {
+        width: 90%;
+        margin-left: 5%;
+      }
+    }
+  }
+}
+@media (max-width: 394px) {
+  #homeH1 {
+    font-size: 0.8rem;
+    margin-top: 4rem;
+    span {
+      font-size: 0.3rem;
+    }
+  }
+  .HomeMiddle1 {
+    margin-top: 2rem;
+    .row {
+      > h1 {
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .col-lg-5 {
+        margin-top: 1rem !important;
+        a {
+          h2 {
+            font-size: 0.9rem !important;
+          }
+        }
+      }
+      .col-lg-3 {
+        margin-top: 1rem !important;
+        a {
+          h2 {
+            font-size: 0.9rem !important;
+          }
+        }
+      }
+      .col-lg-5:nth-child(2) {
+        width: 95%;
+        height: 20rem;
+        margin-left: 2.5%;
+      }
+      .col-lg-3:nth-child(3) {
+        height: 20rem;
+        width: 95%;
+        margin-left: 2.5%;
+      }
+      .col-lg-3:nth-child(4) {
+        height: 20rem;
+        width: 95%;
+        margin-left: 2.5%;
+      }
+    }
+  }
+}

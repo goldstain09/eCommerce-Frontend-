@@ -92,7 +92,6 @@ const initialStates = {
   searchedProductError: "",
 
   // quantity added successfully response
-  quantityAdded: {},
   quantityAddedLoading: false,
   quantityAddedError: "",
 
@@ -331,7 +330,7 @@ const reducer = (state = initialStates, action) => {
     case SET_QUANTITY_SUCCESS:
       return {
         ...state,
-        quantityAdded: action.payload,
+        verifiedUser: action.payload,
         quantityAddedLoading: false,
         quantityAddedError: "",
       };
