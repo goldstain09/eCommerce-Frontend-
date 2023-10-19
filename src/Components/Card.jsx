@@ -1,6 +1,6 @@
 import React from "react";
 import "./SCSS/Card.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Card({ item, onProductPage }) {
   const navigate = useNavigate();
