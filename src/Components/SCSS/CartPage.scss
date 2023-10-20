@@ -69,3 +69,53 @@ $main: #5c0431;
     }
   }
 }
+
+
+
+@media (max-width:394px) {
+  
+.CartItemsDiv {
+  > .row {
+    > .col-xl-6 {
+      margin-top: 0.6rem;
+      padding: 1rem;
+
+      > .row {
+          .col-2 {
+            img{
+                width: 100%;
+            }
+            .edittt{
+              font-size: .8rem;
+            }
+          }
+          .col-8 {
+          .title {
+            font-size: .8rem;
+          }
+          .price {
+            font-size: .9rem;
+          }
+          .text {
+            font-size: .8rem;
+          }
+          .qty {
+            font-size: .8rem;
+          }
+          button{
+            font-size: .8rem;
+          }
+        }
+      }
+    }
+    > .col-xl-5 {
+      margin-top: 1rem;
+      padding: 1rem;
+    }
+    .soldby{
+      font-size: .7rem;
+    }
+  }
+}
+
+}

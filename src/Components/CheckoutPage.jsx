@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { placeOrderStart } from "../Redux/action";
 import Loading from "./Loading";
 import Error from "./Error";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CheckoutPage() {
   const navigate = useNavigate();
@@ -29,8 +31,21 @@ export default function CheckoutPage() {
   useEffect(() => {
     if (orderPlacedResponse.hasOwnProperty("orderPlaced")) {
       if (orderPlacedResponse.orderPlaced) {
-        navigate("/profile/orders");
-        window.location.reload();
+        toast.success("Hurrey!! Order Placed!", {
+          theme: "dark",
+          autoClose: 1000,
+          position: "top-center",
+          draggable: true,
+          pauseOnHover: true,
+        });
+        setInterval(() => {
+          navigate("/profile/orders");
+          setInterval(() => {
+            window.location.reload();
+          }, 1000);
+          clearInterval();
+        }, 1000);
+        clearInterval();
       }
     }
   }, [orderPlacedResponse]);
@@ -226,6 +241,7 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }

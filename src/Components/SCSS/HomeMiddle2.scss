@@ -4,6 +4,7 @@
     height: 30rem;
     background: url("./Media/homeMiddle2bg.jpg");
     background-size: 100% 100%;
+    background-attachment: fixed;
 
     .col-lg-4 {
       > h1 {
@@ -167,6 +168,7 @@
     height: 53rem;
     margin-top: 3rem;
     .row {
+      background-size:cover;
       height: 53rem;
 
       .col-lg-4 {

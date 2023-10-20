@@ -1,6 +1,7 @@
 $main: #5c0431;
 
 .userDetails {
+  font-family: "Raleway", sans-serif;
   margin-top: 2rem;
   border: 1px solid rgba(0, 0, 0, 0.123);
   border-radius: 5px;
@@ -8,13 +9,14 @@ $main: #5c0431;
 
   > .row {
     .profile {
-        .h1{
-    font-family: 'Raleway', sans-serif;
-font-size: 2rem;
-color: $main;
-        }
+      .h1 {
+        font-family: "Raleway", sans-serif;
+        font-size: 2rem;
+        color: $main;
+      }
       > .row {
         font-family: "Raleway", sans-serif;
+        margin-top: 2rem;
 
         > .col-3 {
           .name {
@@ -26,19 +28,195 @@ color: $main;
             color: rgba(57, 57, 57, 0.773);
           }
         }
-        > .col-9 {
+        > .col-6 {
           .name {
             color: rgba(57, 57, 57, 0.773);
             font-size: 1.5rem;
+            word-wrap: break-word;
           }
           .email {
             color: rgba(57, 57, 57, 0.773);
             font-size: 1.5rem;
+            word-wrap: break-word;
+          }
+        }
+        >.col-2{
+          .editbtn{
+            background:none;
+            font-size: 2rem;
+            border: none;
+          }
+          .editbtn:hover{
+            color: $main;
+          }
+        }
+        >.col-4{
+          button{
+            width: auto;
+            font-size: 2rem;
+            border: none;
+            color: $main;
+          }
+          button:hover{
+            background: none;
+            color: $main;
+          }
+        }
+        >.col-8{
+          text-align: end;
+          button{
+            width: auto;
+            border: none;
+            font-size: 2rem;
+          }
+          button:hover{
+            background: none;
+            color: $main;
           }
         }
       }
     }
-    .userOrders {
+  }
+}
+
+.following{
+  font-family: "Raleway", sans-serif;
+  margin-bottom: 4rem;
+
+  button{
+    font-size: 1.5rem;
+    border: none;
+  }
+  button:hover{
+    background: none;
+    color: $main;
+  }
+
+}
+
+
+
+@media (max-width:992px) {
+  
+.userDetails {
+  margin-top: 2rem;
+  height: fit-content!important;
+  padding: 1rem;
+
+  > .row {
+    .profile {
+      .h1 {
+        font-size: 1.5rem;
+      }
+      > .row {
+        margin-top: 2rem;
+
+        > .col-3 {
+          .name {
+            font-size: 1.2rem;
+          }
+          .email {
+            font-size: 1.2rem;
+          }
+        }
+        > .col-6 {
+          .name {
+            font-size: 1.2rem;
+          }
+          .email {
+            font-size: 1.2rem;
+          }
+        }
+        >.col-2{
+          .editbtn{
+            font-size: 1.2rem;
+          }
+        }
+        >.col-4{
+          button{
+            font-size: 1.2rem;
+          }
+        }
+        >.col-8{
+          button{
+            font-size: 1.2rem;
+          }
+        }
+      }
     }
   }
+}
+
+.following{
+  margin-bottom: 4rem;
+
+  button{
+    font-size: 1.5rem;
+  }
+}
+}
+
+
+
+@media (max-width:394px) {
+  
+.userDetails {
+  margin-top: 4rem;
+  height: fit-content!important;
+  padding: .4rem;
+
+  > .row {
+    .profile {
+      .h1 {
+        font-size: 1.2rem;
+      }
+      > .row {
+        margin-top: 2rem;
+
+        > .col-3 {
+          .name {
+            font-size: 1rem;
+          }
+          .email {
+            font-size: 1rem;
+          }
+        }
+        > .col-6 {
+          .name {
+            font-size: 1rem;
+          }
+          .email {
+            font-size: 1rem;
+          }
+        }
+        >.col-2{
+          .editbtn{
+            font-size: 1rem;
+          }
+        }
+        >.col-4{
+          button{
+            font-size: 1rem;
+          }
+        }
+        >.col-8{
+          button{
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.following{
+  margin-bottom: 4rem;
+
+  h3{
+    font-size: 1.2rem;
+  }
+  button{
+    font-size: 1.3rem;
+  }
+}
 }

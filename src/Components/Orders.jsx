@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import img from "../Media/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import './SCSS/Order.scss';
 import {
   getAllProductsDataStart,
   userIsLogginnedStart,
@@ -83,18 +83,18 @@ export default function Orders() {
             </a>
           </li>
         </ul>
-        <div className="container mt-5">
+        <div className="container mt-5 orderss">
           <div className="row border-bottom pt-3 pb-5">
             <div className="col-10">
               <h5 className="h5 text-secondary">Orders</h5>
             </div>
-            <div className="col-2">
+            <div className="col-2 statuss">
               <h5 className="h5 text-secondary">Status</h5>
             </div>
           </div>
           {orders.length > 0 ? (
             orders.map((item, index) => (
-              <div className="row border-bottom pt-3" key={index}>
+              <div className="row pt-3" key={index}>
                 <div className="col-3">
                   <img
                     onClick={() => {
@@ -112,7 +112,7 @@ export default function Orders() {
                       navigate(`/product/${item._id}`);
                     }}
                   >
-                    {item.productTitle.split(" ").slice(0, 8).join(" ")} ...
+                    {item.productTitle.split(" ").slice(0, 5).join(" ")} ...
                   </h5>
                   <h5 className="h5 text-secondary">${item.productPrice}</h5>
                 </div>

@@ -5,6 +5,7 @@ import { createUserStart } from "../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 import Error from "./Error";
+import "./SCSS/UserSignup.scss";
 
 export default function UserSignup({
   setAlreadyHaveAccount,
@@ -117,7 +118,7 @@ export default function UserSignup({
           </a>
         </li>
       </ul>
-      <form onSubmit={signUp} className="container mt-5 ">
+      <form onSubmit={signUp} className="container mt-5 Signup">
         <div className="row justify-content-center">
           <div className="col-7">
             <input
@@ -199,6 +200,7 @@ export default function UserSignup({
           <div className="col-7">
             <button
               type="submit"
+              style={{ background: "#5c0431", border: "1px solid #5c0431" }}
               className="form-control btn mt-3 w-100 d-block btn-success"
             >
               Sign Up
@@ -212,6 +214,8 @@ export default function UserSignup({
         <h6 className="h6 text-center mt-5 pt-5">
           Already have account?{" "}
           <button
+            className="btn btn-primary"
+            style={{ background: "#5c0431", border: "1px solid #5c0431" }}
             onClick={() => {
               setAlreadyHaveAccount(true);
             }}

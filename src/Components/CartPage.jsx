@@ -200,7 +200,7 @@ export default function CartPage() {
                       </div>
                       <div className="col col-8">
                         <h1 className="title">
-                          {item.productTitle.split(" ").slice(0, 6).join(" ")}
+                          {item.productTitle.split(" ").slice(0, 4).join(" ")}
                           ...
                         </h1>
                         <h1 className="price">${item.productPrice}</h1>
@@ -230,7 +230,7 @@ export default function CartPage() {
                           data-bs-toggle="offcanvas"
                           data-bs-target="#offcanvasRight"
                           aria-controls="offcanvasRight"
-                          className="btn btn-outline-secondary"
+                          className="btn btn-outline-secondary edittt"
                           onClick={() => {
                             setCurrentOne(item);
                             setQuantity(item.quantity);
@@ -242,12 +242,12 @@ export default function CartPage() {
                     </div>
                     <div className="row border-top">
                       <div className="col col-9">
-                        <h6 className="h6 mt-3 text-secondary">
+                        <h6 className="h6 mt-3 text-secondary soldby">
                           Sold by: {item.shopName}
                         </h6>
                       </div>
                       <div className="col col-3">
-                        <h6 className="h6 mt-3 text-secondary">
+                        <h6 className="h6 mt-3 text-secondary soldby">
                           Free Delivery
                         </h6>
                       </div>

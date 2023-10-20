@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { searchStart } from "../Redux/action";
 import searchicon from "./SCSS/Media/search.png";
 
-export default function Header({ active }) {
+export default function Header({ active, ShopPage }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -89,7 +89,9 @@ export default function Header({ active }) {
             </div>
           </div>
         </div>
-        <CategoriesHeader />
+        {
+          ShopPage ? (<></>) : (<><CategoriesHeader /></>)
+        }
       </header>
 
       {/* off canvas and header for mobile view--- */}

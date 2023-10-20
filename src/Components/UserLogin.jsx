@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "./Loading";
 import Error from "./Error";
+import "./SCSS/UserLogin.scss";
 
 export default function UserLogin({ setnotHasJWToken }) {
   const dispatch = useDispatch();
@@ -113,7 +114,7 @@ export default function UserLogin({ setnotHasJWToken }) {
           </a>
         </li>
       </ul>
-      <form className="container mt-5" onSubmit={login}>
+      <form className="container mt-5 Login" onSubmit={login}>
         <div className="row justify-content-center">
           <div className="col-7">
             <input
@@ -153,6 +154,7 @@ export default function UserLogin({ setnotHasJWToken }) {
           <div className="col-7">
             <button
               type="submit"
+              style={{ background: "#5c0431", border: "1px solid #5c0431" }}
               className="form-control btn mt-3 w-100 d-block btn-success"
             >
               Login

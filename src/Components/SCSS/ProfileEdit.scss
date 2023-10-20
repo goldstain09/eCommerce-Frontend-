@@ -1,0 +1,39 @@
+$main: #5c0431;
+
+.profileEdit {
+  .row {
+    .col-7 {
+      label {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .profileEdit {
+    .row {
+      .col-7 {
+        label {
+          margin-top: 1rem;
+        }
+        width: 90%;
+        margin-left: 5%;
+      }
+    }
+  }
+}
+
+@media (max-width: 394px) {
+  .profileEdit {
+    .row {
+      .col-7 {
+        label {
+          margin-top: 1rem;
+        }
+        width: 96%;
+        margin-left: 2%;
+      }
+    }
+  }
+}

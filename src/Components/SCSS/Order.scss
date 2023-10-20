@@ -1,0 +1,119 @@
+$main: #5c0431;
+
+.orderss{
+  font-family: "Quicksand", sans-serif;
+    .row{
+        margin-top: 1.5rem;
+        .col-3{
+            img{
+                width: 80%!important;
+            }
+        }
+    }
+}
+
+
+@media (max-width:992px) {
+    
+.orderss{
+    font-family: "Quicksand", sans-serif;
+      .row{
+          .col-3{
+              img{
+                  width: 80%!important;
+              }
+          }
+          .col-7{
+              h5{
+                  font-size:1.1rem;
+              }
+          }
+          .col-2{
+              button {
+                font-size: .8rem;
+              }
+          }
+      }
+  }
+}
+
+
+
+
+@media (max-width:768px) {
+    
+    .orderss{
+        font-family: "Quicksand", sans-serif;
+          .row{
+              .col-3{
+                  img{
+                      width: 80%!important;
+                  }
+              }
+              .col-7{
+                  h5{
+                      font-size:.9rem;
+                  }
+              }
+              .col-2{
+                  button {
+                    font-size: .6rem;
+                  }
+              }
+          }
+      }
+    }
+
+@media (max-width:576px) {
+    
+    .orderss{
+        font-family: "Quicksand", sans-serif;
+          .row{
+              .col-3{
+                  img{
+                      width: 80%!important;
+                  }
+              }
+              .col-7{
+                  h5{
+                      font-size:.6rem;
+                  }
+              }
+              .col-2{
+                  button {
+                    font-size: .5rem;
+                  }
+              }
+          }
+      }
+    }
+
+@media (max-width:394px) {
+    
+    .orderss{
+        font-family: "Quicksand", sans-serif;
+          .row{
+            .statuss{
+                display: none;
+            }
+              .col-3{
+                  img{
+                      width: 80%!important;
+                  }
+              }
+              .col-7{
+                  width: 70%;
+                  h5{
+                      font-size:.6rem;
+                  }
+              }
+              .col-2{
+                width: 70%;
+                margin-left: 25%;
+                  button {
+                    font-size: .5rem;
+                  }
+              }
+          }
+      }
+    }

@@ -198,9 +198,9 @@ export default function ProductPage() {
               </div>
             </div>
             {/* -------------- */}
-            <div className="col-xl-1 col-lg-1 col-md-0 col-0"></div>
+            <div className="col-xl-1 col-lg-1 col-md-0 col-0 mt-sm-4 mt-md-4 mt-4"></div>
             {/* -------------- */}
-            <div className="col col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 textDiv">
+            <div className="col col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 textDiv ">
               <div className="titleDiv">
                 <h1 className="title">{product.productTitle}</h1>
                 <h1 className="price">${product.productPrice}</h1>

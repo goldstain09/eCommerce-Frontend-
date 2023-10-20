@@ -98,7 +98,7 @@ export default function AddressForm() {
   } else
     return (
       <>
-        <form onSubmit={add}>
+        <form onSubmit={add} className="Addresss">
           <h2 className="h2">Add Your Address</h2>
           <div className="row d-flex">
             <div className="mb-3 w-50">

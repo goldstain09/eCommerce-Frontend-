@@ -1,0 +1,320 @@
+$main: #5c0431;
+
+.ShopPage {
+  font-family: "Quicksand", sans-serif;
+  .row {
+    .shopImagediv {
+      height: 13.5rem;
+      overflow: hidden;
+      img {
+        height: auto;
+      }
+    }
+    .shopLogodiv {
+      margin-top: 4rem;
+      img {
+        width: 100%;
+      }
+    }
+    .shopInfodiv {
+      margin-top: 4rem;
+      .row {
+        .col-6 {
+          .card-title {
+            font-size: 3rem;
+          }
+          .card-text {
+            text-align: end;
+            font-size: 1.5rem;
+          }
+        }
+        .followbtndiv {
+          text-align: end;
+          .follow {
+            margin-top: 1.3rem;
+            font-size: 1.5rem;
+            background: $main;
+            border: 1px solid $main;
+          }
+          .unfollow {
+            margin-top: 1.3rem;
+            font-size: 1.5rem;
+            background: none;
+            border: 1px solid $main;
+            color: $main;
+          }
+          .unfollow:hover {
+            background: $main !important;
+            color: white;
+          }
+          .loadbtn {
+            font-size: 1.5rem;
+            margin-top: 1.3rem;
+            border: 1px solid $main;
+            width: 6rem;
+            background: none;
+          }
+        }
+        .col-3 {
+          .card-title {
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+  }
+  .shopproducts {
+    margin-top: 8rem !important;
+  }
+}
+
+
+@media (max-width:1200px) {
+    
+.ShopPage {
+    .row {
+      .shopImagediv {
+        margin-top: 3rem;
+        height: 13.5rem;
+        img {
+          height: auto
+        }
+      }
+      .shopLogodiv {
+        margin-top: 4rem;
+        img {
+          height: 2.5rem;
+          width: 120%!important;
+        }
+      }
+      .shopInfodiv {
+        margin-top: 3.8rem;
+        .row {
+          .col-6 {
+            .card-title {
+              font-size: 2.5rem;
+            }
+            .card-text {
+              font-size: 1.2rem;
+            }
+          }
+          .followbtndiv {
+            .follow {
+              margin-top: 1.3rem;
+              font-size: 1.2rem;
+            }
+            .unfollow {
+              margin-top: 1.3rem;
+              font-size: 1.2rem;
+            }
+            .loadbtn {
+              font-size: 1.2rem;
+              margin-top: 1.3rem;
+            }
+          }
+          .col-3 {
+            .card-title {
+              margin-top: 2rem;
+              font-size: 1.3rem;
+            }
+          }
+        }
+      }
+    }
+    .shopproducts {
+      margin-top: 8rem !important;
+    }
+  }
+  
+}
+
+
+@media (max-width:768px) {
+    
+.ShopPage {
+    .row {
+      .shopImagediv {
+        margin-top: 8rem;
+        height: 11.5rem;
+        img {
+          height: auto
+        }
+      }
+      .shopLogodiv {
+        margin-top: 4rem;
+        img {
+          height: 2rem;
+          width: 190%!important;
+        }
+      }
+      .shopInfodiv {
+        margin-top: 3.8rem;
+        .row {
+          .col-6 {
+            .card-title {
+              font-size: 2rem;
+            }
+            .card-text {
+              font-size: 1rem;
+            }
+          }
+          .followbtndiv {
+            .follow {
+              margin-top: 1.3rem;
+              font-size: 1rem;
+            }
+            .unfollow {
+              margin-top: 1.3rem;
+              font-size: 1rem;
+            }
+            .loadbtn {
+              margin-top: 1.3rem;
+              .loader{
+                width: 4.5rem!important;
+              }
+
+            }
+          }
+          .col-3 {
+            .card-title {
+              margin-top: 2rem;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+    .shopproducts {
+      margin-top: 8rem !important;
+    }
+  }
+  
+}
+
+
+@media (max-width:576px) {
+    
+.ShopPage {
+    .row {
+      .shopImagediv {
+        margin-top: 6rem;
+        height: 9.5rem;
+        img {
+          height: auto
+        }
+      }
+      .shopLogodiv {
+        margin-top: 4rem;
+        img {
+          height: 1.5rem;
+          width: 1.5rem!important;
+        }
+      }
+      .shopInfodiv {
+        margin-top: 3.8rem;
+        .row {
+          .col-6 {
+            .card-title {
+              font-size: 1.5rem;
+            }
+            .card-text {
+              font-size: .8rem;
+            }
+          }
+          .followbtndiv {
+            .follow {
+              margin-top: 1.3rem;
+              font-size: .8rem;
+            }
+            .unfollow {
+              margin-top: 1.3rem;
+              font-size: .8rem;
+            }
+            .loadbtn {
+              font-size: .8rem;
+              margin-top: 1.3rem;
+              .loader{
+                width: 4rem!important;
+              }
+            }
+          }
+          .col-3 {
+            .card-title {
+              margin-top: 2rem;
+              font-size: .8rem;
+            }
+          }
+        }
+      }
+    }
+    .shopproducts {
+      margin-top: 8rem !important;
+    }
+  }
+  
+}
+
+
+@media (max-width:394px) {
+    
+.ShopPage {
+    .row {
+      .shopImagediv {
+        margin-top: 6rem;
+        height: 9.5rem;
+        img {
+          height: auto
+        }
+      }
+      .shopLogodiv {
+        display: none;
+        margin-top: 4rem;
+        img {
+          height: 1.2rem;
+          width: 1.2rem!important;
+        }
+      }
+      .shopInfodiv {
+        margin-top: 4.3rem;
+        .row {
+          .col-6 {
+            .card-title {
+              font-size: 1rem;
+            }
+            .card-text {
+              font-size: .59rem;
+            }
+          }
+          .followbtndiv {
+            .follow {
+              margin-top: 1.3rem;
+              font-size: .59rem;
+            }
+            .unfollow {
+              margin-top: 1.3rem;
+              font-size: .59rem;
+            }
+            .loadbtn {
+              margin-top: 1.3rem;
+              .loader{
+                font-size: .59rem;
+                // width: 1rem!important;
+                size: 2rem;
+              }
+            }
+          }
+          .col-3 {
+            .card-title {
+              margin-top: 2rem;
+              font-size: .59rem;
+            }
+          }
+        }
+      }
+    }
+    .shopproducts {
+      margin-top: 8rem !important;
+    }
+  }
+  
+}

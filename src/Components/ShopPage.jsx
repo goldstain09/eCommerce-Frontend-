@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import shop from "../Media/shop.jpg";
 import { useParams } from "react-router-dom";
+import "./SCSS/ShopPage.scss";
 import {
   followSellerStart,
   getAllProductsDataStart,
@@ -15,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
 import Loading from "./Loading";
 import Error from "./Error";
+import { BeatLoader } from "react-spinners";
 
 export default function ShopPage() {
   const params = useParams();
@@ -107,15 +109,17 @@ export default function ShopPage() {
   }
   return (
     <>
-      <Header />
-      <div className="container mt-5 pt-5">
-        <div className="row d-flex mt-5 pt-5">
-          <div className="col col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-            <img src={shop} alt="" className="w-100" />
+      <Header ShopPage={true} />
+      <div className="container ShopPage">
+        <div className="row d-flex border-bottom pb-5">
+          <div className="col col-12 shopImagediv">
+            <img src={shop} alt="Shop" className="w-100" />
           </div>
-          <div className="col col-1"></div>
+          <div className="col col-1 shopLogodiv">
+            <img src={shop} alt="Shop" className="w-100" />
+          </div>
           {sellerShopData.hasOwnProperty("ShopName") ? (
-            <div className="col col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+            <div className="col col-11 shopInfodiv">
               <div className="row d-flex">
                 <div className="col col-6">
                   <h3 className="card-title">{sellerShopData.ShopName}</h3>
@@ -125,22 +129,34 @@ export default function ShopPage() {
                 </div>
               </div>
               <div className="row d-flex">
-                <div className="col col-6">
+                <div className="col col-3">
                   <h3 className="card-title">
-                    Followers:
+                    Products: {sellerShopData.sellerProducts.length}
+                  </h3>
+                </div>
+                <div className="col col-3">
+                  <h3 className="card-title d-flex">
+                    Followers:{" "}
                     {followSellerLoading || unfollowSellerloading ? (
-                      <>Loading</>
+                      <>
+                        ---
+                      </>
                     ) : (
                       followers
                     )}
                   </h3>
                 </div>
-                <div className="col col-6">
+                <div className="col col-6 followbtndiv">
                   {followSellerLoading || unfollowSellerloading ? (
-                    <> Loading</>
+                    <>
+                      {" "}
+                      <button className="loadbtn btn btn-primary">
+                        <BeatLoader color="#5c0431" className="loader"/>
+                      </button>
+                    </>
                   ) : UserIsNotFollowing ? (
                     <button
-                      className="btn-primary btn"
+                      className="btn-primary btn follow"
                       onClick={() => {
                         if (userIsLoginned) {
                           const jwtoken = JSON.parse(
@@ -163,7 +179,7 @@ export default function ShopPage() {
                     </button>
                   ) : (
                     <button
-                      className="btn-outline-primary btn"
+                      className="btn-outline-primary btn unfollow"
                       onClick={() => {
                         if (userIsLoginned) {
                           const jwtoken = JSON.parse(
@@ -193,7 +209,7 @@ export default function ShopPage() {
             </div>
           )}
         </div>
-        <div className="row d-flex mt-5">
+        <div className="row d-flex shopproducts">
           <h3 className="card-title">Products:</h3>
           {sellerShopData.hasOwnProperty("sellerProducts") &&
           sellerShopData.sellerProducts.length > 0 ? (

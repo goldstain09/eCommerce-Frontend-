@@ -129,7 +129,7 @@ export default function Profile() {
                 <h1 className="name">Name :</h1>
                 <h1 className="email">Email :</h1>
               </div>
-              <div className="col-9">
+              <div className="col-6">
                 {verified && (
                   <>
                     <h1 className="name">{verifiedUser.userName}</h1>
@@ -137,27 +137,27 @@ export default function Profile() {
                   </>
                 )}
               </div>
-              <div className="col-4 border-top my-5 py-4">
+              <div className="col-2">
                 <button
-                  className="btn btn-outline-secondary w-25"
+                  className="btn btn-outline-secondary w-100 editbtn"
                   onClick={() => {
                     navigate("/profile/edit");
                   }}
                 >
-                  Edit
+                  <i class="bi bi-pencil-square"></i>
                 </button>
               </div>
-              <div className="col-3 border-top my-5 py-4">
+              <div className="col-4 border-top my-5 py-4">
                 <button
-                  className="btn btn-outline-primary w-75"
+                  className="btn btn-outline-primary"
                   onClick={() => {
                     navigate("/profile/orders");
                   }}
                 >
-                  Your Orders
+                  <i class="bi bi-bag-check"></i> Orders
                 </button>
               </div>
-              <div className="col-5 border-top my-5 py-4">
+              <div className="col-8 border-top my-5 py-4">
                 <button
                   onClick={() => {
                     localStorage.removeItem("token");
@@ -166,16 +166,16 @@ export default function Profile() {
                     }, 10);
                     clearInterval();
                   }}
-                  className="btn btn-outline-danger w-75"
+                  className="btn btn-outline-danger"
                 >
-                  Log-Out
+                  <i class="bi bi-box-arrow-right"></i> Log-Out
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="container mt-5 pt-5">
+      <div className="container mt-5 pt-5 following">
         <h6>Following:</h6>
         {verifiedUser.hasOwnProperty("authorise") &&
           (verifiedUser.followingSellers.length > 0 ? (
@@ -212,7 +212,7 @@ export default function Profile() {
                       );
                     }}
                   >
-                    Unfollow
+                    <i class="bi bi-person-x"></i>
                   </button>
                   <button
                     id={item.sellerId + "follow"}

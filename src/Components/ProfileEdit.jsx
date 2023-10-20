@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { editUserStart } from "../Redux/action";
 import Loading from "./Loading";
 import Error from "./Error";
+import './SCSS/ProfileEdit.scss';
 
 export default function ProfileEdit() {
   const navigate = useNavigate();
@@ -127,7 +128,7 @@ export default function ProfileEdit() {
           </a>
         </li>
       </ul>
-      <form className="container mt-5 pt-5" onSubmit={submitChanges}>
+      <form className="container mt-5 pt-5 profileEdit" onSubmit={submitChanges} >
         <div className="row justify-content-center">
           <div className="col-7">
             <label className="form-label">Name</label>
