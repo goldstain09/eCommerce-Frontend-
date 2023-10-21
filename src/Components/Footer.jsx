@@ -8,19 +8,19 @@ export default function Footer() {
         <div className="container">
           <div className="row">
             <div className="col col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-              <h1>Non-Stop Shopping on Seesho</h1>
+              <h1>Non-Stop Shopping on Seesho (Demo Footer)</h1>
               <span>
                 Trusted by more than 1 Crore Indians Cash on Delivery | Free
                 Delivery
               </span>
             </div>
-            <div className="col col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2">
+            <div className="col col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 pt-4">
               <p>Careers</p>
               <p>Become a Supplier</p>
               <p>Hall of Fame</p>
               <p>Sitemap</p>
             </div>
-            <div className="col col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2">
+            <div className="col col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 pt-4">
               <p>Legal and Policies</p>
               <p>Seesho Tech Blog</p>
               <p>Notices and Return</p>

@@ -155,3 +155,159 @@
     }
   }
 }
+
+
+
+@media (max-width:576px) {
+  .sellerDiv {
+    margin-top: 2rem;
+    padding: .6rem!important;
+
+    > .row {
+      margin-top: .3rem;
+      > .shopicon {
+        i {
+          font-size: 1.4rem!important;
+        }
+      }
+      > .col-7 {
+        > h1 {
+          padding-top: 0.5rem;
+          font-size: 1.3rem;
+        }
+      }
+
+      > .col-3 {
+        padding-top: .4rem!important;
+        > .btn-danger {
+          width: auto!important;
+          font-size: .8rem!important;
+        }
+      }
+    }
+    >h4{
+        margin-left: 2rem;
+        padding-top: 2rem;
+    }
+  }
+  .advantagesDiv{
+    margin-top: 2rem;
+    padding: 1rem;
+
+    >.row{
+
+        .col-4{
+
+            .icon{
+                img{
+                    width: 2rem!important;
+                }
+            }
+            .text{
+                padding-top: .2rem;
+                padding-left: .5rem!important;
+                p{
+                    font-size: .8rem!important;
+                }
+            }
+        }
+    }
+  }
+  .Trust{
+    margin-top: 2rem;
+    padding: 1rem;
+
+    >.row{
+
+        .col-2{
+            img{
+                width: 65%;
+            }
+            
+        }
+    }
+  }
+}
+
+
+
+
+@media (max-width:394px) {
+  .sellerDiv {
+    margin-top: 2rem;
+    padding: .6rem!important;
+
+    > .row {
+      margin-top: .3rem;
+      > .shopicon {
+        width: 18%;
+        i {
+          font-size: 1.4rem!important;
+        }
+      }
+      > .col-7 {
+        width: 80%;
+        > h1 {
+          padding-top: 0.5rem;
+          font-size: 1.3rem;
+        }
+      }
+
+      > .col-3 {
+        width: 50%;
+        padding-top: .4rem!important;
+        margin-left: 16%!important;
+        > .btn-danger {
+          width: auto!important;
+          font-size: .8rem!important;
+        }
+      }
+    }
+    >h4{
+        margin-left: 2rem;
+        padding-top: 2rem;
+    }
+  }
+  .advantagesDiv{
+    margin-top: 2rem;
+    padding: .4rem!important;
+
+    >.row{
+
+        .col-4{
+
+            .icon{
+                img{
+                    width: 1.5rem!important;
+                }
+            }
+            .text{
+                padding-top: .2rem;
+                padding-left: .4rem!important;
+                p{
+                    font-size: .7rem!important;
+                }
+            }
+        }
+    }
+  }
+  .Trust{
+    margin-top: 2rem;
+    padding: .4rem!important;
+
+    >.row{
+
+        .col-2{
+            img{
+                width: 100%!important;
+            }
+        }
+        .col-10{
+          h4{
+            margin-top: .5rem;
+            font-size: .8rem;
+          }
+        }
+    }
+  }
+}

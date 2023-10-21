@@ -229,7 +229,7 @@ export default function ProductPage() {
                       to={`/sellerShop/${product.sellerId}`}
                       className="btn btn-danger"
                     >
-                      ViewShop
+                      View Shop
                     </Link>
                   </div>
                 </div>
