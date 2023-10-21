@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import './SCSS/Order.scss';
+import "./SCSS/Order.scss";
 import {
   getAllProductsDataStart,
   userIsLogginnedStart,
@@ -50,7 +50,7 @@ export default function Orders() {
         <ul class="nav border-bottom justify-content-center CartNav">
           <li class="nav-item">
             <a class="nav-link">
-              <i class="bi bi-person-circle"></i> Your Orders
+              <i class="bi bi-person-circle"></i> Orders
             </a>
           </li>
         </ul>
@@ -73,25 +73,35 @@ export default function Orders() {
           <Link
             to={"/profile"}
             className="btn btn-outline-dark"
-            style={{ position: "absolute", top: "1rem", left: "1rem" }}
+            style={{
+              position: "absolute",
+              top: "1rem",
+              left: "1rem",
+              border: "none",
+              fontSize: "1.4rem",
+              zIndex: "1",
+            }}
           >
-            back to Profile
+            <i class="bi bi-box-arrow-left"></i>{" "}
           </Link>
           <li class="nav-item">
             <a class="nav-link">
-              <i class="bi bi-person-circle"></i> Your Orders
+              <i class="bi bi-person-circle"></i> Orders
             </a>
           </li>
         </ul>
         <div className="container mt-5 orderss">
-          <div className="row border-bottom pt-3 pb-5">
-            <div className="col-10">
-              <h5 className="h5 text-secondary">Orders</h5>
+          {orders.length > 0 && (
+            <div className="row border-bottom pt-3 pb-5">
+              <div className="col-10">
+                <h5 className="h5 text-secondary">Orders</h5>
+              </div>
+              <div className="col-2 statuss">
+                <h5 className="h5 text-secondary">Status</h5>
+              </div>
             </div>
-            <div className="col-2 statuss">
-              <h5 className="h5 text-secondary">Status</h5>
-            </div>
-          </div>
+          )}
+
           {orders.length > 0 ? (
             orders.map((item, index) => (
               <div className="row pt-3" key={index}>
@@ -125,7 +135,11 @@ export default function Orders() {
             ))
           ) : (
             <>
-              <h1>No Orders placed...</h1>
+              <div className="orderEmpty">
+                <Link to={"/"} className="btn btn-primary">
+                  <i className="bi bi-cart3"></i> Return to Shop!
+                </Link>
+              </div>
             </>
           )}
         </div>

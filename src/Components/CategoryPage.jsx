@@ -162,7 +162,7 @@ export default function CategoryPage() {
                     <Card key={index} item={item} />
                   ))
                 ) : (
-                  <>Unable to fetch data please retry...</>
+                  <> <Error errorMessage={allProductsDataError} /></>
                 )}
               </div>
             </div>

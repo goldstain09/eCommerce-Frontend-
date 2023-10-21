@@ -76,7 +76,7 @@ export default function Profile() {
         <ul className="nav border-bottom justify-content-center CartNav">
           <li className="nav-item">
             <a className="nav-link">
-              <i className="bi bi-person-circle"></i> Profile
+              <i className="bi bi-person-circle"></i> DashBoard
             </a>
           </li>
         </ul>
@@ -109,13 +109,20 @@ export default function Profile() {
         <Link
           to={"/"}
           className="btn btn-outline-dark"
-          style={{ position: "absolute", top: "1rem", left: "1rem" }}
+          style={{
+            position: "absolute",
+            top: "1rem",
+            left: "1rem",
+            border: "none",
+            fontSize: "1.4rem",
+            zIndex: "1",
+          }}
         >
-          back to Home
+          <i class="bi bi-box-arrow-left"></i>{" "}
         </Link>
         <li className="nav-item">
           <a className="nav-link">
-            <i className="bi bi-person-circle"></i> Profile
+            <i className="bi bi-person-circle"></i> DashBoard
           </a>
         </li>
       </ul>

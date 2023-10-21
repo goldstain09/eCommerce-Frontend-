@@ -136,7 +136,7 @@ function* getAllProductsDataSaga() {
     if (ress.hasOwnProperty("DataFound")) {
       switch (ress.DataFound) {
         case true:
-          yield delay(500);
+          yield delay(1500);
           yield put(getAllProductsDataSuccess(ress.data));
           break;
         case false:

@@ -30,7 +30,9 @@ export default function Search() {
   const [products, setProducts] = useState({});
   useEffect(() => {
     if (allProductsData.length > 0) {
-      const shuffledArray = [...allProductsData].sort(() => Math.random() - 0.5);
+      const shuffledArray = [...allProductsData].sort(
+        () => Math.random() - 0.5
+      );
       setProducts(shuffledArray);
     }
   }, [allProductsData]);
@@ -84,9 +86,11 @@ export default function Search() {
           position: "absolute",
           top: "10rem",
           left: "1rem",
+          border: "none",
+          fontSize: "1.4rem",
         }}
       >
-        Back
+        <i class="bi bi-box-arrow-left"></i>
       </Link>
 
       <div className="container" style={{ marginTop: "12rem" }}>

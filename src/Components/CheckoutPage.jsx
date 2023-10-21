@@ -83,6 +83,13 @@ export default function CheckoutPage() {
       if (addAddressRes.addressAdded) {
         // setShowPlaceOrderBtn(true);
         setAddressISAddedAlready(false);
+        toast.success("Addess is added!", {
+          theme: "dark",
+          autoClose: 1000,
+          position: "top-center",
+          draggable: true,
+          pauseOnHover: true,
+        });
       }
     }
   }, [addAddressRes]);
@@ -122,13 +129,20 @@ export default function CheckoutPage() {
   return (
     <>
       {/* Header--------- */}
-      <ul className="nav border-bottom justify-content-center CheckoutNav">
+      <ul className="nav border-bottom justify-content-center CartNav">
         <Link
           to={"/cart"}
           className="btn btn-outline-dark"
-          style={{ position: "absolute", top: "1rem", left: "1rem" }}
+          style={{
+            position: "absolute",
+            top: "1rem",
+            left: "1rem",
+            border: "none",
+            fontSize: "1.4rem",
+            zIndex: "1",
+          }}
         >
-          back to Cart
+          <i className="bi bi-box-arrow-left"></i>{" "}
         </Link>
         <li className="nav-item">
           <a className="nav-link">
@@ -163,7 +177,7 @@ export default function CheckoutPage() {
             ))
           ) : (
             <>
-              <h1>No Products in cart for checkout...</h1>
+              <Error errorMessage={forCheckoutProductError} />
             </>
           )}
           {/* address */}

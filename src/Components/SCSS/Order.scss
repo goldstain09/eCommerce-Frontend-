@@ -13,6 +13,21 @@ $main: #5c0431;
 }
 
 
+.orderEmpty {
+    text-align: center;
+    padding-top: 30rem;
+    height: 57rem;
+    background: url("./Media/noOrders.jpg");
+    background-size: 100% 100%;
+    .btn {
+      background: $main;
+      border: $main 1px solid;
+      color: white;
+      border-radius: 0;
+    }
+  }
+  
+
 @media (max-width:992px) {
     
 .orderss{
@@ -117,3 +132,61 @@ $main: #5c0431;
           }
       }
     }
+
+
+
+
+    
+@media (max-width: 1400px) {
+    .orderEmpty {
+      padding-top: 24rem;
+      height: 45rem;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .orderEmpty {
+      padding-top: 20rem;
+      height: 37rem;
+    }
+  }
+  @media (max-width: 992px) {
+    .orderEmpty {
+      background: url('./Media/noOrdersmob.jpg');
+      background-size: 100% 100%;
+      padding-top: 26rem;
+      height: 40rem;
+    }
+  }
+  @media (max-width: 768px) {
+    .orderEmpty {
+      background: url('./Media/noOrdersmob.jpg');
+      background-size: 100% 100%;
+      padding-top: 17rem;
+      height: 25rem;
+    }
+  }
+  @media (max-width: 576px) {
+    .orderEmpty {
+      background: url('./Media/noOrdersmob2.jpg');
+      background-size: 100% 100%;
+      padding-top: 24rem;
+      height: 35rem;
+    }
+   
+    
+  }
+  @media (max-width: 394px) {
+    .orderEmpty {
+      background: url('./Media/noOrdersmob2.jpg');
+      background-size: 100% 100%;
+      padding-top: 17rem;
+      height: 27rem;
+      .btn{
+        font-size: .6rem;
+      }
+    }
+    
+    
+  }
+  

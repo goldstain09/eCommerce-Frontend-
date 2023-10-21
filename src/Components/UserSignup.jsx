@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 import Error from "./Error";
 import "./SCSS/UserSignup.scss";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UserSignup({
   setAlreadyHaveAccount,
@@ -21,9 +23,16 @@ export default function UserSignup({
     if (createUserRes.hasOwnProperty("token")) {
       setUserSignUpData(SignUpData);
       setpassword1("");
+      toast.success("Your Account is ready!", {
+        theme: "dark",
+        autoClose: 1000,
+        position: "top-center",
+        draggable: true,
+        pauseOnHover: true,
+      });
       setInterval(() => {
         window.location.reload();
-      }, 10);
+      }, 1000);
       clearInterval();
     }
   }, [createUserRes]);
@@ -108,9 +117,16 @@ export default function UserSignup({
         <Link
           to={"/"}
           className="btn btn-outline-dark"
-          style={{ position: "absolute", top: "1rem", left: "1rem" }}
+          style={{
+            position: "absolute",
+            top: "1rem",
+            left: "1rem",
+            border: "none",
+            fontSize: "1.4rem",
+            zIndex: "1",
+          }}
         >
-          back to Home
+          <i class="bi bi-box-arrow-left"></i>
         </Link>
         <li className="nav-item">
           <a className="nav-link">
@@ -224,6 +240,8 @@ export default function UserSignup({
           </button>
         </h6>
       )}
+
+      <ToastContainer />
     </>
   );
 }

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addAddressStart } from "../Redux/action";
-import Loading from "./Loading";
-import Error from "./Error";
+import { SpinnerDiamond } from "spinners-react";
 
 export default function AddressForm() {
   const dispatch = useDispatch();
@@ -92,7 +91,9 @@ export default function AddressForm() {
   if (addAddressLoading) {
     return (
       <>
-        <Loading />
+        <div className="text-center " style={{ marginTop: "8rem",marginBottom:'8rem' }}>
+          <SpinnerDiamond size={80} thickness={180} speed={180}  color="#5c0431" secondaryColor="rgba(0, 0, 0, 1)" />
+        </div>
       </>
     );
   } else

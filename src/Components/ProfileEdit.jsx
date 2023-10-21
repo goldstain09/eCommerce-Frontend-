@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { editUserStart } from "../Redux/action";
 import Loading from "./Loading";
 import Error from "./Error";
-import './SCSS/ProfileEdit.scss';
+import "./SCSS/ProfileEdit.scss";
 
 export default function ProfileEdit() {
   const navigate = useNavigate();
@@ -118,17 +118,27 @@ export default function ProfileEdit() {
         <Link
           to={"/profile"}
           className="btn btn-outline-dark"
-          style={{ position: "absolute", top: "1rem", left: "1rem" }}
+          style={{
+            position: "absolute",
+            top: "5rem",
+            left: "1rem",
+            border: "none",
+            fontSize: "1.4rem",
+            zIndex: "1",
+          }}
         >
-          back to Profile
+          <i class="bi bi-box-arrow-left"></i>{" "}
         </Link>
         <li className="nav-item">
           <a className="nav-link">
-            <i className="bi bi-person-circle"></i> Edit Your Details Carefully
+            <i className="bi bi-person-circle"></i> Personal Info!
           </a>
         </li>
       </ul>
-      <form className="container mt-5 pt-5 profileEdit" onSubmit={submitChanges} >
+      <form
+        className="container mt-5 pt-5 profileEdit"
+        onSubmit={submitChanges}
+      >
         <div className="row justify-content-center">
           <div className="col-7">
             <label className="form-label">Name</label>

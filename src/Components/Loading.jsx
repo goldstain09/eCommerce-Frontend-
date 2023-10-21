@@ -1,25 +1,18 @@
-import React from 'react';
-import './SCSS/Loading.scss';
+import React from "react";
+import "./SCSS/Loading.scss";
+import { SpinnerDotted } from "spinners-react";
 
 export default function Loading() {
-  return (<>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div>
-    <div>Loading</div></>
-  )
+  return (
+    <>
+      <div className="text-center " style={{marginTop:'40vh'}}>
+        <SpinnerDotted
+          size={190}
+          thickness={180}
+          speed={180}
+          color="#5c0431"
+        />
+      </div>
+    </>
+  );
 }

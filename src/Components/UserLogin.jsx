@@ -104,9 +104,16 @@ export default function UserLogin({ setnotHasJWToken }) {
         <Link
           to={"/"}
           className="btn btn-outline-dark"
-          style={{ position: "absolute", top: "1rem", left: "1rem" }}
+          style={{
+            position: "absolute",
+            top: "1rem",
+            left: "1rem",
+            border: "none",
+            fontSize: "1.4rem",
+            zIndex: "1",
+          }}
         >
-          back to Home
+          <i class="bi bi-box-arrow-left"></i>
         </Link>
         <li className="nav-item">
           <a className="nav-link">

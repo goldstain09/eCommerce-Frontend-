@@ -12,6 +12,20 @@ $main: #5c0431;
   }
 }
 
+.cartEmpty {
+  text-align: center;
+  padding-top: 30rem;
+  height: 57rem;
+  background: url("./Media/cartPage.jpg");
+  background-size: 100% 100%;
+  .btn {
+    background: $main;
+    border: $main 1px solid;
+    color: white;
+    border-radius: 0;
+  }
+}
+
 .CartItemsDiv {
   .h5 {
     span {
@@ -24,19 +38,19 @@ $main: #5c0431;
       border: 1px solid rgba(0, 0, 0, 0.123);
       border-radius: 5px;
       padding: 1rem;
-      height: fit-content!important;
+      height: fit-content !important;
 
       > .row {
-          .col-2 {
-            img{
-                width: 98%;
-            }
-            .btn{
-                border: none !important;
-                border-radius: 0;
-            }
+        .col-2 {
+          img {
+            width: 98%;
           }
-          .col-8 {
+          .btn {
+            border: none !important;
+            border-radius: 0;
+          }
+        }
+        .col-8 {
           .title {
             font-size: 1rem;
             font-weight: 500;
@@ -70,52 +84,121 @@ $main: #5c0431;
   }
 }
 
+@media (max-width: 394px) {
+  .CartItemsDiv {
+    > .row {
+      > .col-xl-6 {
+        margin-top: 0.6rem;
+        padding: 1rem;
 
-
-@media (max-width:394px) {
-  
-.CartItemsDiv {
-  > .row {
-    > .col-xl-6 {
-      margin-top: 0.6rem;
-      padding: 1rem;
-
-      > .row {
+        > .row {
           .col-2 {
-            img{
-                width: 100%;
+            img {
+              width: 100%;
             }
-            .edittt{
-              font-size: .8rem;
+            .edittt {
+              font-size: 0.8rem;
             }
           }
           .col-8 {
-          .title {
-            font-size: .8rem;
-          }
-          .price {
-            font-size: .9rem;
-          }
-          .text {
-            font-size: .8rem;
-          }
-          .qty {
-            font-size: .8rem;
-          }
-          button{
-            font-size: .8rem;
+            .title {
+              font-size: 0.8rem;
+            }
+            .price {
+              font-size: 0.9rem;
+            }
+            .text {
+              font-size: 0.8rem;
+            }
+            .qty {
+              font-size: 0.8rem;
+            }
+            button {
+              font-size: 0.8rem;
+            }
           }
         }
       }
-    }
-    > .col-xl-5 {
-      margin-top: 1rem;
-      padding: 1rem;
-    }
-    .soldby{
-      font-size: .7rem;
+      > .col-xl-5 {
+        margin-top: 1rem;
+        padding: 1rem;
+      }
+      .soldby {
+        font-size: 0.7rem;
+      }
     }
   }
 }
 
+@media (max-width: 1400px) {
+  .cartEmpty {
+    padding-top: 24rem;
+    height: 45rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .cartEmpty {
+    padding-top: 20rem;
+    height: 37rem;
+  }
+}
+@media (max-width: 992px) {
+  .cartEmpty {
+    background: url('./Media/cartPagemob.jpg');
+    background-size: 100% 100%;
+    padding-top: 26rem;
+    height: 40rem;
+  }
+}
+@media (max-width: 768px) {
+  .cartEmpty {
+    background: url('./Media/cartPagemob.jpg');
+    background-size: 100% 100%;
+    padding-top: 17rem;
+    height: 25rem;
+  }
+}
+@media (max-width: 576px) {
+  .cartEmpty {
+    background: url('./Media/cartPagemob2.jpg');
+    background-size: 100% 100%;
+    padding-top: 24rem;
+    height: 35rem;
+  }
+  .CartNav {
+    > li {
+      a {
+        font-size: 2rem;
+        color: $main;
+      }
+      a:hover {
+        color: $main;
+      }
+    }
+  }
+  
+}
+@media (max-width: 394px) {
+  .cartEmpty {
+    background: url('./Media/cartPagemob2.jpg');
+    background-size: 100% 100%;
+    padding-top: 17rem;
+    height: 27rem;
+    .btn{
+      font-size: .6rem;
+    }
+  }
+  .CartNav {
+    > li {
+      a {
+        font-size: 1.5rem;
+        color: $main;
+      }
+      a:hover {
+        color: $main;
+      }
+    }
+  }
+  
 }

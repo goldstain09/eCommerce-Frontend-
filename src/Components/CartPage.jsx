@@ -171,12 +171,19 @@ export default function CartPage() {
           <Link
             to={"/"}
             className="btn btn-outline-dark"
-            style={{ position: "absolute", top: "1rem", left: "1rem" }}
+            style={{
+              position: "absolute",
+              top: "1rem",
+              left: "1rem",
+              border: "none",
+              fontSize: "1.4rem",
+              zIndex: "1",
+            }}
           >
-            back to Home
+            <i class="bi bi-box-arrow-left"></i>{" "}
           </Link>
           <li className="nav-item">
-            <a className="nav-link">
+            <a className="nav-link h1">
               <i className="bi bi-basket"></i> Cart
             </a>
           </li>
@@ -408,7 +415,11 @@ export default function CartPage() {
           </>
         ) : (
           <>
-            <h1>Cart is Empty...</h1>
+            <div className="cartEmpty">
+              <Link to={"/"} className="btn btn-primary">
+                <i className="bi bi-cart3"></i> Return to Shop!
+              </Link>
+            </div>
           </>
         )}
       </>
