@@ -59,17 +59,24 @@ export default function Profile() {
   const [alreadyHaveAccount, setAlreadyHaveAccount] = useState(false);
 
   if (nothasJWToken) {
-    return (
-      <>
-        <UserSignup
-          setAlreadyHaveAccount={setAlreadyHaveAccount}
-          alreadyHaveAccount={alreadyHaveAccount}
-        />
-        {alreadyHaveAccount && (
-          <UserLogin setnotHasJWToken={setnotHasJWToken} />
-        )}
-      </>
-    );
+    if (userIsLoginLoading || createUserLoading) {
+      return (
+        <>
+          <Loading />
+        </>
+      );
+    } else
+      return (
+        <>
+          <UserSignup
+            setAlreadyHaveAccount={setAlreadyHaveAccount}
+            alreadyHaveAccount={alreadyHaveAccount}
+          />
+          {alreadyHaveAccount && (
+            <UserLogin setnotHasJWToken={setnotHasJWToken} />
+          )}
+        </>
+      );
   } else if (createUserLoading || verifiedUserLoading || userIsLoginLoading) {
     return (
       <>
