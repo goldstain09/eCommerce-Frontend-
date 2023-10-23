@@ -18,6 +18,7 @@ export default function Header({ active, ShopPage }) {
     e.preventDefault();
     if (searchValue.length > 0) {
       dispatch(searchStart(searchValue));
+      navigate('/search');
     } else {
       setEmptyError(true);
     }
@@ -44,7 +45,7 @@ export default function Header({ active, ShopPage }) {
                 className="form-control"
                 placeholder=" Try Shirts, Smartphones, etc..."
                 aria-label="Search"
-                autoFocus
+                // autoFocus
                 onClick={() => {
                   navigate("/search");
                 }}
@@ -123,7 +124,7 @@ export default function Header({ active, ShopPage }) {
               className="form-control"
               placeholder=" Try Shirts, Smartphones, etc..."
               aria-label="Search"
-              autoFocus
+              // autoFocus
               onClick={() => {
                 navigate("/search");
               }}

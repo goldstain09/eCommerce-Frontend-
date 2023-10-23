@@ -5,6 +5,8 @@ import { editUserStart } from "../Redux/action";
 import Loading from "./Loading";
 import Error from "./Error";
 import "./SCSS/ProfileEdit.scss";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ProfileEdit() {
   const navigate = useNavigate();
@@ -23,12 +25,21 @@ export default function ProfileEdit() {
             "token",
             JSON.stringify({ token: responseOfEdit.token })
           );
+
+          toast.success("Updated SuccessFully!", {
+            theme: "dark",
+            autoClose: 3000,
+            position: "top-center",
+            draggable: true,
+            pauseOnHover: true,
+          });
+
           setInterval(() => {
             navigate("/profile");
             window.location.reload();
-          }, 10);
+          }, 1000);
           clearInterval();
-          alert("Updated Successfully");
+
           break;
         case false:
           setPasswordIncorrectError(true);
@@ -199,6 +210,7 @@ export default function ProfileEdit() {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </>
   );
 }
