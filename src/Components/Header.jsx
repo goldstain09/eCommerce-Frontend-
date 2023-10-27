@@ -64,7 +64,7 @@ export default function Header({ active, ShopPage }) {
               style={{ borderRight: "2px grey solid" }}
             >
               <a
-                href="http://localhost:3001/"
+                href="https://seller-panel-project.onrender.com/sellerpanel"
                 target="_new"
                 className="text-dark text-decoration-none"
               >
@@ -277,7 +277,7 @@ export default function Header({ active, ShopPage }) {
               </div>
             </div>
           </div>
-          <a href="">Become a Supplier |</a>
+          <a href="https://seller-panel-project.onrender.com/sellerpanel">Become a Supplier |</a>
         </div>
       </div>
     </>
