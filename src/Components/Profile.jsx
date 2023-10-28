@@ -176,7 +176,7 @@ export default function Profile() {
                   onClick={() => {
                     localStorage.removeItem("token");
                     setInterval(() => {
-                      window.location.reload();
+                      // window.location.reload();
                     }, 10);
                     clearInterval();
                   }}

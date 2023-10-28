@@ -39,13 +39,12 @@ export default function UserLogin({ setnotHasJWToken }) {
         setUserPasswordOrEmailisNotCorrect(false);
         setnotHasJWToken(false);
         toast.success("LoggedIn SuccessFully!", { theme: "dark" });
-        const intr =  setInterval(() => {
-          window.location.reload();
-        }, 10);
-        return () =>{
-          clearInterval(intr);
-        }
-        break;
+        // const intr = 
+       
+        // return () =>{
+        //   clearInterval(intr);
+        // }
+        // break;
       case false:
         setUserPasswordOrEmailisNotCorrect(true);
         break;

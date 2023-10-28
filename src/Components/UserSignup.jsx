@@ -31,7 +31,7 @@ export default function UserSignup({
         pauseOnHover: true,
       });
       setInterval(() => {
-        window.location.reload();
+        // window.location.reload();
       }, 1000);
       clearInterval();
     }
