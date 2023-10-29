@@ -14,6 +14,7 @@ import { Store } from "react-notifications-component";
 import {
   followSellerStart,
   logoutUserStart,
+  removeEditDataStart,
   unfollowSellerStart,
   userIsLogginnedStart,
   verifyUserStart,
@@ -46,6 +47,7 @@ export default function Profile() {
       dispatch(userIsLogginnedStart(false));
     }
   }, []);
+
 
   useEffect(() => {
     if (verifiedUser.hasOwnProperty("authorise")) {

@@ -11,6 +11,7 @@ import {
   LOGIN_USER_START,
   LOGOUT_USER_START,
   PLACE_ORDER_START,
+  REMOVE_EDIT_DATA_START,
   REMOVE_FROM_CART_START,
   SEARCH_START,
   SET_PRODUCTS_FOR_CHECKOUT_START,
@@ -42,6 +43,8 @@ import {
   logoutUserSuccess,
   placeOrderError,
   placeOrderSuccess,
+  removeEditDataError,
+  removeEditDataSuccess,
   removeFromCartError,
   removeFromCartSuccess,
   searchError,
@@ -131,6 +134,7 @@ function* editUserSaga({ payload }) {
     yield put(editUserError(error.message));
   }
 }
+
 
 function* userIsLoginnedSaga({ payload }) {
   try {

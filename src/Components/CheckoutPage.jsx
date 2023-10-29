@@ -41,7 +41,7 @@ export default function CheckoutPage() {
         setInterval(() => {
           navigate("/profile/orders");
           setInterval(() => {
-            // window.location.reload();
+            window.location.reload();
           }, 1000);
           clearInterval();
         }, 1000);

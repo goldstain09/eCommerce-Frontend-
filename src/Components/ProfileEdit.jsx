@@ -36,7 +36,7 @@ export default function ProfileEdit() {
 
           setInterval(() => {
             navigate("/profile");
-            // window.location.reload();
+            window.location.reload();
           }, 1000);
           clearInterval();
 

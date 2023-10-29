@@ -40,7 +40,7 @@ export default function Card({ item, onProductPage }) {
             onClick={() => {
               navigate(`/product/${item._id}`);
               if (onProductPage) {
-                // window.location.reload();
+                window.location.reload();
               }
             }}
             className="btn btn-outline-primary"

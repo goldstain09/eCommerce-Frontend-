@@ -32,6 +32,9 @@ import {
   PLACE_ORDER_ERROR,
   PLACE_ORDER_START,
   PLACE_ORDER_SUCCESS,
+  REMOVE_EDIT_DATA_ERROR,
+  REMOVE_EDIT_DATA_START,
+  REMOVE_EDIT_DATA_SUCCESS,
   REMOVE_FROM_CART_ERROR,
   REMOVE_FROM_CART_START,
   REMOVE_FROM_CART_SUCCESS,
@@ -250,6 +253,7 @@ const reducer = (state = initialStates, action) => {
       return {
         ...state,
         editSuccess: action.payload,
+        verifiedUser:action.payload,
         editUserSuccessLoading: false,
         editUserError: "",
       };
@@ -260,7 +264,7 @@ const reducer = (state = initialStates, action) => {
         editUserError: action.payload,
       };
     // ----------------------------------------------------------
-
+    
     case USER_IS_LOGINNED_SUCCESS:
       return {
         ...state,
