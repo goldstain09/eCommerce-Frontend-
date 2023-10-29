@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./SCSS/UserSignup.scss";
 import { createUserStart } from "../Redux/action";
@@ -18,22 +18,19 @@ export default function UserSignup({
   const createUserRes = useSelector((state) => state.createUserRes);
   const createUserError = useSelector((state) => state.createUserError);
   const createUserLoading = useSelector((state) => state.createUserLoading);
+  const verifiedUserLoading = useSelector((state) => state.verifiedUserLoading);
+  const verifiedUser = useSelector((state) => state.verifiedUser);
 
+  useEffect(() => {
+    if (verifiedUser.hasOwnProperty("logout")) {
+      toast.warning("Logged out SuccessFully!", { theme: "dark" , autoClose:1500});
+    }
+  }, [verifiedUser]);
+  
   useEffect(() => {
     if (createUserRes.hasOwnProperty("token")) {
       setUserSignUpData(SignUpData);
       setpassword1("");
-      toast.success("Your Account is ready!", {
-        theme: "dark",
-        autoClose: 1000,
-        position: "top-center",
-        draggable: true,
-        pauseOnHover: true,
-      });
-      setInterval(() => {
-        // window.location.reload();
-      }, 1000);
-      clearInterval();
     }
   }, [createUserRes]);
 
@@ -109,6 +106,12 @@ export default function UserSignup({
         <Loading />
       </>
     );
+  }else if(verifiedUserLoading){
+    return(
+      <>
+        <Loading />
+      </>
+    )
   }
   return (
     <>

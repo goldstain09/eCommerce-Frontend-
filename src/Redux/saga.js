@@ -9,6 +9,7 @@ import {
   GET_ONE_PRODUCT_DATA_START,
   GET_SELLER_SHOP_DATA_START,
   LOGIN_USER_START,
+  LOGOUT_USER_START,
   PLACE_ORDER_START,
   REMOVE_FROM_CART_START,
   SEARCH_START,
@@ -37,6 +38,8 @@ import {
   getSellerShopDataSuccess,
   loginUserError,
   loginUserSuccess,
+  logoutUserError,
+  logoutUserSuccess,
   placeOrderError,
   placeOrderSuccess,
   removeFromCartError,
@@ -104,6 +107,16 @@ function* loginUserSaga({ payload }) {
   } catch (error) {
     yield delay(2000);
     yield put(loginUserError(error.message));
+  }
+}
+
+function* logoutUserSaga() {
+  try {
+    yield delay(2000);
+    yield put(logoutUserSuccess());
+  } catch (error) {
+    yield delay(2000);
+    yield put(logoutUserError(error.message));
   }
 }
 
@@ -450,6 +463,7 @@ function* Saga() {
   yield takeLatest(LOGIN_USER_START, loginUserSaga);
   yield takeLatest(EDIT_USER_START, editUserSaga);
   yield takeLatest(USER_IS_LOGINNED_START, userIsLoginnedSaga);
+  yield takeLatest(LOGOUT_USER_START, logoutUserSaga);
 
   // products
   yield takeLatest(GET_ALL_PRODUCTS_DATA_START, getAllProductsDataSaga);

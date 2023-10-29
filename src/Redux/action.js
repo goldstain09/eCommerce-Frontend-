@@ -26,6 +26,9 @@ import {
   LOGIN_USER_ERROR,
   LOGIN_USER_START,
   LOGIN_USER_SUCCESS,
+  LOGOUT_USER_ERROR,
+  LOGOUT_USER_START,
+  LOGOUT_USER_SUCCESS,
   PLACE_ORDER_ERROR,
   PLACE_ORDER_START,
   PLACE_ORDER_SUCCESS,
@@ -91,6 +94,18 @@ export const loginUserSuccess = (data) => ({
 });
 export const loginUserError = (error) => ({
   type: LOGIN_USER_ERROR,
+  payload: error,
+});
+
+//Logining user
+export const logoutUserStart = () => ({
+  type: LOGOUT_USER_START,
+});
+export const logoutUserSuccess = () => ({
+  type: LOGOUT_USER_SUCCESS,
+});
+export const logoutUserError = (error) => ({
+  type: LOGOUT_USER_ERROR,
   payload: error,
 });
 

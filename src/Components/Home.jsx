@@ -9,6 +9,8 @@ import ProductsForYou from "./ProductsForYou";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   getAllProductsDataStart,
   userIsLogginnedStart,
@@ -43,6 +45,22 @@ export default function Home() {
         dispatch(userIsLogginnedStart(true));
       }
     }
+    if (verifiedUser.hasOwnProperty("authorise")) {
+      if (verifiedUser.authorise) {
+        if (verifiedUser.hasOwnProperty("accountCreated")) {
+          // toast.success("Your Accound is ready!", { theme: "dark" });
+          // dispatch(userIsLogginnedStart(true));
+        }
+      }
+    }
+    if (verifiedUser.hasOwnProperty("authorise")) {
+      if (verifiedUser.authorise) {
+        if (verifiedUser.hasOwnProperty("Logginnedd")) {
+          // dispatch(userIsLogginnedStart(true));
+          toast.success("LoggedIn SuccessFully!", { theme: "dark" });
+        }
+      }
+    }
   }, [verifiedUser]);
   useEffect(() => {
     if (allProductsData.length > 0) {
@@ -75,6 +93,7 @@ export default function Home() {
       <HomeMiddle4 />
       <ProductsForYou allProducts={allProducts} />
       <Footer />
+      <ToastContainer />
     </>
   );
 }

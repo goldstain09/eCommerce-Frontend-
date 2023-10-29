@@ -13,6 +13,11 @@ export const LOGIN_USER_SUCCESS = 'LOGINUserSuccess';
 export const LOGIN_USER_ERROR = 'LOGINUserError';
 
 
+export const LOGOUT_USER_START = 'LOGOUTUserStart';
+export const LOGOUT_USER_SUCCESS = 'LOGOUTUserSuccess';
+export const LOGOUT_USER_ERROR = 'LOGOUTUserError';
+
+
 export const EDIT_USER_START = 'EDITUserStart';
 export const EDIT_USER_SUCCESS = 'EDITUserSuccess';
 export const EDIT_USER_ERROR = 'EDITUserError';

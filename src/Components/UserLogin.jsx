@@ -38,13 +38,8 @@ export default function UserLogin({ setnotHasJWToken }) {
         );
         setUserPasswordOrEmailisNotCorrect(false);
         setnotHasJWToken(false);
-        toast.success("LoggedIn SuccessFully!", { theme: "dark" });
-        // const intr = 
-       
-        // return () =>{
-        //   clearInterval(intr);
-        // }
-        // break;
+        // toast.success("LoggedIn SuccessFully!", { theme: "dark" });
+        break;
       case false:
         setUserPasswordOrEmailisNotCorrect(true);
         break;

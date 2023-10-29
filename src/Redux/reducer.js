@@ -26,6 +26,9 @@ import {
   LOGIN_USER_ERROR,
   LOGIN_USER_START,
   LOGIN_USER_SUCCESS,
+  LOGOUT_USER_ERROR,
+  LOGOUT_USER_START,
+  LOGOUT_USER_SUCCESS,
   PLACE_ORDER_ERROR,
   PLACE_ORDER_START,
   PLACE_ORDER_SUCCESS,
@@ -141,14 +144,26 @@ const reducer = (state = initialStates, action) => {
       };
     case CREATE_USER_SUCCESS:
       if (action.payload.hasOwnProperty("token")) {
-        localStorage.setItem("token", JSON.stringify(action.payload));
+        localStorage.setItem(
+          "token",
+          JSON.stringify({ token: action.payload.token })
+        );
+        // console.log({ ...action.payload, accountCreated: true });
+        return {
+          ...state,
+          createUserRes: { token: action.payload.token },
+          verifiedUser: action.payload,
+          createUserLoading: false,
+          createUserError: "",
+        };
+      } else {
+        return {
+          ...state,
+          createUserRes: action.payload,
+          createUserLoading: false,
+          createUserError: "",
+        };
       }
-      return {
-        ...state,
-        createUserRes: action.payload,
-        createUserLoading: false,
-        createUserError: "",
-      };
     case CREATE_USER_ERROR:
       return {
         ...state,
@@ -164,9 +179,10 @@ const reducer = (state = initialStates, action) => {
         verifiedUserError: "",
       };
     case VERIFY_USER_SUCCESS:
+      // console.log({ ...action.payload, Logginned: true });
       return {
         ...state,
-        verifiedUser: action.payload,
+        verifiedUser:action.payload,
         verifiedUserLoading: false,
         verifiedUserError: "",
       };
@@ -188,6 +204,7 @@ const reducer = (state = initialStates, action) => {
       return {
         ...state,
         userIsLogin: action.payload,
+        verifiedUser:action.payload,
         userIsLoginLoading: false,
         userIsLoginError: "",
       };
@@ -196,6 +213,30 @@ const reducer = (state = initialStates, action) => {
         ...state,
         userIsLoginLoading: false,
         userIsLoginError: action.payload,
+      };
+    // ---------------------------------------------------------
+
+    case LOGOUT_USER_START:
+      return {
+        ...state,
+        verifiedUserLoading: true,
+        verifiedUserError: "",
+      };
+    case LOGOUT_USER_SUCCESS:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        userIsLoginned: false,
+        verifiedUser:{ logout: true },
+        userIsLogin:{},
+        verifiedUserLoading: false,
+        verifiedUserError: "",
+      };
+    case LOGOUT_USER_ERROR:
+      return {
+        ...state,
+        verifiedUserLoading: false,
+        verifiedUserError: action.payload,
       };
     // ---------------------------------------------------------
 
@@ -288,7 +329,7 @@ const reducer = (state = initialStates, action) => {
         ...state,
         searchedProductName: action.payload,
         searchedProductLoading: false,
-        searchedProductError:"",
+        searchedProductError: "",
       };
     case SEARCH_ERROR:
       return {
