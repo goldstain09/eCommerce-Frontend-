@@ -100,7 +100,17 @@ export default function Search() {
               {products.length > 0 ? (
                 products.map((item, index) => <Card key={index} item={item} />)
               ) : (
-                <>No Results Found...</>
+                <>
+                  <h1
+                    className="h1 text-center mt-5 bi bi-emoji-frown"
+                    style={{
+                      fontFamily: "'Quicksand', sans-serif",
+                      color: "#5c0431",
+                    }}
+                  >
+                    &nbsp;No Results Found!
+                  </h1>
+                </>
               )}
             </div>
           </div>

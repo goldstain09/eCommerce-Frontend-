@@ -52,7 +52,7 @@ export default function Profile() {
   useEffect(() => {
     if (verifiedUser.hasOwnProperty("authorise")) {
       if (verifiedUser.authorise) {
-        if (verifiedUser.hasOwnProperty("Logginned")) {
+        if (verifiedUser.hasOwnProperty("verifieddANDLoggedIn")) {
           setnotHasJWToken(false);
           setVerified(true);
           dispatch(userIsLogginnedStart(true));
@@ -62,7 +62,7 @@ export default function Profile() {
     }
     if (verifiedUser.hasOwnProperty("authorise")) {
       if (verifiedUser.authorise) {
-        if (verifiedUser.hasOwnProperty("Logginnedd")) {
+        if (verifiedUser.hasOwnProperty("LoggedIn")) {
           setnotHasJWToken(false);
           setVerified(true);
           dispatch(userIsLogginnedStart(true));

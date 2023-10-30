@@ -134,7 +134,7 @@ export default function Header({ active, ShopPage }) {
               }}
             />
             {emptyError && (
-              <p className="text-danger">Please Enter Something...</p>
+              <p className="text-danger card-text">Please Enter Something...</p>
             )}
           </form>
         </div>

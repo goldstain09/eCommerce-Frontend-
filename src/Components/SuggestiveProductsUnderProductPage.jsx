@@ -64,7 +64,15 @@ export default function SuggestiveProductsUnderProductPage({ product }) {
             ))
           ) : (
             <>
-              <h1>No Products Related to this product...</h1>
+              <h1
+                className="h1 text-center mt-5 bi bi-emoji-frown"
+                style={{
+                  fontFamily: "'Quicksand', sans-serif",
+                  color: "#5c0431",
+                }}
+              >
+                &nbsp;No Products Related to this product!
+              </h1>
             </>
           )}
         </div>

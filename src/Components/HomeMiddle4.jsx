@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./SCSS/HomeMiddle4.scss";
 
 export default function HomeMiddle4() {

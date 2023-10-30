@@ -19,6 +19,7 @@ import {
 } from "../Redux/action";
 import Loading from "./Loading";
 import Error from "./Error";
+import { SpinnerDotted } from "spinners-react";
 
 export default function ProductPage() {
   const params = useParams();
@@ -162,7 +163,10 @@ export default function ProductPage() {
                 {addToCartLoading ? (
                   <>
                     <button className="btn btn-outline-danger">
-                      Loading...
+                      <SpinnerDotted
+                        speed={180}
+                        color="#5c0431"
+                      />
                     </button>
                   </>
                 ) : userIsLoginned ? (

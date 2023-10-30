@@ -43,20 +43,10 @@ export default function Home() {
     if (verifiedUser.hasOwnProperty("authorise")) {
       if (verifiedUser.authorise) {
         dispatch(userIsLogginnedStart(true));
-      }
-    }
-    if (verifiedUser.hasOwnProperty("authorise")) {
-      if (verifiedUser.authorise) {
         if (verifiedUser.hasOwnProperty("accountCreated")) {
-          // toast.success("Your Accound is ready!", { theme: "dark" });
-          // dispatch(userIsLogginnedStart(true));
+          toast.success("Your Accound is ready!", { theme: "dark" });
         }
-      }
-    }
-    if (verifiedUser.hasOwnProperty("authorise")) {
-      if (verifiedUser.authorise) {
-        if (verifiedUser.hasOwnProperty("Logginnedd")) {
-          // dispatch(userIsLogginnedStart(true));
+        if (verifiedUser.hasOwnProperty("LoggedIn")) {
           toast.success("LoggedIn SuccessFully!", { theme: "dark" });
         }
       }

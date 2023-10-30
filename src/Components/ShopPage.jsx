@@ -138,9 +138,7 @@ export default function ShopPage() {
                   <h3 className="card-title d-flex">
                     Followers:{" "}
                     {followSellerLoading || unfollowSellerloading ? (
-                      <>
-                        ---
-                      </>
+                      <>---</>
                     ) : (
                       followers
                     )}
@@ -151,7 +149,7 @@ export default function ShopPage() {
                     <>
                       {" "}
                       <button className="loadbtn btn btn-primary">
-                        <BeatLoader color="#5c0431" className="loader"/>
+                        <BeatLoader color="#5c0431" className="loader" />
                       </button>
                     </>
                   ) : UserIsNotFollowing ? (
@@ -218,7 +216,15 @@ export default function ShopPage() {
             ))
           ) : (
             <>
-              <h1>Seller has No Products in Their Shop...</h1>
+              <h1
+                className="h1 text-center mt-5 bi bi-emoji-frown"
+                style={{
+                  fontFamily: "'Quicksand', sans-serif",
+                  color: "#5c0431",
+                }}
+              >
+                &nbsp;Seller has No Products in Their Shop!
+              </h1>
             </>
           )}
         </div>
