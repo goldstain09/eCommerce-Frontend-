@@ -154,7 +154,7 @@ export default function UserLogin({ setnotHasJWToken }) {
               <p className="text-danger">Email Or Password is not Correct.</p>
             )}
           </div>
-          <div className="col-7">
+          <div className="col-7 mb-5">
             <button
               type="submit"
               style={{ background: "#5c0431", border: "1px solid #5c0431" }}
