@@ -47,10 +47,10 @@ export default function Orders() {
   if (verifiedUserLoading) {
     return (
       <>
-        <ul class="nav border-bottom justify-content-center CartNav">
-          <li class="nav-item">
-            <a class="nav-link">
-              <i class="bi bi-person-circle"></i> Orders
+        <ul className="nav border-bottom justify-content-center CartNav">
+          <li className="nav-item">
+            <a className="nav-link">
+              <i className="bi bi-person-circle"></i> Orders
             </a>
           </li>
         </ul>
@@ -69,7 +69,7 @@ export default function Orders() {
     return (
       <>
         {/* Header--------- */}
-        <ul class="nav border-bottom justify-content-center CartNav">
+        <ul className="nav border-bottom justify-content-center CartNav">
           <Link
             to={"/profile"}
             className="btn btn-outline-dark"
@@ -82,11 +82,11 @@ export default function Orders() {
               zIndex: "1",
             }}
           >
-            <i class="bi bi-box-arrow-left"></i>{" "}
+            <i className="bi bi-box-arrow-left"></i>{" "}
           </Link>
-          <li class="nav-item">
-            <a class="nav-link">
-              <i class="bi bi-person-circle"></i> Orders
+          <li className="nav-item">
+            <a className="nav-link">
+              <i className="bi bi-person-circle"></i> Orders
             </a>
           </li>
         </ul>

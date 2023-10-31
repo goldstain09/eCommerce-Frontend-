@@ -180,7 +180,7 @@ export default function CartPage() {
               zIndex: "1",
             }}
           >
-            <i class="bi bi-box-arrow-left"></i>{" "}
+            <i className="bi bi-box-arrow-left"></i>{" "}
           </Link>
           <li className="nav-item">
             <a className="nav-link h1">

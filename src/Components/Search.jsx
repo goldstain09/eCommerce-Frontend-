@@ -90,7 +90,7 @@ export default function Search() {
           fontSize: "1.4rem",
         }}
       >
-        <i class="bi bi-box-arrow-left"></i>
+        <i className="bi bi-box-arrow-left"></i>
       </Link>
 
       <div className="container" style={{ marginTop: "12rem" }}>

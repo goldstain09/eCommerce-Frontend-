@@ -155,7 +155,7 @@ export default function Profile() {
               zIndex: "1",
             }}
           >
-            <i class="bi bi-box-arrow-left"></i>{" "}
+            <i className="bi bi-box-arrow-left"></i>{" "}
           </Link>
           <li className="nav-item">
             <a className="nav-link">
@@ -188,7 +188,7 @@ export default function Profile() {
                       navigate("/profile/edit");
                     }}
                   >
-                    <i class="bi bi-pencil-square"></i>
+                    <i className="bi bi-pencil-square"></i>
                   </button>
                 </div>
                 <div className="col-4 border-top my-5 py-4">
@@ -198,7 +198,7 @@ export default function Profile() {
                       navigate("/profile/orders");
                     }}
                   >
-                    <i class="bi bi-bag-check"></i> Orders
+                    <i className="bi bi-bag-check"></i> Orders
                   </button>
                 </div>
                 <div className="col-8 border-top my-5 py-4">
@@ -210,7 +210,7 @@ export default function Profile() {
                     }}
                     className="btn btn-outline-danger"
                   >
-                    <i class="bi bi-box-arrow-right"></i> Log-Out
+                    <i className="bi bi-box-arrow-right"></i> Log-Out
                   </button>
                 </div>
               </div>
@@ -257,7 +257,7 @@ export default function Profile() {
                         );
                       }}
                     >
-                      <i class="bi bi-person-x"></i>
+                      <i className="bi bi-person-x"></i>
                     </button>
                     <button
                       id={item.sellerId + "follow"}

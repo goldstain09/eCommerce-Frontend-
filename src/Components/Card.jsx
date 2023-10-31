@@ -21,11 +21,11 @@ export default function Card({ item, onProductPage }) {
             {item.productDescription.split(" ").slice(0, 10).join(" ")}...
           </p>
           <div className="stars">
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>{" "+item.productRating}
+            <i className="bi bi-star-fill text-warning"></i>
+            <i className="bi bi-star-fill text-warning"></i>
+            <i className="bi bi-star-fill text-warning"></i>
+            <i className="bi bi-star-fill text-warning"></i>
+            <i className="bi bi-star-fill text-warning"></i>{" "+item.productRating}
           </div>
           <div className="prices">
             <h6>
