@@ -49,6 +49,9 @@ export default function Home() {
         if (verifiedUser.hasOwnProperty("LoggedIn")) {
           toast.success("LoggedIn SuccessFully!", { theme: "dark" });
         }
+        if (verifiedUser.hasOwnProperty("logout")) {
+          window.location.reload();
+        }
       }
     }
   }, [verifiedUser]);
