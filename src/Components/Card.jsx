@@ -7,7 +7,6 @@ export default function Card({ item, onProductPage }) {
 
   return (
     <>
-    
       <div
         className="card CourseCard col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-4"
         style={{ width: "32%" }}
@@ -25,7 +24,8 @@ export default function Card({ item, onProductPage }) {
             <i className="bi bi-star-fill text-warning"></i>
             <i className="bi bi-star-fill text-warning"></i>
             <i className="bi bi-star-fill text-warning"></i>
-            <i className="bi bi-star-fill text-warning"></i>{" "+item.productRating}
+            <i className="bi bi-star-fill text-warning"></i>
+            {" " + item.productRating}
           </div>
           <div className="prices">
             <h6>
