@@ -132,7 +132,6 @@ function* editUserSaga({ payload }) {
   }
 }
 
-
 function* userIsLoginnedSaga({ payload }) {
   try {
     yield delay(0);

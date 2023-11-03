@@ -6,7 +6,11 @@ export default function HomeMiddle4() {
     <>
       <div className="container HomeMiddle4">
         <div className="row">
-          <a target="_new" href="https://seller-panel-project.onrender.com/sellerpanel" className="btn">
+          <a
+            target="_new"
+            href="https://seller-panel-project.onrender.com/sellerpanel"
+            className="btn"
+          >
             Sign Up Now
           </a>
         </div>

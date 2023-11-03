@@ -162,7 +162,10 @@ export default function CategoryPage() {
                     <Card key={index} item={item} />
                   ))
                 ) : (
-                  <> <Error errorMessage={allProductsDataError} /></>
+                  <>
+                    {" "}
+                    <Error errorMessage={allProductsDataError} />
+                  </>
                 )}
               </div>
             </div>

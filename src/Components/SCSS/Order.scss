@@ -1,192 +1,174 @@
 $main: #5c0431;
 
-.orderss{
+.orderss {
   font-family: "Quicksand", sans-serif;
-    .row{
-        margin-top: 1.5rem;
-        .col-3{
-            img{
-                width: 80%!important;
-            }
-        }
+  .row {
+    margin-top: 1.5rem;
+    .col-3 {
+      img {
+        width: 80% !important;
+      }
     }
+  }
 }
-
 
 .orderEmpty {
-    text-align: center;
-    padding-top: 30rem;
-    height: 57rem;
-    background: url("./Media/noOrders.jpg");
-    background-size: 100% 100%;
-    .btn {
-      background: $main;
-      border: $main 1px solid;
-      color: white;
-      border-radius: 0;
-    }
-  }
-  
-
-@media (max-width:992px) {
-    
-.orderss{
-    font-family: "Quicksand", sans-serif;
-      .row{
-          .col-3{
-              img{
-                  width: 80%!important;
-              }
-          }
-          .col-7{
-              h5{
-                  font-size:1.1rem;
-              }
-          }
-          .col-2{
-              button {
-                font-size: .8rem;
-              }
-          }
-      }
+  text-align: center;
+  padding-top: 30rem;
+  height: 57rem;
+  background: url("./Media/noOrders.jpg");
+  background-size: 100% 100%;
+  .btn {
+    background: $main;
+    border: $main 1px solid;
+    color: white;
+    border-radius: 0;
   }
 }
 
-
-
-
-@media (max-width:768px) {
-    
-    .orderss{
-        font-family: "Quicksand", sans-serif;
-          .row{
-              .col-3{
-                  img{
-                      width: 80%!important;
-                  }
-              }
-              .col-7{
-                  h5{
-                      font-size:.9rem;
-                  }
-              }
-              .col-2{
-                  button {
-                    font-size: .6rem;
-                  }
-              }
-          }
+@media (max-width: 992px) {
+  .orderss {
+    font-family: "Quicksand", sans-serif;
+    .row {
+      .col-3 {
+        img {
+          width: 80% !important;
+        }
+      }
+      .col-7 {
+        h5 {
+          font-size: 1.1rem;
+        }
+      }
+      .col-2 {
+        button {
+          font-size: 0.8rem;
+        }
       }
     }
+  }
+}
 
-@media (max-width:576px) {
-    
-    .orderss{
-        font-family: "Quicksand", sans-serif;
-          .row{
-              .col-3{
-                  img{
-                      width: 80%!important;
-                  }
-              }
-              .col-7{
-                  h5{
-                      font-size:.6rem;
-                  }
-              }
-              .col-2{
-                  button {
-                    font-size: .5rem;
-                  }
-              }
-          }
+@media (max-width: 768px) {
+  .orderss {
+    font-family: "Quicksand", sans-serif;
+    .row {
+      .col-3 {
+        img {
+          width: 80% !important;
+        }
+      }
+      .col-7 {
+        h5 {
+          font-size: 0.9rem;
+        }
+      }
+      .col-2 {
+        button {
+          font-size: 0.6rem;
+        }
       }
     }
+  }
+}
 
-@media (max-width:394px) {
-    
-    .orderss{
-        font-family: "Quicksand", sans-serif;
-          .row{
-            .statuss{
-                display: none;
-            }
-              .col-3{
-                  img{
-                      width: 80%!important;
-                  }
-              }
-              .col-7{
-                  width: 70%;
-                  h5{
-                      font-size:.6rem;
-                  }
-              }
-              .col-2{
-                width: 70%;
-                margin-left: 25%;
-                  button {
-                    font-size: .5rem;
-                  }
-              }
-          }
+@media (max-width: 576px) {
+  .orderss {
+    font-family: "Quicksand", sans-serif;
+    .row {
+      .col-3 {
+        img {
+          width: 80% !important;
+        }
+      }
+      .col-7 {
+        h5 {
+          font-size: 0.6rem;
+        }
+      }
+      .col-2 {
+        button {
+          font-size: 0.5rem;
+        }
       }
     }
+  }
+}
 
+@media (max-width: 394px) {
+  .orderss {
+    font-family: "Quicksand", sans-serif;
+    .row {
+      .statuss {
+        display: none;
+      }
+      .col-3 {
+        img {
+          width: 80% !important;
+        }
+      }
+      .col-7 {
+        width: 70%;
+        h5 {
+          font-size: 0.6rem;
+        }
+      }
+      .col-2 {
+        width: 70%;
+        margin-left: 25%;
+        button {
+          font-size: 0.5rem;
+        }
+      }
+    }
+  }
+}
 
-
-
-    
 @media (max-width: 1400px) {
-    .orderEmpty {
-      padding-top: 24rem;
-      height: 45rem;
+  .orderEmpty {
+    padding-top: 24rem;
+    height: 45rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .orderEmpty {
+    padding-top: 20rem;
+    height: 37rem;
+  }
+}
+@media (max-width: 992px) {
+  .orderEmpty {
+    background: url("./Media/noOrdersmob.jpg");
+    background-size: 100% 100%;
+    padding-top: 26rem;
+    height: 40rem;
+  }
+}
+@media (max-width: 768px) {
+  .orderEmpty {
+    background: url("./Media/noOrdersmob.jpg");
+    background-size: 100% 100%;
+    padding-top: 17rem;
+    height: 25rem;
+  }
+}
+@media (max-width: 576px) {
+  .orderEmpty {
+    background: url("./Media/noOrdersmob2.jpg");
+    background-size: 100% 100%;
+    padding-top: 24rem;
+    height: 35rem;
+  }
+}
+@media (max-width: 394px) {
+  .orderEmpty {
+    background: url("./Media/noOrdersmob2.jpg");
+    background-size: 100% 100%;
+    padding-top: 17rem;
+    height: 27rem;
+    .btn {
+      font-size: 0.6rem;
     }
   }
-  
-  @media (max-width: 1200px) {
-    .orderEmpty {
-      padding-top: 20rem;
-      height: 37rem;
-    }
-  }
-  @media (max-width: 992px) {
-    .orderEmpty {
-      background: url('./Media/noOrdersmob.jpg');
-      background-size: 100% 100%;
-      padding-top: 26rem;
-      height: 40rem;
-    }
-  }
-  @media (max-width: 768px) {
-    .orderEmpty {
-      background: url('./Media/noOrdersmob.jpg');
-      background-size: 100% 100%;
-      padding-top: 17rem;
-      height: 25rem;
-    }
-  }
-  @media (max-width: 576px) {
-    .orderEmpty {
-      background: url('./Media/noOrdersmob2.jpg');
-      background-size: 100% 100%;
-      padding-top: 24rem;
-      height: 35rem;
-    }
-   
-    
-  }
-  @media (max-width: 394px) {
-    .orderEmpty {
-      background: url('./Media/noOrdersmob2.jpg');
-      background-size: 100% 100%;
-      padding-top: 17rem;
-      height: 27rem;
-      .btn{
-        font-size: .6rem;
-      }
-    }
-    
-    
-  }
-  
+}

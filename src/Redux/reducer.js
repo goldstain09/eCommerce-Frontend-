@@ -182,7 +182,7 @@ const reducer = (state = initialStates, action) => {
       // console.log({ ...action.payload, Logginned: true });
       return {
         ...state,
-        verifiedUser:action.payload,
+        verifiedUser: action.payload,
         verifiedUserLoading: false,
         verifiedUserError: "",
       };
@@ -204,7 +204,7 @@ const reducer = (state = initialStates, action) => {
       return {
         ...state,
         userIsLogin: action.payload,
-        verifiedUser:action.payload,
+        verifiedUser: action.payload,
         userIsLoginLoading: false,
         userIsLoginError: "",
       };
@@ -227,8 +227,8 @@ const reducer = (state = initialStates, action) => {
       return {
         ...state,
         userIsLoginned: false,
-        verifiedUser:{ logout: true },
-        userIsLogin:{},
+        verifiedUser: { logout: true },
+        userIsLogin: {},
         verifiedUserLoading: false,
         verifiedUserError: "",
       };
@@ -250,7 +250,7 @@ const reducer = (state = initialStates, action) => {
       return {
         ...state,
         editSuccess: action.payload,
-        verifiedUser:action.payload,
+        verifiedUser: action.payload,
         editUserSuccessLoading: false,
         editUserError: "",
       };
@@ -261,7 +261,7 @@ const reducer = (state = initialStates, action) => {
         editUserError: action.payload,
       };
     // ----------------------------------------------------------
-    
+
     case USER_IS_LOGINNED_SUCCESS:
       return {
         ...state,

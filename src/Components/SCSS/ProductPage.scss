@@ -1,6 +1,6 @@
 .ProductPage {
   margin-top: 10rem;
-  >.row {
+  > .row {
     font-family: "Inter", sans-serif;
 
     .imgDiv {
@@ -45,7 +45,7 @@
           color: black;
         }
         > .btn-success {
-            border-radius: 50px;
+          border-radius: 50px;
         }
       }
       .descDiv {
@@ -96,78 +96,73 @@
             }
           }
         }
-        >h4{
-            margin-left: 2rem;
-            display: inline-block;
-            padding-top: 2rem;
+        > h4 {
+          margin-left: 2rem;
+          display: inline-block;
+          padding-top: 2rem;
         }
       }
-      .advantagesDiv{
+      .advantagesDiv {
         margin-top: 2rem;
         border: 1px solid rgba(0, 0, 0, 0.123);
         border-radius: 5px;
         background: #0c32913e;
         padding: 1rem;
 
-        >.row{
-
-            .col-4{
-
-                .icon{
-                    img{
-                        width: 3rem;
-                        border-radius: 50px;
-                    }
-                }
-                .text{
-                    padding-top: .2rem;
-                    padding-left: 1rem;
-                    p{
-                        font-size: .9rem;
-                        color: black;
-                        font-weight: 700;
-                    }
-                }
+        > .row {
+          .col-4 {
+            .icon {
+              img {
+                width: 3rem;
+                border-radius: 50px;
+              }
             }
+            .text {
+              padding-top: 0.2rem;
+              padding-left: 1rem;
+              p {
+                font-size: 0.9rem;
+                color: black;
+                font-weight: 700;
+              }
+            }
+          }
         }
       }
-      .Trust{
+      .Trust {
         margin-top: 2rem;
         border: 1px solid rgba(0, 0, 0, 0.123);
         border-radius: 5px;
         padding: 1rem;
 
-        >.row{
-
-            .col-2{
-                img{
-                    width: 65%;
-                }
+        > .row {
+          .col-2 {
+            img {
+              width: 65%;
             }
-            .col-10{
-                h4{
-                    color: rgba(0, 0, 0, 0.495);
-                    font-weight: 600;
-                }
+          }
+          .col-10 {
+            h4 {
+              color: rgba(0, 0, 0, 0.495);
+              font-weight: 600;
             }
+          }
         }
       }
     }
   }
 }
 
-
-
-@media (max-width:576px) {
+@media (max-width: 576px) {
   .sellerDiv {
     margin-top: 2rem;
-    padding: .6rem!important;
+    padding: 0.6rem !important;
 
     > .row {
-      margin-top: .3rem;
+      margin-top: 0.3rem;
       > .shopicon {
         i {
-          font-size: 1.4rem!important;
+          font-size: 1.4rem !important;
         }
       }
       > .col-7 {
@@ -178,71 +173,64 @@
       }
 
       > .col-3 {
-        padding-top: .4rem!important;
+        padding-top: 0.4rem !important;
         > .btn-danger {
-          width: auto!important;
-          font-size: .8rem!important;
+          width: auto !important;
+          font-size: 0.8rem !important;
         }
       }
     }
-    >h4{
-        margin-left: 2rem;
-        padding-top: 2rem;
+    > h4 {
+      margin-left: 2rem;
+      padding-top: 2rem;
     }
   }
-  .advantagesDiv{
+  .advantagesDiv {
     margin-top: 2rem;
     padding: 1rem;
 
-    >.row{
-
-        .col-4{
-
-            .icon{
-                img{
-                    width: 2rem!important;
-                }
-            }
-            .text{
-                padding-top: .2rem;
-                padding-left: .5rem!important;
-                p{
-                    font-size: .8rem!important;
-                }
-            }
+    > .row {
+      .col-4 {
+        .icon {
+          img {
+            width: 2rem !important;
+          }
         }
+        .text {
+          padding-top: 0.2rem;
+          padding-left: 0.5rem !important;
+          p {
+            font-size: 0.8rem !important;
+          }
+        }
+      }
     }
   }
-  .Trust{
+  .Trust {
     margin-top: 2rem;
     padding: 1rem;
 
-    >.row{
-
-        .col-2{
-            img{
-                width: 65%;
-            }
-            
+    > .row {
+      .col-2 {
+        img {
+          width: 65%;
         }
+      }
     }
   }
 }
 
-
-
-
-@media (max-width:394px) {
+@media (max-width: 394px) {
   .sellerDiv {
     margin-top: 2rem;
-    padding: .6rem!important;
+    padding: 0.6rem !important;
 
     > .row {
-      margin-top: .3rem;
+      margin-top: 0.3rem;
       > .shopicon {
         width: 18%;
         i {
-          font-size: 1.4rem!important;
+          font-size: 1.4rem !important;
         }
       }
       > .col-7 {
@@ -255,59 +243,56 @@
 
       > .col-3 {
         width: 50%;
-        padding-top: .4rem!important;
-        margin-left: 16%!important;
+        padding-top: 0.4rem !important;
+        margin-left: 16% !important;
         > .btn-danger {
-          width: auto!important;
-          font-size: .8rem!important;
+          width: auto !important;
+          font-size: 0.8rem !important;
         }
       }
     }
-    >h4{
-        margin-left: 2rem;
-        padding-top: 2rem;
+    > h4 {
+      margin-left: 2rem;
+      padding-top: 2rem;
     }
   }
-  .advantagesDiv{
+  .advantagesDiv {
     margin-top: 2rem;
-    padding: .4rem!important;
+    padding: 0.4rem !important;
 
-    >.row{
-
-        .col-4{
-
-            .icon{
-                img{
-                    width: 1.5rem!important;
-                }
-            }
-            .text{
-                padding-top: .2rem;
-                padding-left: .4rem!important;
-                p{
-                    font-size: .7rem!important;
-                }
-            }
-        }
-    }
-  }
-  .Trust{
-    margin-top: 2rem;
-    padding: .4rem!important;
-
-    >.row{
-
-        .col-2{
-            img{
-                width: 100%!important;
-            }
-        }
-        .col-10{
-          h4{
-            margin-top: .5rem;
-            font-size: .8rem;
+    > .row {
+      .col-4 {
+        .icon {
+          img {
+            width: 1.5rem !important;
           }
         }
+        .text {
+          padding-top: 0.2rem;
+          padding-left: 0.4rem !important;
+          p {
+            font-size: 0.7rem !important;
+          }
+        }
+      }
+    }
+  }
+  .Trust {
+    margin-top: 2rem;
+    padding: 0.4rem !important;
+
+    > .row {
+      .col-2 {
+        img {
+          width: 100% !important;
+        }
+      }
+      .col-10 {
+        h4 {
+          margin-top: 0.5rem;
+          font-size: 0.8rem;
+        }
+      }
     }
   }
 }

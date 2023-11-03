@@ -164,7 +164,6 @@ export const getOneProductDataError = (error) => ({
   payload: error,
 });
 
-
 //for SEARCH
 export const searchStart = (data) => ({
   type: SEARCH_START,
@@ -178,7 +177,6 @@ export const searchError = (error) => ({
   type: SEARCH_ERROR,
   payload: error,
 });
-
 
 //for add to cart
 export const addToCartStart = (data) => ({
@@ -194,7 +192,6 @@ export const addToCartError = (error) => ({
   payload: error,
 });
 
-
 //for REMOVE FROM cart
 export const removeFromCartStart = (data) => ({
   type: REMOVE_FROM_CART_START,
@@ -208,7 +205,6 @@ export const removeFromCartError = (error) => ({
   type: REMOVE_FROM_CART_ERROR,
   payload: error,
 });
-
 
 //for SET NEW QUANTITY OF ANY PRODUCT
 export const setQuantityStart = (data) => ({
@@ -224,7 +220,6 @@ export const setQuantityError = (error) => ({
   payload: error,
 });
 
-
 //for SET product for checkout
 export const setProductsForCheckoutStart = (data) => ({
   type: SET_PRODUCTS_FOR_CHECKOUT_START,
@@ -238,7 +233,6 @@ export const setProductsForCheckoutError = (error) => ({
   type: SET_PRODUCTS_FOR_CHECKOUT_ERROR,
   payload: error,
 });
-
 
 //for ADDING USER ADDRESS
 export const addAddressStart = (data) => ({
@@ -254,7 +248,6 @@ export const addAddressError = (error) => ({
   payload: error,
 });
 
-
 //for PLACING ORDER
 export const placeOrderStart = (data) => ({
   type: PLACE_ORDER_START,
@@ -268,7 +261,6 @@ export const placeOrderError = (error) => ({
   type: PLACE_ORDER_ERROR,
   payload: error,
 });
-
 
 //for GETTING SELLER SHOP DATA
 export const getSellerShopDataStart = (data) => ({
@@ -284,7 +276,6 @@ export const getSellerShopDataError = (error) => ({
   payload: error,
 });
 
-
 //for FOLLOW A SELLER
 export const followSellerStart = (data) => ({
   type: FOLLOW_SELLER_START,
@@ -298,7 +289,6 @@ export const followSellerError = (error) => ({
   type: FOLLOW_SELLER_ERROR,
   payload: error,
 });
-
 
 //for unfollow a seller
 export const unfollowSellerStart = (data) => ({

@@ -145,7 +145,7 @@ $main: #5c0431;
 }
 @media (max-width: 992px) {
   .cartEmpty {
-    background: url('./Media/cartPagemob.jpg');
+    background: url("./Media/cartPagemob.jpg");
     background-size: 100% 100%;
     padding-top: 26rem;
     height: 40rem;
@@ -153,7 +153,7 @@ $main: #5c0431;
 }
 @media (max-width: 768px) {
   .cartEmpty {
-    background: url('./Media/cartPagemob.jpg');
+    background: url("./Media/cartPagemob.jpg");
     background-size: 100% 100%;
     padding-top: 17rem;
     height: 25rem;
@@ -161,7 +161,7 @@ $main: #5c0431;
 }
 @media (max-width: 576px) {
   .cartEmpty {
-    background: url('./Media/cartPagemob2.jpg');
+    background: url("./Media/cartPagemob2.jpg");
     background-size: 100% 100%;
     padding-top: 24rem;
     height: 35rem;
@@ -177,16 +177,15 @@ $main: #5c0431;
       }
     }
   }
-  
 }
 @media (max-width: 394px) {
   .cartEmpty {
-    background: url('./Media/cartPagemob2.jpg');
+    background: url("./Media/cartPagemob2.jpg");
     background-size: 100% 100%;
     padding-top: 17rem;
     height: 27rem;
-    .btn{
-      font-size: .6rem;
+    .btn {
+      font-size: 0.6rem;
     }
   }
   .CartNav {
@@ -200,5 +199,4 @@ $main: #5c0431;
       }
     }
   }
-  
 }

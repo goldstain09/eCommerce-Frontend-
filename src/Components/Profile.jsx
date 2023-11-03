@@ -48,7 +48,6 @@ export default function Profile() {
     }
   }, []);
 
-
   useEffect(() => {
     if (verifiedUser.hasOwnProperty("authorise")) {
       if (verifiedUser.authorise) {

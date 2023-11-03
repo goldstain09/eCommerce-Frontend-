@@ -18,7 +18,7 @@ export default function Header({ active, ShopPage }) {
     e.preventDefault();
     if (searchValue.length > 0) {
       dispatch(searchStart(searchValue));
-      navigate('/search');
+      navigate("/search");
     } else {
       setEmptyError(true);
     }
@@ -90,9 +90,13 @@ export default function Header({ active, ShopPage }) {
             </div>
           </div>
         </div>
-        {
-          ShopPage ? (<></>) : (<><CategoriesHeader /></>)
-        }
+        {ShopPage ? (
+          <></>
+        ) : (
+          <>
+            <CategoriesHeader />
+          </>
+        )}
       </header>
 
       {/* off canvas and header for mobile view--- */}
@@ -277,7 +281,9 @@ export default function Header({ active, ShopPage }) {
               </div>
             </div>
           </div>
-          <a href="https://seller-panel-project.onrender.com/sellerpanel">Become a Supplier |</a>
+          <a href="https://seller-panel-project.onrender.com/sellerpanel">
+            Become a Supplier |
+          </a>
         </div>
       </div>
     </>

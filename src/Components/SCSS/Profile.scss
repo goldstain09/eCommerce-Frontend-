@@ -40,36 +40,36 @@ $main: #5c0431;
             word-wrap: break-word;
           }
         }
-        >.col-2{
-          .editbtn{
-            background:none;
+        > .col-2 {
+          .editbtn {
+            background: none;
             font-size: 2rem;
             border: none;
           }
-          .editbtn:hover{
+          .editbtn:hover {
             color: $main;
           }
         }
-        >.col-4{
-          button{
+        > .col-4 {
+          button {
             width: auto;
             font-size: 2rem;
             border: none;
             color: $main;
           }
-          button:hover{
+          button:hover {
             background: none;
             color: $main;
           }
         }
-        >.col-8{
+        > .col-8 {
           text-align: end;
-          button{
+          button {
             width: auto;
             border: none;
             font-size: 2rem;
           }
-          button:hover{
+          button:hover {
             background: none;
             color: $main;
           }
@@ -79,144 +79,137 @@ $main: #5c0431;
   }
 }
 
-.following{
+.following {
   font-family: "Raleway", sans-serif;
   margin-bottom: 4rem;
 
-  button{
+  button {
     font-size: 1.5rem;
     border: none;
   }
-  button:hover{
+  button:hover {
     background: none;
     color: $main;
   }
-
 }
 
+@media (max-width: 992px) {
+  .userDetails {
+    margin-top: 2rem;
+    height: fit-content !important;
+    padding: 1rem;
 
+    > .row {
+      .profile {
+        .h1 {
+          font-size: 1.5rem;
+        }
+        > .row {
+          margin-top: 2rem;
 
-@media (max-width:992px) {
-  
-.userDetails {
-  margin-top: 2rem;
-  height: fit-content!important;
-  padding: 1rem;
-
-  > .row {
-    .profile {
-      .h1 {
-        font-size: 1.5rem;
-      }
-      > .row {
-        margin-top: 2rem;
-
-        > .col-3 {
-          .name {
-            font-size: 1.2rem;
+          > .col-3 {
+            .name {
+              font-size: 1.2rem;
+            }
+            .email {
+              font-size: 1.2rem;
+            }
           }
-          .email {
-            font-size: 1.2rem;
+          > .col-6 {
+            .name {
+              font-size: 1.2rem;
+            }
+            .email {
+              font-size: 1.2rem;
+            }
           }
-        }
-        > .col-6 {
-          .name {
-            font-size: 1.2rem;
+          > .col-2 {
+            .editbtn {
+              font-size: 1.2rem;
+            }
           }
-          .email {
-            font-size: 1.2rem;
+          > .col-4 {
+            button {
+              font-size: 1.2rem;
+            }
           }
-        }
-        >.col-2{
-          .editbtn{
-            font-size: 1.2rem;
-          }
-        }
-        >.col-4{
-          button{
-            font-size: 1.2rem;
-          }
-        }
-        >.col-8{
-          button{
-            font-size: 1.2rem;
+          > .col-8 {
+            button {
+              font-size: 1.2rem;
+            }
           }
         }
       }
     }
   }
-}
 
-.following{
-  margin-bottom: 4rem;
+  .following {
+    margin-bottom: 4rem;
 
-  button{
-    font-size: 1.5rem;
+    button {
+      font-size: 1.5rem;
+    }
   }
 }
-}
 
+@media (max-width: 394px) {
+  .userDetails {
+    margin-top: 4rem;
+    height: fit-content !important;
+    padding: 0.4rem;
 
-
-@media (max-width:394px) {
-  
-.userDetails {
-  margin-top: 4rem;
-  height: fit-content!important;
-  padding: .4rem;
-
-  > .row {
-    .profile {
-      .h1 {
-        font-size: 1.2rem;
-      }
-      > .row {
-        margin-top: 2rem;
-
-        > .col-3 {
-          .name {
-            font-size: 1rem;
-          }
-          .email {
-            font-size: 1rem;
-          }
+    > .row {
+      .profile {
+        .h1 {
+          font-size: 1.2rem;
         }
-        > .col-6 {
-          .name {
-            font-size: 1rem;
+        > .row {
+          margin-top: 2rem;
+
+          > .col-3 {
+            .name {
+              font-size: 1rem;
+            }
+            .email {
+              font-size: 1rem;
+            }
           }
-          .email {
-            font-size: 1rem;
+          > .col-6 {
+            .name {
+              font-size: 1rem;
+            }
+            .email {
+              font-size: 1rem;
+            }
           }
-        }
-        >.col-2{
-          .editbtn{
-            font-size: 1rem;
+          > .col-2 {
+            .editbtn {
+              font-size: 1rem;
+            }
           }
-        }
-        >.col-4{
-          button{
-            font-size: 1rem;
+          > .col-4 {
+            button {
+              font-size: 1rem;
+            }
           }
-        }
-        >.col-8{
-          button{
-            font-size: 1rem;
+          > .col-8 {
+            button {
+              font-size: 1rem;
+            }
           }
         }
       }
     }
   }
-}
 
-.following{
-  margin-bottom: 4rem;
+  .following {
+    margin-bottom: 4rem;
 
-  h3{
-    font-size: 1.2rem;
+    h3 {
+      font-size: 1.2rem;
+    }
+    button {
+      font-size: 1.3rem;
+    }
   }
-  button{
-    font-size: 1.3rem;
-  }
-}
 }

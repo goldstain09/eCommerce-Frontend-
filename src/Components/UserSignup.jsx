@@ -23,10 +23,13 @@ export default function UserSignup({
 
   useEffect(() => {
     if (verifiedUser.hasOwnProperty("logout")) {
-      toast.warning("Logged out SuccessFully!", { theme: "dark" , autoClose:1500});
+      toast.warning("Logged out SuccessFully!", {
+        theme: "dark",
+        autoClose: 1500,
+      });
     }
   }, [verifiedUser]);
-  
+
   useEffect(() => {
     if (createUserRes.hasOwnProperty("token")) {
       setUserSignUpData(SignUpData);
@@ -106,12 +109,12 @@ export default function UserSignup({
         <Loading />
       </>
     );
-  }else if(verifiedUserLoading){
-    return(
+  } else if (verifiedUserLoading) {
+    return (
       <>
         <Loading />
       </>
-    )
+    );
   }
   return (
     <>

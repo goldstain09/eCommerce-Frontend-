@@ -163,10 +163,7 @@ export default function ProductPage() {
                 {addToCartLoading ? (
                   <>
                     <button className="btn btn-outline-danger">
-                      <SpinnerDotted
-                        speed={180}
-                        color="#5c0431"
-                      />
+                      <SpinnerDotted speed={180} color="#5c0431" />
                     </button>
                   </>
                 ) : userIsLoginned ? (

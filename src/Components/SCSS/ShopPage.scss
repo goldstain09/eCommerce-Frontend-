@@ -68,23 +68,21 @@ $main: #5c0431;
   }
 }
 
-
-@media (max-width:1200px) {
-    
-.ShopPage {
+@media (max-width: 1200px) {
+  .ShopPage {
     .row {
       .shopImagediv {
         margin-top: 3rem;
         height: 13.5rem;
         img {
-          height: auto
+          height: auto;
         }
       }
       .shopLogodiv {
         margin-top: 4rem;
         img {
           height: 2.5rem;
-          width: 120%!important;
+          width: 120% !important;
         }
       }
       .shopInfodiv {
@@ -125,26 +123,23 @@ $main: #5c0431;
       margin-top: 8rem !important;
     }
   }
-  
 }
 
-
-@media (max-width:768px) {
-    
-.ShopPage {
+@media (max-width: 768px) {
+  .ShopPage {
     .row {
       .shopImagediv {
         margin-top: 8rem;
         height: 11.5rem;
         img {
-          height: auto
+          height: auto;
         }
       }
       .shopLogodiv {
         margin-top: 4rem;
         img {
           height: 2rem;
-          width: 190%!important;
+          width: 190% !important;
         }
       }
       .shopInfodiv {
@@ -169,10 +164,9 @@ $main: #5c0431;
             }
             .loadbtn {
               margin-top: 1.3rem;
-              .loader{
-                width: 4.5rem!important;
+              .loader {
+                width: 4.5rem !important;
               }
-
             }
           }
           .col-3 {
@@ -188,26 +182,23 @@ $main: #5c0431;
       margin-top: 8rem !important;
     }
   }
-  
 }
 
-
-@media (max-width:576px) {
-    
-.ShopPage {
+@media (max-width: 576px) {
+  .ShopPage {
     .row {
       .shopImagediv {
         margin-top: 6rem;
         height: 9.5rem;
         img {
-          height: auto
+          height: auto;
         }
       }
       .shopLogodiv {
         margin-top: 4rem;
         img {
           height: 1.5rem;
-          width: 1.5rem!important;
+          width: 1.5rem !important;
         }
       }
       .shopInfodiv {
@@ -218,30 +209,30 @@ $main: #5c0431;
               font-size: 1.5rem;
             }
             .card-text {
-              font-size: .8rem;
+              font-size: 0.8rem;
             }
           }
           .followbtndiv {
             .follow {
               margin-top: 1.3rem;
-              font-size: .8rem;
+              font-size: 0.8rem;
             }
             .unfollow {
               margin-top: 1.3rem;
-              font-size: .8rem;
+              font-size: 0.8rem;
             }
             .loadbtn {
-              font-size: .8rem;
+              font-size: 0.8rem;
               margin-top: 1.3rem;
-              .loader{
-                width: 4rem!important;
+              .loader {
+                width: 4rem !important;
               }
             }
           }
           .col-3 {
             .card-title {
               margin-top: 2rem;
-              font-size: .8rem;
+              font-size: 0.8rem;
             }
           }
         }
@@ -251,19 +242,16 @@ $main: #5c0431;
       margin-top: 8rem !important;
     }
   }
-  
 }
 
-
-@media (max-width:394px) {
-    
-.ShopPage {
+@media (max-width: 394px) {
+  .ShopPage {
     .row {
       .shopImagediv {
         margin-top: 6rem;
         height: 9.5rem;
         img {
-          height: auto
+          height: auto;
         }
       }
       .shopLogodiv {
@@ -271,7 +259,7 @@ $main: #5c0431;
         margin-top: 4rem;
         img {
           height: 1.2rem;
-          width: 1.2rem!important;
+          width: 1.2rem !important;
         }
       }
       .shopInfodiv {
@@ -282,22 +270,22 @@ $main: #5c0431;
               font-size: 1rem;
             }
             .card-text {
-              font-size: .59rem;
+              font-size: 0.59rem;
             }
           }
           .followbtndiv {
             .follow {
               margin-top: 1.3rem;
-              font-size: .59rem;
+              font-size: 0.59rem;
             }
             .unfollow {
               margin-top: 1.3rem;
-              font-size: .59rem;
+              font-size: 0.59rem;
             }
             .loadbtn {
               margin-top: 1.3rem;
-              .loader{
-                font-size: .59rem;
+              .loader {
+                font-size: 0.59rem;
                 // width: 1rem!important;
                 size: 2rem;
               }
@@ -306,7 +294,7 @@ $main: #5c0431;
           .col-3 {
             .card-title {
               margin-top: 2rem;
-              font-size: .59rem;
+              font-size: 0.59rem;
             }
           }
         }
@@ -316,5 +304,4 @@ $main: #5c0431;
       margin-top: 8rem !important;
     }
   }
-  
 }

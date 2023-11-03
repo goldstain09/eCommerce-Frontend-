@@ -1,27 +1,25 @@
-
-
-.footer{
+.footer {
   font-family: "Quicksand", sans-serif;
-    margin-top: 8rem;
-    background: #f806060d;
-    .container{
-
-        padding: 2rem 0;
-        .row{
-            div{
-                h1 ,h4{
-                    font-size: 1.6rem;
-                    margin-top: 2rem;
-                }
-                p{
-                    font-weight: 600;
-                    font-size: 1.27rem;
-                    color: rgba(0, 0, 0, 0.617);
-                }
-                span:nth-child(2){
-                    font-size: 1rem;
-                }
-            }
+  margin-top: 8rem;
+  background: #f806060d;
+  .container {
+    padding: 2rem 0;
+    .row {
+      div {
+        h1,
+        h4 {
+          font-size: 1.6rem;
+          margin-top: 2rem;
         }
+        p {
+          font-weight: 600;
+          font-size: 1.27rem;
+          color: rgba(0, 0, 0, 0.617);
+        }
+        span:nth-child(2) {
+          font-size: 1rem;
+        }
+      }
     }
+  }
 }

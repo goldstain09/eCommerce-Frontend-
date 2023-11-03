@@ -16,13 +16,13 @@ export default function Router() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route element={<Home/>} path="/" />
+          <Route element={<Home />} path="/" />
           <Route element={<ProductPage />} path="/product/:id" />
           <Route element={<CategoryPage />} path="/category/:name" />
           <Route element={<CartPage />} path="/cart" />
           <Route element={<CheckoutPage />} path="/checkout" />
           <Route element={<ShopPage />} path="/sellerShop/:sellerId" />
-          <Route  path="/profile" >
+          <Route path="/profile">
             <Route index element={<Profile />} />
             <Route path="/profile/orders" element={<Orders />} />
             <Route path="/profile/edit" element={<ProfileEdit />} />
