@@ -1,5 +1,5 @@
 import React from "react";
-import "./SCSS/Loading.scss";
+// import "./SCSS/Loading.scss";
 import { SpinnerDotted } from "spinners-react";
 
 export default function Loading() {

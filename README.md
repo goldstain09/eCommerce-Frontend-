@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+Project Name - "ECOMMERCE"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend (ReactJS):
 
-## Available Scripts
+Description:
+The frontend of our e-commerce platform, developed with React, promises an engaging shopping experience. Users can seamlessly explore a diverse range of products, benefit from dynamic cart management, and track orders in real-time. Additionally, the platform boasts a personalized shopping experience with dedicated shop pages for each seller.
 
-In the project directory, you can run:
+Key Features:
+Dynamic Cart Management:
+Explore products effortlessly and manage your cart dynamically for a frictionless shopping experience.
 
-### `npm start`
+Personalized Shop Pages:
+Enjoy a personalized shopping journey with dedicated shop pages for sellers, fostering enhanced engagement and product discovery.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Real-time Order Tracking:
+Track orders in real-time, offering visibility into order statuses for a transparent and efficient shopping process.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Seller Panel:
+Sellers benefit from an efficient panel, streamlining order handling, and ensuring a seamless experience in managing their products and orders.
 
-### `npm test`
+Responsive Design:
+The frontend guarantees a responsive design, adapting seamlessly to various devices and screen sizes, providing a consistent and enjoyable user experience.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Installation & Usage Steps:
+cd react-ecommerce
+npm install
+npm start
 
-### `npm run build`
+but before this you need to start backend server OR
+create build by using "npm run build", and set it in backend's /build;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Folder Structure:
+└── /src
+├── /components- Contains reusable React components, Pages and their corresponding SCSS files.
+| ├──/SCSS- Holds SCSS files for styling.
+| | ├──Component1.scss
+| | ├──Component2.scss
+| | └── ...
+│ ├── Component1.jsx
+│ ├── Component2.jsx
+│ └── ...
+├── /media- Stores main images and logos used in the application.
+│ ├── image1.jpg
+│ ├── image2.png
+│ └── ...
+├── /redux- Manages state using Redux and Redux Saga.
+│ ├── actions- Contains Redux action creators.
+│ ├── constants- Defines action types and constants.
+│ ├── reducers- Implements Redux reducers.
+│ ├── sagas- Manages Redux Sagas for asynchronous actions.
+│ ├── services- Contains service files for API interactions.
+│ └── store.js- Configures the Redux store.
+├── index.js- Main entry point for React application.
+└── router.js- Manages all routes within application.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Technologies used (Frontend)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- React-Redux
+- Redux Saga {Toolkit}
+- React Router Dom
+- Bootstrap
+- Axios
+- SCSS
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Dependencies:
+"axios": "^1.6.0",
+"react": "^18.2.0",
+"react-dom": "^18.2.0",
+"react-redux": "^8.1.3",
+"react-router-dom": "^6.17.0",
+"react-scripts": "5.0.1",
+"react-spinners": "^0.13.8",
+"redux": "^4.2.1",
+"redux-saga": "^1.2.3",
+"sass": "^1.69.5"
+"react-toastify": "^9.1.3",
